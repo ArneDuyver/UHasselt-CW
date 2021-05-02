@@ -542,18 +542,18 @@
  455               		.file 4 ".././crypto/avrcryptolib//aes/aes_sbox.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 aes_keyschedule.c
-     /tmp/ccBzWX4Q.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccBzWX4Q.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccBzWX4Q.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccBzWX4Q.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccBzWX4Q.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccBzWX4Q.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccBzWX4Q.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccBzWX4Q.s:14     .text:0000000000000000 aes_init
-     /tmp/ccBzWX4Q.s:440    .progmem.data:0000000000000000 rc_tab
-     /tmp/ccBzWX4Q.s:375    .text:000000000000014e aes128_init
-     /tmp/ccBzWX4Q.s:396    .text:0000000000000158 aes192_init
-     /tmp/ccBzWX4Q.s:417    .text:0000000000000162 aes256_init
+     /tmp/ccMALSbP.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccMALSbP.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccMALSbP.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccMALSbP.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccMALSbP.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccMALSbP.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccMALSbP.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccMALSbP.s:14     .text:0000000000000000 aes_init
+     /tmp/ccMALSbP.s:440    .progmem.data:0000000000000000 rc_tab
+     /tmp/ccMALSbP.s:375    .text:000000000000014e aes128_init
+     /tmp/ccMALSbP.s:396    .text:0000000000000158 aes192_init
+     /tmp/ccMALSbP.s:417    .text:0000000000000162 aes256_init
 
 UNDEFINED SYMBOLS
 memcpy

@@ -84,13 +84,13 @@
   51               		.file 3 "/usr/lib/avr/include/avr/iox128d3.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 xmega_hal.c
-     /tmp/cc4DGPSu.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc4DGPSu.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc4DGPSu.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc4DGPSu.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/cc4DGPSu.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/cc4DGPSu.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc4DGPSu.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc4DGPSu.s:14     .text:0000000000000000 platform_init
+     /tmp/ccPnUqPv.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccPnUqPv.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccPnUqPv.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccPnUqPv.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccPnUqPv.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccPnUqPv.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccPnUqPv.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccPnUqPv.s:14     .text:0000000000000000 platform_init
 
 NO UNDEFINED SYMBOLS

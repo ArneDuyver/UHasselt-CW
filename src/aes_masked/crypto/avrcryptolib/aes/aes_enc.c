@@ -66,34 +66,30 @@ void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * 
 	aes_shiftcol(tmp+2, 2);
 	aes_shiftcol(tmp+3, 3);
 	
-	for(i=0; i<16; ++i){
-		tmp[i] ^= mask;
-	}
-	
 	/* mixColums */
 	for(i=0; i<4; ++i){ 
-		t = tmp[4*i+0] ^ tmp[4*i+1] ^ tmp[4*i+2] ^ tmp[4*i+3];
+		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
 		
-		state->s[4*i+0] =
-			  GF256MUL_2(tmp[4*i+0]^tmp[4*i+1])
-			^ tmp[4*i+0]
-			^ t
-			^ mask;
-		state->s[4*i+1] =
-			  GF256MUL_2(tmp[4*i+1]^tmp[4*i+2])
-			^ tmp[4*i+1]
-			^ t
-			^ mask;
-		state->s[4*i+2] =
-			  GF256MUL_2(tmp[4*i+2]^tmp[4*i+3])
-			^ tmp[4*i+2]
-			^ t
-			^ mask;
-		state->s[4*i+3] =
-			  GF256MUL_2(tmp[4*i+3]^tmp[4*i+0])
-			^ tmp[4*i+3]
-			^ t
-			^ mask;
+		state->s[4*i+0] = 
+			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
+			^ (tmp[4*i+0]^mask)
+			^ (t^mask)
+			^ mask;//010
+		state->s[4*i+1] = 
+			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
+			^ (tmp[4*i+1]^mask)
+			^ (t^mask)
+			^ mask;//121
+		state->s[4*i+2] = 
+			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
+			^ (tmp[4*i+2]^mask)
+			^ (t^mask)
+			^ mask;//232
+		state->s[4*i+3] = 
+			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
+			^ (tmp[4*i+3]^mask)
+			^ (t^mask)
+			^ mask;//303
 	}
 	
 	/* addKey */

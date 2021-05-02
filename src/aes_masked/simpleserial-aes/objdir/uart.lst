@@ -251,16 +251,16 @@
  174               		.file 3 "/usr/lib/avr/include/avr/iox128d3.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 uart.c
-     /tmp/cc8wMEPy.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/cc8wMEPy.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/cc8wMEPy.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/cc8wMEPy.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/cc8wMEPy.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/cc8wMEPy.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/cc8wMEPy.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/cc8wMEPy.s:14     .text:0000000000000000 init_uart0
-     /tmp/cc8wMEPy.s:54     .text:0000000000000028 input_ch_w_timeout_0
-     /tmp/cc8wMEPy.s:130    .text:000000000000006c input_ch_0
-     /tmp/cc8wMEPy.s:152    .text:000000000000007a output_ch_0
+     /tmp/ccd3ZX6y.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccd3ZX6y.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccd3ZX6y.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccd3ZX6y.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccd3ZX6y.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccd3ZX6y.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccd3ZX6y.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccd3ZX6y.s:14     .text:0000000000000000 init_uart0
+     /tmp/ccd3ZX6y.s:54     .text:0000000000000028 input_ch_w_timeout_0
+     /tmp/ccd3ZX6y.s:130    .text:000000000000006c input_ch_0
+     /tmp/ccd3ZX6y.s:152    .text:000000000000007a output_ch_0
 
 NO UNDEFINED SYMBOLS
