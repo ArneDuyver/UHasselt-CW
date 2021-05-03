@@ -98,8 +98,9 @@
   57 0024 8C91      		ld r24,X
   58 0026 1C97      		sbiw r26,12
   59 0028 8C83      		std Y+4,r24
-  43:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 0] = tmp[(shift+0)&3];
-  60               		.loc 1 43 0
+  43:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+  44:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 0] = tmp[(shift+0)&3];
+  60               		.loc 1 44 0
   61 002a 862F      		mov r24,r22
   62 002c 8370      		andi r24,lo8(3)
   63 002e E1E0      		ldi r30,lo8(1)
@@ -110,8 +111,8 @@
   68 0038 F11D      		adc r31,__zero_reg__
   69 003a 8081      		ld r24,Z
   70 003c 8C93      		st X,r24
-  44:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 4] = tmp[(shift+1)&3];
-  71               		.loc 1 44 0
+  45:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 4] = tmp[(shift+1)&3];
+  71               		.loc 1 45 0
   72 003e 70E0      		ldi r23,0
   73 0040 FB01      		movw r30,r22
   74 0042 3196      		adiw r30,1
@@ -127,8 +128,8 @@
   84 0056 1496      		adiw r26,4
   85 0058 8C93      		st X,r24
   86 005a 1497      		sbiw r26,4
-  45:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 8] = tmp[(shift+2)&3];
-  87               		.loc 1 45 0
+  46:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[ 8] = tmp[(shift+2)&3];
+  87               		.loc 1 46 0
   88 005c FB01      		movw r30,r22
   89 005e 3296      		adiw r30,2
   90 0060 E370      		andi r30,3
@@ -143,8 +144,8 @@
   99 0072 1896      		adiw r26,8
  100 0074 8C93      		st X,r24
  101 0076 1897      		sbiw r26,8
-  46:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[12] = tmp[(shift+3)&3];
- 102               		.loc 1 46 0
+  47:.././crypto/avrcryptolib//aes/aes_enc.c **** 	((uint8_t*)data)[12] = tmp[(shift+3)&3];
+ 102               		.loc 1 47 0
  103 0078 FB01      		movw r30,r22
  104 007a 3396      		adiw r30,3
  105 007c E370      		andi r30,3
@@ -159,8 +160,9 @@
  114 008e 1C96      		adiw r26,12
  115 0090 8C93      		st X,r24
  116               	/* epilogue start */
-  47:.././crypto/avrcryptolib//aes/aes_enc.c **** }
- 117               		.loc 1 47 0
+  48:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+  49:.././crypto/avrcryptolib//aes/aes_enc.c **** }
+ 117               		.loc 1 49 0
  118 0092 2496      		adiw r28,4
  119 0094 CDBF      		out __SP_L__,r28
  120 0096 DEBF      		out __SP_H__,r29
@@ -172,80 +174,90 @@
  127               	.global	aes_encrypt_core
  129               	aes_encrypt_core:
  130               	.LFB4:
-  48:.././crypto/avrcryptolib//aes/aes_enc.c **** 
-  49:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_1(a) (a)
-  50:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_2(a) (gf256mul(2, (a), 0x1b))
-  51:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_3(a) (gf256mul(3, (a), 0x1b))
-  52:.././crypto/avrcryptolib//aes/aes_enc.c **** 
-  53:.././crypto/avrcryptolib//aes/aes_enc.c **** static
-  54:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t *
-  55:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t mask = *rmask;
-  56:.././crypto/avrcryptolib//aes/aes_enc.c ****     uint8_t tmp[16], t;
-  57:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t i;
-  58:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* subBytes */
-  59:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
-  60:.././crypto/avrcryptolib//aes/aes_enc.c ****         uint8_t help = state->s[i];
-  61:.././crypto/avrcryptolib//aes/aes_enc.c **** 		tmp[i] = aes_sbox2[help];
-  62:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
-  63:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
-  64:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* shiftRows */
-  65:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+1, 1);
-  66:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+2, 2);
-  67:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+3, 3);
-  68:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
-  69:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* mixColums */
-  70:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<4; ++i){ 
-  71:.././crypto/avrcryptolib//aes/aes_enc.c **** 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
-  72:.././crypto/avrcryptolib//aes/aes_enc.c **** 		
-  73:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+0] = 
-  74:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
-  75:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+0]^mask)
-  76:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
-  77:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//010
-  78:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+1] = 
-  79:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
-  80:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+1]^mask)
-  81:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
-  82:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//121
-  83:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+2] = 
-  84:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
-  85:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+2]^mask)
-  86:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
-  87:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//232
-  88:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+3] = 
-  89:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
-  90:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+3]^mask)
-  91:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
-  92:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//303
-  93:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
-  94:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
-  95:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* addKey */
-  96:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
-  97:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
-  98:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
-  99:.././crypto/avrcryptolib//aes/aes_enc.c **** }
- 100:.././crypto/avrcryptolib//aes/aes_enc.c **** 
- 101:.././crypto/avrcryptolib//aes/aes_enc.c **** 
- 102:.././crypto/avrcryptolib//aes/aes_enc.c **** static
- 103:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_enc_lastround(aes_cipher_state_t* state,const aes_roundkey_t* k,uint8_t * aes_sbox2){
- 104:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t i;
- 105:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* subBytes */
- 106:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
- 107:.././crypto/avrcryptolib//aes/aes_enc.c **** 		uint8_t help = state->s[i];
- 108:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] = aes_sbox2[help];
- 109:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 110:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* shiftRows */
- 111:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+1, 1);
- 112:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+2, 2);
- 113:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+3, 3);
- 114:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* keyAdd */
- 115:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
- 116:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
- 117:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 118:.././crypto/avrcryptolib//aes/aes_enc.c **** }
- 119:.././crypto/avrcryptolib//aes/aes_enc.c **** 
- 120:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_encrypt_core(aes_cipher_state_t* state, const aes_genctx_t* ks, uint8_t rounds,uint8_t * a
- 131               		.loc 1 120 0
+  50:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+  51:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_1(a) (a)
+  52:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_2(a) (gf256mul(2, (a), 0x1b))
+  53:.././crypto/avrcryptolib//aes/aes_enc.c **** #define GF256MUL_3(a) (gf256mul(3, (a), 0x1b))
+  54:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+  55:.././crypto/avrcryptolib//aes/aes_enc.c **** static
+  56:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t *
+  57:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t mask = *rmask;
+  58:.././crypto/avrcryptolib//aes/aes_enc.c ****     uint8_t tmp[16], t;
+  59:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t i;
+  60:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* subBytes */
+  61:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
+  62:.././crypto/avrcryptolib//aes/aes_enc.c ****         uint8_t help = state->s[i];
+  63:.././crypto/avrcryptolib//aes/aes_enc.c **** 		tmp[i] = aes_sbox2[help];
+  64:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+  65:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+  66:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+  67:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* shiftRows */
+  68:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+  69:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t help2 = tmp[5]^0x55;
+  70:.././crypto/avrcryptolib//aes/aes_enc.c **** 	simpleserial_put('r', 1, &help2);
+  71:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+  72:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+1, 1);
+  73:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+  74:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t help3 = tmp[5]^0x55;
+  75:.././crypto/avrcryptolib//aes/aes_enc.c **** 	simpleserial_put('r', 2, &help3);
+  76:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+  77:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+2, 2);
+  78:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+3, 3);
+  79:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+  80:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+  81:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* mixColums */
+  82:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<4; ++i){ 
+  83:.././crypto/avrcryptolib//aes/aes_enc.c **** 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
+  84:.././crypto/avrcryptolib//aes/aes_enc.c **** 		
+  85:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+0] = 
+  86:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
+  87:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+0]^mask)
+  88:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
+  89:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//010
+  90:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+1] = 
+  91:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
+  92:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+1]^mask)
+  93:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
+  94:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//121
+  95:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+2] = 
+  96:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
+  97:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+2]^mask)
+  98:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
+  99:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//232
+ 100:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[4*i+3] = 
+ 101:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
+ 102:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+3]^mask)
+ 103:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (t^mask)
+ 104:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ mask;//303
+ 105:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 106:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+ 107:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* addKey */
+ 108:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
+ 109:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
+ 110:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 111:.././crypto/avrcryptolib//aes/aes_enc.c **** }
+ 112:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+ 113:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+ 114:.././crypto/avrcryptolib//aes/aes_enc.c **** static
+ 115:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_enc_lastround(aes_cipher_state_t* state,const aes_roundkey_t* k,uint8_t * aes_sbox2){
+ 116:.././crypto/avrcryptolib//aes/aes_enc.c **** 	uint8_t i;
+ 117:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* subBytes */
+ 118:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
+ 119:.././crypto/avrcryptolib//aes/aes_enc.c **** 		uint8_t help = state->s[i];
+ 120:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] = aes_sbox2[help];
+ 121:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 122:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* shiftRows */
+ 123:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+1, 1);
+ 124:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+2, 2);
+ 125:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+3, 3);
+ 126:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* keyAdd */
+ 127:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
+ 128:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
+ 129:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 130:.././crypto/avrcryptolib//aes/aes_enc.c **** }
+ 131:.././crypto/avrcryptolib//aes/aes_enc.c **** 
+ 132:.././crypto/avrcryptolib//aes/aes_enc.c **** void aes_encrypt_core(aes_cipher_state_t* state, const aes_genctx_t* ks, uint8_t rounds,uint8_t * a
+ 131               		.loc 1 132 0
  132               		.cfi_startproc
  133               	.LVL2:
  134 009e 2F92      		push r2
@@ -324,77 +336,77 @@
  207 00c4 DEB7      		in r29,__SP_H__
  208               	.LCFI22:
  209               		.cfi_def_cfa_register 28
- 210 00c6 6697      		sbiw r28,22
+ 210 00c6 6897      		sbiw r28,24
  211               	.LCFI23:
- 212               		.cfi_def_cfa_offset 43
+ 212               		.cfi_def_cfa_offset 45
  213 00c8 CDBF      		out __SP_L__,r28
  214 00ca DEBF      		out __SP_H__,r29
  215               	/* prologue: function */
- 216               	/* frame size = 22 */
- 217               	/* stack size = 40 */
- 218               	.L__stack_usage = 40
+ 216               	/* frame size = 24 */
+ 217               	/* stack size = 42 */
+ 218               	.L__stack_usage = 42
  219 00cc 7C01      		movw r14,r24
  220 00ce 5B01      		movw r10,r22
  221 00d0 342E      		mov r3,r20
  222 00d2 2901      		movw r4,r18
  223               	.LVL3:
  224 00d4 DB01      		movw r26,r22
- 225 00d6 8A8B      		std Y+18,r24
- 226 00d8 9B8B      		std Y+19,r25
+ 225 00d6 8C8B      		std Y+20,r24
+ 226 00d8 9D8B      		std Y+21,r25
  227 00da 9C01      		movw r18,r24
  228               	.LVL4:
  229 00dc 205F      		subi r18,-16
  230 00de 3F4F      		sbci r19,-1
- 231 00e0 2D8B      		std Y+21,r18
- 232 00e2 3E8B      		std Y+22,r19
- 233               		.loc 1 120 0
+ 231 00e0 2F8B      		std Y+23,r18
+ 232 00e2 388F      		std Y+24,r19
+ 233               		.loc 1 132 0
  234 00e4 FC01      		movw r30,r24
  235               	.LVL5:
  236               	.L3:
- 121:.././crypto/avrcryptolib//aes/aes_enc.c ****     uint8_t i;
- 122:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
- 123:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
- 237               		.loc 1 123 0 discriminator 3
+ 133:.././crypto/avrcryptolib//aes/aes_enc.c ****     uint8_t i;
+ 134:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(i=0; i<16; ++i){
+ 135:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
+ 237               		.loc 1 135 0 discriminator 3
  238 00e6 8D91      		ld r24,X+
  239 00e8 9081      		ld r25,Z
  240 00ea 8927      		eor r24,r25
  241 00ec 8193      		st Z+,r24
  242               	.LVL6:
- 122:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
- 243               		.loc 1 122 0 discriminator 3
- 244 00ee 8D89      		ldd r24,Y+21
- 245 00f0 9E89      		ldd r25,Y+22
+ 134:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
+ 243               		.loc 1 134 0 discriminator 3
+ 244 00ee 8F89      		ldd r24,Y+23
+ 245 00f0 988D      		ldd r25,Y+24
  246 00f2 E817      		cp r30,r24
  247 00f4 F907      		cpc r31,r25
  248 00f6 01F4      		brne .L3
- 249 00f8 4501      		movw r8,r10
+ 249 00f8 3501      		movw r6,r10
  250 00fa 90E1      		ldi r25,16
- 251 00fc 890E      		add r8,r25
- 252 00fe 911C      		adc r9,__zero_reg__
- 122:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
- 253               		.loc 1 122 0 is_stmt 0
+ 251 00fc 690E      		add r6,r25
+ 252 00fe 711C      		adc r7,__zero_reg__
+ 134:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= ks->key[0].ks[i];
+ 253               		.loc 1 134 0 is_stmt 0
  254 0100 A1E0      		ldi r26,lo8(1)
- 255 0102 A98B      		std Y+17,r26
- 256 0104 3E01      		movw r6,r28
+ 255 0102 AB8B      		std Y+19,r26
+ 256 0104 4E01      		movw r8,r28
  257 0106 B1E1      		ldi r27,17
- 258 0108 6B0E      		add r6,r27
- 259 010a 711C      		adc r7,__zero_reg__
+ 258 0108 8B0E      		add r8,r27
+ 259 010a 911C      		adc r9,__zero_reg__
  260               	.LVL7:
  261               	.L4:
- 124:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 125:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
- 126:.././crypto/avrcryptolib//aes/aes_enc.c **** 	i=1;
- 127:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(;rounds>1;--rounds){
- 262               		.loc 1 127 0 is_stmt 1 discriminator 1
- 263 010c 81E0      		ldi r24,lo8(1)
- 264 010e 8315      		cp r24,r3
+ 136:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 137:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+ 138:.././crypto/avrcryptolib//aes/aes_enc.c **** 	i=1;
+ 139:.././crypto/avrcryptolib//aes/aes_enc.c **** 	for(;rounds>8;--rounds){//1
+ 262               		.loc 1 139 0 is_stmt 1 discriminator 1
+ 263 010c 28E0      		ldi r18,lo8(8)
+ 264 010e 2315      		cp r18,r3
  265 0110 00F0      		brlo .+2
  266 0112 00C0      		rjmp .L18
  267               	.LVL8:
  268 0114 8E01      		movw r16,r28
  269 0116 0F5F      		subi r16,-1
  270 0118 1F4F      		sbci r17,-1
- 271               		.loc 1 127 0 is_stmt 0 discriminator 2
+ 271               		.loc 1 139 0 is_stmt 0 discriminator 2
  272 011a F801      		movw r30,r16
  273 011c A701      		movw r20,r14
  274               	.LVL9:
@@ -402,14 +414,14 @@
  276               	.LBB9:
  277               	.LBB10:
  278               	.LBB11:
-  60:.././crypto/avrcryptolib//aes/aes_enc.c **** 		tmp[i] = aes_sbox2[help];
- 279               		.loc 1 60 0 is_stmt 1
+  62:.././crypto/avrcryptolib//aes/aes_enc.c **** 		tmp[i] = aes_sbox2[help];
+ 279               		.loc 1 62 0 is_stmt 1
  280 011e DA01      		movw r26,r20
  281 0120 8D91      		ld r24,X+
  282 0122 AD01      		movw r20,r26
  283               	.LVL10:
-  61:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 284               		.loc 1 61 0
+  63:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 284               		.loc 1 63 0
  285 0124 9201      		movw r18,r4
  286 0126 280F      		add r18,r24
  287 0128 311D      		adc r19,__zero_reg__
@@ -419,310 +431,335 @@
  291 012e 8193      		st Z+,r24
  292               	.LVL12:
  293               	.LBE11:
-  59:.././crypto/avrcryptolib//aes/aes_enc.c ****         uint8_t help = state->s[i];
- 294               		.loc 1 59 0
- 295 0130 E615      		cp r30,r6
- 296 0132 F705      		cpc r31,r7
+  61:.././crypto/avrcryptolib//aes/aes_enc.c ****         uint8_t help = state->s[i];
+ 294               		.loc 1 61 0
+ 295 0130 E815      		cp r30,r8
+ 296 0132 F905      		cpc r31,r9
  297 0134 01F4      		brne .L5
-  65:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+2, 2);
- 298               		.loc 1 65 0
- 299 0136 61E0      		ldi r22,lo8(1)
- 300 0138 CE01      		movw r24,r28
- 301 013a 0296      		adiw r24,2
- 302 013c 0E94 0000 		call aes_shiftcol
- 303               	.LVL13:
-  66:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+3, 3);
- 304               		.loc 1 66 0
- 305 0140 62E0      		ldi r22,lo8(2)
- 306 0142 CE01      		movw r24,r28
- 307 0144 0396      		adiw r24,3
- 308 0146 0E94 0000 		call aes_shiftcol
- 309               	.LVL14:
-  67:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
- 310               		.loc 1 67 0
- 311 014a 63E0      		ldi r22,lo8(3)
- 312 014c CE01      		movw r24,r28
- 313 014e 0496      		adiw r24,4
- 314 0150 0E94 0000 		call aes_shiftcol
- 315               	.LVL15:
- 316 0154 6701      		movw r12,r14
- 317               	.LVL16:
- 318               	.L6:
-  71:.././crypto/avrcryptolib//aes/aes_enc.c **** 		
- 319               		.loc 1 71 0
- 320 0156 F801      		movw r30,r16
- 321 0158 2080      		ld r2,Z
- 322 015a 8181      		ldd r24,Z+1
- 323 015c 2826      		eor r2,r24
- 324 015e 2C8A      		std Y+20,r2
- 325 0160 2280      		ldd r2,Z+2
- 326 0162 8381      		ldd r24,Z+3
- 327 0164 2826      		eor r2,r24
- 328               	.LVL17:
-  74:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+0]^mask)
- 329               		.loc 1 74 0
- 330 0166 4BE1      		ldi r20,lo8(27)
- 331 0168 6C89      		ldd r22,Y+20
- 332 016a 82E0      		ldi r24,lo8(2)
- 333 016c 0E94 0000 		call gf256mul
- 334               	.LVL18:
-  73:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
- 335               		.loc 1 73 0
- 336 0170 FC89      		ldd r31,Y+20
- 337 0172 2F26      		eor r2,r31
- 338 0174 D801      		movw r26,r16
- 339 0176 9C91      		ld r25,X
- 340 0178 8927      		eor r24,r25
- 341 017a 8225      		eor r24,r2
- 342 017c F601      		movw r30,r12
- 343 017e 8083      		st Z,r24
-  79:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+1]^mask)
- 344               		.loc 1 79 0
- 345 0180 1196      		adiw r26,1
- 346 0182 6C91      		ld r22,X
- 347 0184 1197      		sbiw r26,1
- 348 0186 1296      		adiw r26,2
- 349 0188 8C91      		ld r24,X
- 350 018a 6827      		eor r22,r24
- 351 018c 4BE1      		ldi r20,lo8(27)
- 352 018e 82E0      		ldi r24,lo8(2)
- 353 0190 0E94 0000 		call gf256mul
- 354               	.LVL19:
-  78:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
- 355               		.loc 1 78 0
- 356 0194 D801      		movw r26,r16
- 357 0196 1196      		adiw r26,1
- 358 0198 9C91      		ld r25,X
- 359 019a 1197      		sbiw r26,1
- 360 019c 8927      		eor r24,r25
- 361 019e 8225      		eor r24,r2
- 362 01a0 F601      		movw r30,r12
- 363 01a2 8183      		std Z+1,r24
-  84:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+2]^mask)
- 364               		.loc 1 84 0
- 365 01a4 1296      		adiw r26,2
- 366 01a6 6C91      		ld r22,X
- 367 01a8 1297      		sbiw r26,2
- 368 01aa 1396      		adiw r26,3
- 369 01ac 8C91      		ld r24,X
- 370 01ae 6827      		eor r22,r24
- 371 01b0 4BE1      		ldi r20,lo8(27)
- 372 01b2 82E0      		ldi r24,lo8(2)
- 373 01b4 0E94 0000 		call gf256mul
- 374               	.LVL20:
-  83:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
- 375               		.loc 1 83 0
- 376 01b8 D801      		movw r26,r16
- 377 01ba 1296      		adiw r26,2
- 378 01bc 9C91      		ld r25,X
- 379 01be 1297      		sbiw r26,2
- 380 01c0 8927      		eor r24,r25
- 381 01c2 8225      		eor r24,r2
- 382 01c4 F601      		movw r30,r12
- 383 01c6 8283      		std Z+2,r24
-  89:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+3]^mask)
- 384               		.loc 1 89 0
- 385 01c8 1396      		adiw r26,3
- 386 01ca 6C91      		ld r22,X
- 387 01cc 1397      		sbiw r26,3
- 388 01ce 8C91      		ld r24,X
- 389 01d0 6827      		eor r22,r24
- 390 01d2 4BE1      		ldi r20,lo8(27)
- 391 01d4 82E0      		ldi r24,lo8(2)
- 392 01d6 0E94 0000 		call gf256mul
- 393               	.LVL21:
-  88:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
- 394               		.loc 1 88 0
- 395 01da D801      		movw r26,r16
- 396 01dc 1396      		adiw r26,3
- 397 01de 9C91      		ld r25,X
- 398 01e0 8927      		eor r24,r25
- 399 01e2 2826      		eor r2,r24
- 400 01e4 F601      		movw r30,r12
- 401 01e6 2382      		std Z+3,r2
- 402 01e8 0C5F      		subi r16,-4
- 403 01ea 1F4F      		sbci r17,-1
- 404 01ec F4E0      		ldi r31,4
- 405 01ee CF0E      		add r12,r31
- 406 01f0 D11C      		adc r13,__zero_reg__
-  70:.././crypto/avrcryptolib//aes/aes_enc.c **** 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
- 407               		.loc 1 70 0
- 408 01f2 0615      		cp r16,r6
- 409 01f4 1705      		cpc r17,r7
- 410 01f6 01F0      		breq .+2
- 411 01f8 00C0      		rjmp .L6
- 412 01fa F701      		movw r30,r14
- 413 01fc 80E0      		ldi r24,0
- 414 01fe 90E0      		ldi r25,0
- 415               	.L7:
- 416               	.LVL22:
-  97:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 417               		.loc 1 97 0
- 418 0200 D401      		movw r26,r8
- 419 0202 A80F      		add r26,r24
- 420 0204 B91F      		adc r27,r25
- 421 0206 3081      		ld r19,Z
- 422 0208 2C91      		ld r18,X
- 423 020a 2327      		eor r18,r19
- 424 020c 2193      		st Z+,r18
- 425               	.LVL23:
- 426 020e 0196      		adiw r24,1
- 427               	.LVL24:
-  96:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
- 428               		.loc 1 96 0
- 429 0210 8031      		cpi r24,16
- 430 0212 9105      		cpc r25,__zero_reg__
- 431 0214 01F4      		brne .L7
- 432               	.LVL25:
- 433               	.LBE10:
- 434               	.LBE9:
- 128:.././crypto/avrcryptolib//aes/aes_enc.c **** 		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
- 129:.././crypto/avrcryptolib//aes/aes_enc.c **** 		++i;
- 435               		.loc 1 129 0
- 436 0216 2989      		ldd r18,Y+17
- 437 0218 2F5F      		subi r18,lo8(-(1))
- 438 021a 298B      		std Y+17,r18
- 439               	.LVL26:
- 127:.././crypto/avrcryptolib//aes/aes_enc.c **** 		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
- 440               		.loc 1 127 0
- 441 021c 3A94      		dec r3
- 442               	.LVL27:
- 443 021e 30E1      		ldi r19,16
- 444 0220 830E      		add r8,r19
- 445 0222 911C      		adc r9,__zero_reg__
- 446 0224 00C0      		rjmp .L4
- 447               	.LVL28:
- 448               	.L18:
- 130:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 131:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
- 132:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
- 133:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_enc_lastround(state, &(ks->key[i]),aes_sbox2);
- 449               		.loc 1 133 0
- 450 0226 F701      		movw r30,r14
- 451               	.LVL29:
- 452               	.L9:
- 453               	.LBB12:
- 454               	.LBB13:
- 455               	.LBB14:
- 108:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 456               		.loc 1 108 0
- 457 0228 8081      		ld r24,Z
- 458 022a D201      		movw r26,r4
- 459 022c A80F      		add r26,r24
- 460 022e B11D      		adc r27,__zero_reg__
- 461 0230 8C91      		ld r24,X
- 462 0232 8193      		st Z+,r24
- 463               	.LVL30:
- 464               	.LBE14:
- 106:.././crypto/avrcryptolib//aes/aes_enc.c **** 		uint8_t help = state->s[i];
- 465               		.loc 1 106 0
- 466 0234 AD89      		ldd r26,Y+21
- 467 0236 BE89      		ldd r27,Y+22
- 468 0238 EA17      		cp r30,r26
- 469 023a FB07      		cpc r31,r27
- 470 023c 01F4      		brne .L9
- 111:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+2, 2);
- 471               		.loc 1 111 0
- 472 023e 61E0      		ldi r22,lo8(1)
- 473 0240 C701      		movw r24,r14
- 474 0242 0196      		adiw r24,1
- 475 0244 0E94 0000 		call aes_shiftcol
- 476               	.LVL31:
- 112:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+3, 3);
- 477               		.loc 1 112 0
- 478 0248 62E0      		ldi r22,lo8(2)
- 479 024a C701      		movw r24,r14
- 480 024c 0296      		adiw r24,2
- 481 024e 0E94 0000 		call aes_shiftcol
- 482               	.LVL32:
- 113:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* keyAdd */
- 483               		.loc 1 113 0
- 484 0252 63E0      		ldi r22,lo8(3)
- 485 0254 C701      		movw r24,r14
- 486 0256 0396      		adiw r24,3
- 487 0258 0E94 0000 		call aes_shiftcol
- 488               	.LVL33:
- 489 025c E989      		ldd r30,Y+17
- 490 025e B0E1      		ldi r27,lo8(16)
- 491 0260 EB9F      		mul r30,r27
- 492 0262 C001      		movw r24,r0
- 493 0264 1124      		clr __zero_reg__
- 494 0266 20E0      		ldi r18,0
- 495 0268 30E0      		ldi r19,0
- 496               	.LVL34:
- 497               	.L10:
- 116:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
- 498               		.loc 1 116 0
- 499 026a FC01      		movw r30,r24
- 500 026c E20F      		add r30,r18
- 501 026e F31F      		adc r31,r19
- 502 0270 EA0D      		add r30,r10
- 503 0272 FB1D      		adc r31,r11
- 504 0274 AA89      		ldd r26,Y+18
- 505 0276 BB89      		ldd r27,Y+19
- 506 0278 5C91      		ld r21,X
- 507 027a 4081      		ld r20,Z
- 508 027c 4527      		eor r20,r21
- 509 027e 4D93      		st X+,r20
- 510 0280 AA8B      		std Y+18,r26
- 511 0282 BB8B      		std Y+19,r27
- 512               	.LVL35:
- 513 0284 2F5F      		subi r18,-1
- 514 0286 3F4F      		sbci r19,-1
- 515               	.LVL36:
- 115:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
- 516               		.loc 1 115 0
- 517 0288 2031      		cpi r18,16
- 518 028a 3105      		cpc r19,__zero_reg__
- 519 028c 01F4      		brne .L10
- 520               	/* epilogue start */
- 521               	.LBE13:
- 522               	.LBE12:
- 134:.././crypto/avrcryptolib//aes/aes_enc.c **** }
- 523               		.loc 1 134 0
- 524 028e 6696      		adiw r28,22
- 525 0290 CDBF      		out __SP_L__,r28
- 526 0292 DEBF      		out __SP_H__,r29
- 527 0294 DF91      		pop r29
- 528 0296 CF91      		pop r28
- 529 0298 1F91      		pop r17
- 530 029a 0F91      		pop r16
- 531 029c FF90      		pop r15
- 532 029e EF90      		pop r14
- 533               	.LVL37:
- 534 02a0 DF90      		pop r13
- 535 02a2 CF90      		pop r12
- 536 02a4 BF90      		pop r11
- 537 02a6 AF90      		pop r10
- 538               	.LVL38:
- 539 02a8 9F90      		pop r9
- 540 02aa 8F90      		pop r8
- 541 02ac 7F90      		pop r7
- 542 02ae 6F90      		pop r6
- 543 02b0 5F90      		pop r5
- 544 02b2 4F90      		pop r4
- 545               	.LVL39:
- 546 02b4 3F90      		pop r3
- 547               	.LVL40:
- 548 02b6 2F90      		pop r2
- 549 02b8 0895      		ret
- 550               		.cfi_endproc
- 551               	.LFE4:
- 553               	.Letext0:
- 554               		.file 2 "/usr/lib/avr/include/stdint.h"
- 555               		.file 3 ".././crypto/avrcryptolib//aes/aes_types.h"
- 556               		.file 4 ".././crypto/avrcryptolib//gf256mul/gf256mul.h"
+  69:.././crypto/avrcryptolib//aes/aes_enc.c **** 	simpleserial_put('r', 1, &help2);
+ 298               		.loc 1 69 0
+ 299 0136 8E81      		ldd r24,Y+6
+ 300 0138 B5E5      		ldi r27,lo8(85)
+ 301 013a 8B27      		eor r24,r27
+ 302 013c 8A8B      		std Y+18,r24
+  70:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+ 303               		.loc 1 70 0
+ 304 013e AE01      		movw r20,r28
+ 305               	.LVL13:
+ 306 0140 4E5E      		subi r20,-18
+ 307 0142 5F4F      		sbci r21,-1
+ 308 0144 61E0      		ldi r22,lo8(1)
+ 309 0146 82E7      		ldi r24,lo8(114)
+ 310 0148 0E94 0000 		call simpleserial_put
+ 311               	.LVL14:
+  72:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+ 312               		.loc 1 72 0
+ 313 014c 61E0      		ldi r22,lo8(1)
+ 314 014e CE01      		movw r24,r28
+ 315 0150 0296      		adiw r24,2
+ 316 0152 0E94 0000 		call aes_shiftcol
+ 317               	.LVL15:
+  74:.././crypto/avrcryptolib//aes/aes_enc.c **** 	simpleserial_put('r', 2, &help3);
+ 318               		.loc 1 74 0
+ 319 0156 8E81      		ldd r24,Y+6
+ 320 0158 E5E5      		ldi r30,lo8(85)
+ 321 015a 8E27      		eor r24,r30
+ 322 015c 898B      		std Y+17,r24
+  75:.././crypto/avrcryptolib//aes/aes_enc.c **** 	//COPY
+ 323               		.loc 1 75 0
+ 324 015e A401      		movw r20,r8
+ 325 0160 62E0      		ldi r22,lo8(2)
+ 326 0162 82E7      		ldi r24,lo8(114)
+ 327 0164 0E94 0000 		call simpleserial_put
+ 328               	.LVL16:
+  77:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(tmp+3, 3);
+ 329               		.loc 1 77 0
+ 330 0168 62E0      		ldi r22,lo8(2)
+ 331 016a CE01      		movw r24,r28
+ 332 016c 0396      		adiw r24,3
+ 333 016e 0E94 0000 		call aes_shiftcol
+ 334               	.LVL17:
+  78:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+ 335               		.loc 1 78 0
+ 336 0172 63E0      		ldi r22,lo8(3)
+ 337 0174 CE01      		movw r24,r28
+ 338 0176 0496      		adiw r24,4
+ 339 0178 0E94 0000 		call aes_shiftcol
+ 340               	.LVL18:
+ 341 017c 6701      		movw r12,r14
+ 342               	.LVL19:
+ 343               	.L6:
+  83:.././crypto/avrcryptolib//aes/aes_enc.c **** 		
+ 344               		.loc 1 83 0
+ 345 017e D801      		movw r26,r16
+ 346 0180 2C90      		ld r2,X
+ 347 0182 1196      		adiw r26,1
+ 348 0184 8C91      		ld r24,X
+ 349 0186 1197      		sbiw r26,1
+ 350 0188 2826      		eor r2,r24
+ 351 018a 2E8A      		std Y+22,r2
+ 352 018c 1296      		adiw r26,2
+ 353 018e 2C90      		ld r2,X
+ 354 0190 1297      		sbiw r26,2
+ 355 0192 1396      		adiw r26,3
+ 356 0194 8C91      		ld r24,X
+ 357 0196 2826      		eor r2,r24
+ 358               	.LVL20:
+  86:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+0]^mask)
+ 359               		.loc 1 86 0
+ 360 0198 4BE1      		ldi r20,lo8(27)
+ 361 019a 6E89      		ldd r22,Y+22
+ 362 019c 82E0      		ldi r24,lo8(2)
+ 363 019e 0E94 0000 		call gf256mul
+ 364               	.LVL21:
+  85:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
+ 365               		.loc 1 85 0
+ 366 01a2 BE89      		ldd r27,Y+22
+ 367 01a4 2B26      		eor r2,r27
+ 368 01a6 F801      		movw r30,r16
+ 369 01a8 9081      		ld r25,Z
+ 370 01aa 8927      		eor r24,r25
+ 371 01ac 8225      		eor r24,r2
+ 372 01ae D601      		movw r26,r12
+ 373 01b0 8C93      		st X,r24
+  91:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+1]^mask)
+ 374               		.loc 1 91 0
+ 375 01b2 6181      		ldd r22,Z+1
+ 376 01b4 8281      		ldd r24,Z+2
+ 377 01b6 6827      		eor r22,r24
+ 378 01b8 4BE1      		ldi r20,lo8(27)
+ 379 01ba 82E0      		ldi r24,lo8(2)
+ 380 01bc 0E94 0000 		call gf256mul
+ 381               	.LVL22:
+  90:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
+ 382               		.loc 1 90 0
+ 383 01c0 F801      		movw r30,r16
+ 384 01c2 9181      		ldd r25,Z+1
+ 385 01c4 8927      		eor r24,r25
+ 386 01c6 8225      		eor r24,r2
+ 387 01c8 D601      		movw r26,r12
+ 388 01ca 1196      		adiw r26,1
+ 389 01cc 8C93      		st X,r24
+  96:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+2]^mask)
+ 390               		.loc 1 96 0
+ 391 01ce 6281      		ldd r22,Z+2
+ 392 01d0 8381      		ldd r24,Z+3
+ 393 01d2 6827      		eor r22,r24
+ 394 01d4 4BE1      		ldi r20,lo8(27)
+ 395 01d6 82E0      		ldi r24,lo8(2)
+ 396 01d8 0E94 0000 		call gf256mul
+ 397               	.LVL23:
+  95:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
+ 398               		.loc 1 95 0
+ 399 01dc F801      		movw r30,r16
+ 400 01de 9281      		ldd r25,Z+2
+ 401 01e0 8927      		eor r24,r25
+ 402 01e2 8225      		eor r24,r2
+ 403 01e4 D601      		movw r26,r12
+ 404 01e6 1296      		adiw r26,2
+ 405 01e8 8C93      		st X,r24
+ 101:.././crypto/avrcryptolib//aes/aes_enc.c **** 			^ (tmp[4*i+3]^mask)
+ 406               		.loc 1 101 0
+ 407 01ea 6381      		ldd r22,Z+3
+ 408 01ec 8081      		ld r24,Z
+ 409 01ee 6827      		eor r22,r24
+ 410 01f0 4BE1      		ldi r20,lo8(27)
+ 411 01f2 82E0      		ldi r24,lo8(2)
+ 412 01f4 0E94 0000 		call gf256mul
+ 413               	.LVL24:
+ 100:.././crypto/avrcryptolib//aes/aes_enc.c **** 			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
+ 414               		.loc 1 100 0
+ 415 01f8 F801      		movw r30,r16
+ 416 01fa 9381      		ldd r25,Z+3
+ 417 01fc 8927      		eor r24,r25
+ 418 01fe 2826      		eor r2,r24
+ 419 0200 D601      		movw r26,r12
+ 420 0202 1396      		adiw r26,3
+ 421 0204 2C92      		st X,r2
+ 422 0206 0C5F      		subi r16,-4
+ 423 0208 1F4F      		sbci r17,-1
+ 424 020a B4E0      		ldi r27,4
+ 425 020c CB0E      		add r12,r27
+ 426 020e D11C      		adc r13,__zero_reg__
+  82:.././crypto/avrcryptolib//aes/aes_enc.c **** 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
+ 427               		.loc 1 82 0
+ 428 0210 0815      		cp r16,r8
+ 429 0212 1905      		cpc r17,r9
+ 430 0214 01F0      		breq .+2
+ 431 0216 00C0      		rjmp .L6
+ 432 0218 F701      		movw r30,r14
+ 433 021a 80E0      		ldi r24,0
+ 434 021c 90E0      		ldi r25,0
+ 435               	.L7:
+ 436               	.LVL25:
+ 109:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 437               		.loc 1 109 0
+ 438 021e D301      		movw r26,r6
+ 439 0220 A80F      		add r26,r24
+ 440 0222 B91F      		adc r27,r25
+ 441 0224 3081      		ld r19,Z
+ 442 0226 2C91      		ld r18,X
+ 443 0228 2327      		eor r18,r19
+ 444 022a 2193      		st Z+,r18
+ 445               	.LVL26:
+ 446 022c 0196      		adiw r24,1
+ 447               	.LVL27:
+ 108:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
+ 448               		.loc 1 108 0
+ 449 022e 8031      		cpi r24,16
+ 450 0230 9105      		cpc r25,__zero_reg__
+ 451 0232 01F4      		brne .L7
+ 452               	.LVL28:
+ 453               	.LBE10:
+ 454               	.LBE9:
+ 140:.././crypto/avrcryptolib//aes/aes_enc.c **** 		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
+ 141:.././crypto/avrcryptolib//aes/aes_enc.c **** 		++i;
+ 455               		.loc 1 141 0
+ 456 0234 EB89      		ldd r30,Y+19
+ 457 0236 EF5F      		subi r30,lo8(-(1))
+ 458 0238 EB8B      		std Y+19,r30
+ 459               	.LVL29:
+ 139:.././crypto/avrcryptolib//aes/aes_enc.c **** 		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
+ 460               		.loc 1 139 0
+ 461 023a 3A94      		dec r3
+ 462               	.LVL30:
+ 463 023c F0E1      		ldi r31,16
+ 464 023e 6F0E      		add r6,r31
+ 465 0240 711C      		adc r7,__zero_reg__
+ 466 0242 00C0      		rjmp .L4
+ 467               	.LVL31:
+ 468               	.L18:
+ 469 0244 F701      		movw r30,r14
+ 470               	.L9:
+ 471               	.LVL32:
+ 472               	.LBB12:
+ 473               	.LBB13:
+ 474               	.LBB14:
+ 120:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 475               		.loc 1 120 0
+ 476 0246 8081      		ld r24,Z
+ 477 0248 D201      		movw r26,r4
+ 478 024a A80F      		add r26,r24
+ 479 024c B11D      		adc r27,__zero_reg__
+ 480 024e 8C91      		ld r24,X
+ 481 0250 8193      		st Z+,r24
+ 482               	.LVL33:
+ 483               	.LBE14:
+ 118:.././crypto/avrcryptolib//aes/aes_enc.c **** 		uint8_t help = state->s[i];
+ 484               		.loc 1 118 0
+ 485 0252 8F89      		ldd r24,Y+23
+ 486 0254 988D      		ldd r25,Y+24
+ 487 0256 E817      		cp r30,r24
+ 488 0258 F907      		cpc r31,r25
+ 489 025a 01F4      		brne .L9
+ 123:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+2, 2);
+ 490               		.loc 1 123 0
+ 491 025c 61E0      		ldi r22,lo8(1)
+ 492 025e C701      		movw r24,r14
+ 493 0260 0196      		adiw r24,1
+ 494 0262 0E94 0000 		call aes_shiftcol
+ 495               	.LVL34:
+ 124:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_shiftcol(state->s+3, 3);
+ 496               		.loc 1 124 0
+ 497 0266 62E0      		ldi r22,lo8(2)
+ 498 0268 C701      		movw r24,r14
+ 499 026a 0296      		adiw r24,2
+ 500 026c 0E94 0000 		call aes_shiftcol
+ 501               	.LVL35:
+ 125:.././crypto/avrcryptolib//aes/aes_enc.c **** 	/* keyAdd */
+ 502               		.loc 1 125 0
+ 503 0270 63E0      		ldi r22,lo8(3)
+ 504 0272 C701      		movw r24,r14
+ 505 0274 0396      		adiw r24,3
+ 506 0276 0E94 0000 		call aes_shiftcol
+ 507               	.LVL36:
+ 508 027a BB89      		ldd r27,Y+19
+ 509 027c A0E1      		ldi r26,lo8(16)
+ 510 027e BA9F      		mul r27,r26
+ 511 0280 C001      		movw r24,r0
+ 512 0282 1124      		clr __zero_reg__
+ 513 0284 20E0      		ldi r18,0
+ 514 0286 30E0      		ldi r19,0
+ 515               	.LVL37:
+ 516               	.L10:
+ 128:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 517               		.loc 1 128 0
+ 518 0288 FC01      		movw r30,r24
+ 519 028a E20F      		add r30,r18
+ 520 028c F31F      		adc r31,r19
+ 521 028e EA0D      		add r30,r10
+ 522 0290 FB1D      		adc r31,r11
+ 523 0292 AC89      		ldd r26,Y+20
+ 524 0294 BD89      		ldd r27,Y+21
+ 525 0296 5C91      		ld r21,X
+ 526 0298 4081      		ld r20,Z
+ 527 029a 4527      		eor r20,r21
+ 528 029c 4D93      		st X+,r20
+ 529 029e AC8B      		std Y+20,r26
+ 530 02a0 BD8B      		std Y+21,r27
+ 531               	.LVL38:
+ 532 02a2 2F5F      		subi r18,-1
+ 533 02a4 3F4F      		sbci r19,-1
+ 534               	.LVL39:
+ 127:.././crypto/avrcryptolib//aes/aes_enc.c **** 		state->s[i] ^= k->ks[i];
+ 535               		.loc 1 127 0
+ 536 02a6 2031      		cpi r18,16
+ 537 02a8 3105      		cpc r19,__zero_reg__
+ 538 02aa 01F4      		brne .L10
+ 539               	/* epilogue start */
+ 540               	.LBE13:
+ 541               	.LBE12:
+ 142:.././crypto/avrcryptolib//aes/aes_enc.c **** 	}
+ 143:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+ 144:.././crypto/avrcryptolib//aes/aes_enc.c **** 	
+ 145:.././crypto/avrcryptolib//aes/aes_enc.c **** 	aes_enc_lastround(state, &(ks->key[i]),aes_sbox2);
+ 146:.././crypto/avrcryptolib//aes/aes_enc.c **** }
+ 542               		.loc 1 146 0
+ 543 02ac 6896      		adiw r28,24
+ 544 02ae CDBF      		out __SP_L__,r28
+ 545 02b0 DEBF      		out __SP_H__,r29
+ 546 02b2 DF91      		pop r29
+ 547 02b4 CF91      		pop r28
+ 548 02b6 1F91      		pop r17
+ 549 02b8 0F91      		pop r16
+ 550 02ba FF90      		pop r15
+ 551 02bc EF90      		pop r14
+ 552               	.LVL40:
+ 553 02be DF90      		pop r13
+ 554 02c0 CF90      		pop r12
+ 555 02c2 BF90      		pop r11
+ 556 02c4 AF90      		pop r10
+ 557               	.LVL41:
+ 558 02c6 9F90      		pop r9
+ 559 02c8 8F90      		pop r8
+ 560 02ca 7F90      		pop r7
+ 561 02cc 6F90      		pop r6
+ 562 02ce 5F90      		pop r5
+ 563 02d0 4F90      		pop r4
+ 564               	.LVL42:
+ 565 02d2 3F90      		pop r3
+ 566               	.LVL43:
+ 567 02d4 2F90      		pop r2
+ 568 02d6 0895      		ret
+ 569               		.cfi_endproc
+ 570               	.LFE4:
+ 572               	.Letext0:
+ 573               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 574               		.file 3 ".././crypto/avrcryptolib//aes/aes_types.h"
+ 575               		.file 4 ".././crypto/avrcryptolib//aes/../../../simpleserial/simpleserial.h"
+ 576               		.file 5 ".././crypto/avrcryptolib//gf256mul/gf256mul.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 aes_enc.c
-     /tmp/ccSoWwPn.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccSoWwPn.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccSoWwPn.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccSoWwPn.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccSoWwPn.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccSoWwPn.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccSoWwPn.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccSoWwPn.s:14     .text:0000000000000000 aes_shiftcol
-     /tmp/ccSoWwPn.s:129    .text:000000000000009e aes_encrypt_core
+     /tmp/ccZRyYAJ.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccZRyYAJ.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccZRyYAJ.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccZRyYAJ.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccZRyYAJ.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccZRyYAJ.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccZRyYAJ.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccZRyYAJ.s:14     .text:0000000000000000 aes_shiftcol
+     /tmp/ccZRyYAJ.s:129    .text:000000000000009e aes_encrypt_core
 
 UNDEFINED SYMBOLS
+simpleserial_put
 gf256mul

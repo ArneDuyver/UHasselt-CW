@@ -63,7 +63,7 @@
   48:simpleserial-aes.c ****     aes_indep_enc_pretrigger(pt);
   49:simpleserial-aes.c ****     //START EDIT
   50:simpleserial-aes.c ****     // generate random mask uint8_t
-  51:simpleserial-aes.c ****     *rmask = 0x55; //rand();
+  51:simpleserial-aes.c ****     *rmask = 0x55;//rand();
   52:simpleserial-aes.c ****     uint8_t mask = *rmask;
   53:simpleserial-aes.c ****     // xor every byte from *pt with random
   54:simpleserial-aes.c ****     uint8_t i;
@@ -586,21 +586,21 @@
  390               		.file 8 ".././hal/xmega/uart.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 simpleserial-aes.c
-     /tmp/ccwYelme.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccwYelme.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccwYelme.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccwYelme.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccwYelme.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccwYelme.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccwYelme.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccwYelme.s:14     .text:0000000000000000 reset
-     /tmp/ccwYelme.s:33     .text:0000000000000004 enc_multi_setnum
-     /tmp/ccwYelme.s:51     .text:0000000000000008 get_mask
-     /tmp/ccwYelme.s:71     .text:0000000000000010 get_key
-     /tmp/ccwYelme.s:91     .text:0000000000000018 get_pt
+     /tmp/cccOM8cz.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cccOM8cz.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cccOM8cz.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cccOM8cz.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/cccOM8cz.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/cccOM8cz.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cccOM8cz.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cccOM8cz.s:14     .text:0000000000000000 reset
+     /tmp/cccOM8cz.s:33     .text:0000000000000004 enc_multi_setnum
+     /tmp/cccOM8cz.s:51     .text:0000000000000008 get_mask
+     /tmp/cccOM8cz.s:71     .text:0000000000000010 get_key
+     /tmp/cccOM8cz.s:91     .text:0000000000000018 get_pt
                             *COM*:0000000000000002 rmask
                             *COM*:0000000000000100 aes_sbox2
-     /tmp/ccwYelme.s:275    .text.startup:0000000000000000 main
+     /tmp/cccOM8cz.s:275    .text.startup:0000000000000000 main
 
 UNDEFINED SYMBOLS
 aes_indep_mask
