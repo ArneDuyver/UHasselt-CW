@@ -71,8 +71,8 @@
   56:simpleserial-aes.c ****         pt[i] ^= mask;
   57:simpleserial-aes.c **** 	}
   58:simpleserial-aes.c ****     // generate new SBOX using random
-  59:simpleserial-aes.c ****     uint8_t l;
-  60:simpleserial-aes.c ****     for(l=0; l<255; ++l){
+  59:simpleserial-aes.c ****     int l;
+  60:simpleserial-aes.c ****     for(l=0x00; l<=0xFF; l++){
   61:simpleserial-aes.c ****         uint8_t temporary = pgm_read_byte(aes_sbox+l);
   62:simpleserial-aes.c ****         aes_sbox2[l^mask] = temporary^mask;
   63:simpleserial-aes.c **** 	}   
@@ -245,151 +245,155 @@
  141               		.loc 1 52 0
  142 003a E091 0000 		lds r30,rmask
  143 003e F091 0000 		lds r31,rmask+1
- 144 0042 F080      		ld r15,Z
+ 144 0042 D080      		ld r13,Z
  145               	.LVL10:
  146 0044 8E01      		movw r16,r28
- 147 0046 6E01      		movw r12,r28
- 148 0048 80E1      		ldi r24,16
- 149 004a C80E      		add r12,r24
- 150 004c D11C      		adc r13,__zero_reg__
+ 147 0046 7E01      		movw r14,r28
+ 148 0048 40E1      		ldi r20,16
+ 149 004a E40E      		add r14,r20
+ 150 004c F11C      		adc r15,__zero_reg__
  151 004e FE01      		movw r30,r28
  152               	.LVL11:
  153               	.L6:
   56:simpleserial-aes.c **** 	}
  154               		.loc 1 56 0 discriminator 3
  155 0050 8081      		ld r24,Z
- 156 0052 8F25      		eor r24,r15
+ 156 0052 8D25      		eor r24,r13
  157 0054 8193      		st Z+,r24
  158               	.LVL12:
   55:simpleserial-aes.c ****         pt[i] ^= mask;
  159               		.loc 1 55 0 discriminator 3
- 160 0056 CE16      		cp r12,r30
- 161 0058 DF06      		cpc r13,r31
+ 160 0056 EE16      		cp r14,r30
+ 161 0058 FF06      		cpc r15,r31
  162 005a 01F4      		brne .L6
- 163 005c E0E0      		ldi r30,lo8(aes_sbox)
- 164 005e F0E0      		ldi r31,hi8(aes_sbox)
- 165               	.LVL13:
-  55:simpleserial-aes.c ****         pt[i] ^= mask;
- 166               		.loc 1 55 0 is_stmt 0
- 167 0060 80E0      		ldi r24,0
- 168               	.L7:
- 169               	.LVL14:
- 170               	.LBB2:
+ 163 005c 80E0      		ldi r24,0
+ 164 005e 90E0      		ldi r25,0
+ 165               	.LBB2:
+  62:simpleserial-aes.c **** 	}   
+ 166               		.loc 1 62 0 discriminator 3
+ 167 0060 2D2D      		mov r18,r13
+ 168 0062 30E0      		ldi r19,0
+ 169               	.LVL13:
+ 170               	.L7:
  171               	.LBB3:
   61:simpleserial-aes.c ****         aes_sbox2[l^mask] = temporary^mask;
- 172               		.loc 1 61 0 is_stmt 1 discriminator 3
- 173               	/* #APP */
- 174               	 ;  61 "simpleserial-aes.c" 1
- 175 0062 9491      		lpm r25, Z
- 176               		
- 177               	 ;  0 "" 2
- 178               	.LVL15:
- 179               	/* #NOAPP */
- 180               	.LBE3:
+ 172               		.loc 1 61 0 discriminator 3
+ 173 0064 FC01      		movw r30,r24
+ 174 0066 E050      		subi r30,lo8(-(aes_sbox))
+ 175 0068 F040      		sbci r31,hi8(-(aes_sbox))
+ 176               	.LVL14:
+ 177               	/* #APP */
+ 178               	 ;  61 "simpleserial-aes.c" 1
+ 179 006a E491      		lpm r30, Z
+ 180               		
+ 181               	 ;  0 "" 2
+ 182               	.LVL15:
+ 183               	/* #NOAPP */
+ 184               	.LBE3:
   62:simpleserial-aes.c **** 	}   
- 181               		.loc 1 62 0 discriminator 3
- 182 0064 AF2D      		mov r26,r15
- 183 0066 A827      		eor r26,r24
- 184 0068 B0E0      		ldi r27,0
- 185 006a A050      		subi r26,lo8(-(aes_sbox2))
- 186 006c B040      		sbci r27,hi8(-(aes_sbox2))
- 187 006e 9F25      		eor r25,r15
- 188               	.LVL16:
- 189 0070 9C93      		st X,r25
- 190               	.LBE2:
+ 185               		.loc 1 62 0 discriminator 3
+ 186 006c D901      		movw r26,r18
+ 187 006e A827      		eor r26,r24
+ 188 0070 B927      		eor r27,r25
+ 189 0072 A050      		subi r26,lo8(-(aes_sbox2))
+ 190 0074 B040      		sbci r27,hi8(-(aes_sbox2))
+ 191 0076 ED25      		eor r30,r13
+ 192               	.LVL16:
+ 193 0078 EC93      		st X,r30
+ 194               	.LBE2:
   60:simpleserial-aes.c ****         uint8_t temporary = pgm_read_byte(aes_sbox+l);
- 191               		.loc 1 60 0 discriminator 3
- 192 0072 8F5F      		subi r24,lo8(-(1))
- 193               	.LVL17:
- 194 0074 3196      		adiw r30,1
- 195               	.LVL18:
- 196 0076 8F3F      		cpi r24,lo8(-1)
- 197 0078 01F4      		brne .L7
+ 195               		.loc 1 60 0 discriminator 3
+ 196 007a 0196      		adiw r24,1
+ 197               	.LVL17:
+ 198 007c 8115      		cp r24,__zero_reg__
+ 199 007e E1E0      		ldi r30,1
+ 200 0080 9E07      		cpc r25,r30
+ 201 0082 01F4      		brne .L7
   66:simpleserial-aes.c **** 
- 198               		.loc 1 66 0
- 199 007a EE24      		clr r14
- 200 007c E394      		inc r14
- 201 007e E092 0506 		sts 1541,r14
+ 202               		.loc 1 66 0
+ 203 0084 CC24      		clr r12
+ 204 0086 C394      		inc r12
+ 205 0088 C092 0506 		sts 1541,r12
   72:simpleserial-aes.c **** 	trigger_low();
- 202               		.loc 1 72 0
- 203 0082 4091 0000 		lds r20,rmask
- 204 0086 5091 0000 		lds r21,rmask+1
- 205 008a 60E0      		ldi r22,lo8(aes_sbox2)
- 206 008c 70E0      		ldi r23,hi8(aes_sbox2)
- 207 008e CE01      		movw r24,r28
- 208               	.LVL19:
- 209 0090 0E94 0000 		call aes_indep_enc
- 210               	.LVL20:
+ 206               		.loc 1 72 0
+ 207 008c 4091 0000 		lds r20,rmask
+ 208 0090 5091 0000 		lds r21,rmask+1
+ 209 0094 60E0      		ldi r22,lo8(aes_sbox2)
+ 210 0096 70E0      		ldi r23,hi8(aes_sbox2)
+ 211 0098 CE01      		movw r24,r28
+ 212               	.LVL18:
+ 213 009a 0E94 0000 		call aes_indep_enc
+ 214               	.LVL19:
   73:simpleserial-aes.c **** 
- 211               		.loc 1 73 0
- 212 0094 E092 0606 		sts 1542,r14
+ 215               		.loc 1 73 0
+ 216 009e C092 0606 		sts 1542,r12
   75:simpleserial-aes.c ****     //START EDIT
- 213               		.loc 1 75 0
- 214 0098 CE01      		movw r24,r28
- 215 009a 0E94 0000 		call aes_indep_enc_posttrigger
- 216               	.LVL21:
- 217               	.L8:
+ 217               		.loc 1 75 0
+ 218 00a2 CE01      		movw r24,r28
+ 219 00a4 0E94 0000 		call aes_indep_enc_posttrigger
+ 220               	.LVL20:
+ 221               	.L8:
   79:simpleserial-aes.c **** 	}
- 218               		.loc 1 79 0 discriminator 3
- 219 009e F801      		movw r30,r16
- 220 00a0 8081      		ld r24,Z
- 221 00a2 8F25      		eor r24,r15
- 222 00a4 8193      		st Z+,r24
- 223 00a6 8F01      		movw r16,r30
- 224               	.LVL22:
+ 222               		.loc 1 79 0 discriminator 3
+ 223 00a8 F801      		movw r30,r16
+ 224 00aa 8081      		ld r24,Z
+ 225 00ac 8D25      		eor r24,r13
+ 226 00ae 8193      		st Z+,r24
+ 227 00b0 8F01      		movw r16,r30
+ 228               	.LVL21:
   78:simpleserial-aes.c ****         pt[j] ^= mask;
- 225               		.loc 1 78 0 discriminator 3
- 226 00a8 EC15      		cp r30,r12
- 227 00aa FD05      		cpc r31,r13
- 228 00ac 01F4      		brne .L8
+ 229               		.loc 1 78 0 discriminator 3
+ 230 00b2 EE15      		cp r30,r14
+ 231 00b4 FF05      		cpc r31,r15
+ 232 00b6 01F4      		brne .L8
   83:simpleserial-aes.c **** 	return 0x00;
- 229               		.loc 1 83 0
- 230 00ae AE01      		movw r20,r28
- 231 00b0 60E1      		ldi r22,lo8(16)
- 232 00b2 82E7      		ldi r24,lo8(114)
- 233 00b4 0E94 0000 		call simpleserial_put
- 234               	.LVL23:
+ 233               		.loc 1 83 0
+ 234 00b8 AE01      		movw r20,r28
+ 235 00ba 60E1      		ldi r22,lo8(16)
+ 236 00bc 82E7      		ldi r24,lo8(114)
+ 237 00be 0E94 0000 		call simpleserial_put
+ 238               	.LVL22:
   85:simpleserial-aes.c **** 
- 235               		.loc 1 85 0
- 236 00b8 80E0      		ldi r24,0
- 237               	/* epilogue start */
- 238 00ba DF91      		pop r29
- 239 00bc CF91      		pop r28
- 240               	.LVL24:
- 241 00be 1F91      		pop r17
- 242 00c0 0F91      		pop r16
- 243               	.LVL25:
- 244 00c2 FF90      		pop r15
- 245               	.LVL26:
- 246 00c4 EF90      		pop r14
- 247 00c6 DF90      		pop r13
- 248 00c8 CF90      		pop r12
- 249               	.LVL27:
- 250 00ca 0895      		ret
- 251               		.cfi_endproc
- 252               	.LFE13:
- 254               		.section	.rodata
- 255               	.LC0:
- 256 0000 2B        		.byte	43
- 257 0001 7E        		.byte	126
- 258 0002 15        		.byte	21
- 259 0003 16        		.byte	22
- 260 0004 28        		.byte	40
- 261 0005 AE        		.byte	-82
- 262 0006 D2        		.byte	-46
- 263 0007 A6        		.byte	-90
- 264 0008 AB        		.byte	-85
- 265 0009 F7        		.byte	-9
- 266 000a 15        		.byte	21
- 267 000b 88        		.byte	-120
- 268 000c 09        		.byte	9
- 269 000d CF        		.byte	-49
- 270 000e 4F        		.byte	79
- 271 000f 3C        		.byte	60
- 272               		.section	.text.startup,"ax",@progbits
- 273               	.global	main
- 275               	main:
- 276               	.LFB16:
+ 239               		.loc 1 85 0
+ 240 00c2 80E0      		ldi r24,0
+ 241               	/* epilogue start */
+ 242 00c4 DF91      		pop r29
+ 243 00c6 CF91      		pop r28
+ 244               	.LVL23:
+ 245 00c8 1F91      		pop r17
+ 246 00ca 0F91      		pop r16
+ 247               	.LVL24:
+ 248 00cc FF90      		pop r15
+ 249 00ce EF90      		pop r14
+ 250               	.LVL25:
+ 251 00d0 DF90      		pop r13
+ 252               	.LVL26:
+ 253 00d2 CF90      		pop r12
+ 254 00d4 0895      		ret
+ 255               		.cfi_endproc
+ 256               	.LFE13:
+ 258               		.section	.rodata
+ 259               	.LC0:
+ 260 0000 2B        		.byte	43
+ 261 0001 7E        		.byte	126
+ 262 0002 15        		.byte	21
+ 263 0003 16        		.byte	22
+ 264 0004 28        		.byte	40
+ 265 0005 AE        		.byte	-82
+ 266 0006 D2        		.byte	-46
+ 267 0007 A6        		.byte	-90
+ 268 0008 AB        		.byte	-85
+ 269 0009 F7        		.byte	-9
+ 270 000a 15        		.byte	21
+ 271 000b 88        		.byte	-120
+ 272 000c 09        		.byte	9
+ 273 000d CF        		.byte	-49
+ 274 000e 4F        		.byte	79
+ 275 000f 3C        		.byte	60
+ 276               		.section	.text.startup,"ax",@progbits
+ 277               	.global	main
+ 279               	main:
+ 280               	.LFB16:
  104:simpleserial-aes.c **** 
  105:simpleserial-aes.c **** #if SS_VER == SS_VER_2_0
  106:simpleserial-aes.c **** uint8_t aes(uint8_t cmd, uint8_t scmd, uint8_t len, uint8_t *buf)
@@ -439,65 +443,65 @@
  150:simpleserial-aes.c **** 
  151:simpleserial-aes.c **** int main(void)
  152:simpleserial-aes.c **** {
- 277               		.loc 1 152 0
- 278               		.cfi_startproc
- 279 0000 CF93      		push r28
- 280               	.LCFI8:
- 281               		.cfi_def_cfa_offset 4
- 282               		.cfi_offset 28, -3
- 283 0002 DF93      		push r29
- 284               	.LCFI9:
- 285               		.cfi_def_cfa_offset 5
- 286               		.cfi_offset 29, -4
- 287 0004 CDB7      		in r28,__SP_L__
- 288 0006 DEB7      		in r29,__SP_H__
- 289               	.LCFI10:
- 290               		.cfi_def_cfa_register 28
- 291 0008 6097      		sbiw r28,16
- 292               	.LCFI11:
- 293               		.cfi_def_cfa_offset 21
- 294 000a CDBF      		out __SP_L__,r28
- 295 000c DEBF      		out __SP_H__,r29
- 296               	/* prologue: function */
- 297               	/* frame size = 16 */
- 298               	/* stack size = 18 */
- 299               	.L__stack_usage = 18
+ 281               		.loc 1 152 0
+ 282               		.cfi_startproc
+ 283 0000 CF93      		push r28
+ 284               	.LCFI8:
+ 285               		.cfi_def_cfa_offset 4
+ 286               		.cfi_offset 28, -3
+ 287 0002 DF93      		push r29
+ 288               	.LCFI9:
+ 289               		.cfi_def_cfa_offset 5
+ 290               		.cfi_offset 29, -4
+ 291 0004 CDB7      		in r28,__SP_L__
+ 292 0006 DEB7      		in r29,__SP_H__
+ 293               	.LCFI10:
+ 294               		.cfi_def_cfa_register 28
+ 295 0008 6097      		sbiw r28,16
+ 296               	.LCFI11:
+ 297               		.cfi_def_cfa_offset 21
+ 298 000a CDBF      		out __SP_L__,r28
+ 299 000c DEBF      		out __SP_H__,r29
+ 300               	/* prologue: function */
+ 301               	/* frame size = 16 */
+ 302               	/* stack size = 18 */
+ 303               	.L__stack_usage = 18
  153:simpleserial-aes.c **** 	uint8_t tmp[KEY_LENGTH] = {DEFAULT_KEY};
- 300               		.loc 1 153 0
- 301 000e 80E1      		ldi r24,lo8(16)
- 302 0010 E0E0      		ldi r30,lo8(.LC0)
- 303 0012 F0E0      		ldi r31,hi8(.LC0)
- 304 0014 DE01      		movw r26,r28
- 305 0016 1196      		adiw r26,1
- 306               		0:
- 307 0018 0190      		ld r0,Z+
- 308 001a 0D92      		st X+,r0
- 309 001c 8A95      		dec r24
- 310 001e 01F4      		brne 0b
+ 304               		.loc 1 153 0
+ 305 000e 80E1      		ldi r24,lo8(16)
+ 306 0010 E0E0      		ldi r30,lo8(.LC0)
+ 307 0012 F0E0      		ldi r31,hi8(.LC0)
+ 308 0014 DE01      		movw r26,r28
+ 309 0016 1196      		adiw r26,1
+ 310               		0:
+ 311 0018 0190      		ld r0,Z+
+ 312 001a 0D92      		st X+,r0
+ 313 001c 8A95      		dec r24
+ 314 001e 01F4      		brne 0b
  154:simpleserial-aes.c **** 
  155:simpleserial-aes.c ****     platform_init();
- 311               		.loc 1 155 0
- 312 0020 0E94 0000 		call platform_init
- 313               	.LVL28:
+ 315               		.loc 1 155 0
+ 316 0020 0E94 0000 		call platform_init
+ 317               	.LVL27:
  156:simpleserial-aes.c ****     init_uart();
- 314               		.loc 1 156 0
- 315 0024 0E94 0000 		call init_uart0
- 316               	.LVL29:
+ 318               		.loc 1 156 0
+ 319 0024 0E94 0000 		call init_uart0
+ 320               	.LVL28:
  157:simpleserial-aes.c ****     trigger_setup();
- 317               		.loc 1 157 0
- 318 0028 81E0      		ldi r24,lo8(1)
- 319 002a 8093 0106 		sts 1537,r24
+ 321               		.loc 1 157 0
+ 322 0028 81E0      		ldi r24,lo8(1)
+ 323 002a 8093 0106 		sts 1537,r24
  158:simpleserial-aes.c **** 
  159:simpleserial-aes.c **** 	aes_indep_init();
- 320               		.loc 1 159 0
- 321 002e 0E94 0000 		call aes_indep_init
- 322               	.LVL30:
+ 324               		.loc 1 159 0
+ 325 002e 0E94 0000 		call aes_indep_init
+ 326               	.LVL29:
  160:simpleserial-aes.c **** 	aes_indep_key(tmp);
- 323               		.loc 1 160 0
- 324 0032 CE01      		movw r24,r28
- 325 0034 0196      		adiw r24,1
- 326 0036 0E94 0000 		call aes_indep_key
- 327               	.LVL31:
+ 327               		.loc 1 160 0
+ 328 0032 CE01      		movw r24,r28
+ 329 0034 0196      		adiw r24,1
+ 330 0036 0E94 0000 		call aes_indep_key
+ 331               	.LVL30:
  161:simpleserial-aes.c **** 
  162:simpleserial-aes.c ****     /* Uncomment this to get a HELLO message for debug */
  163:simpleserial-aes.c **** 
@@ -511,96 +515,96 @@
  171:simpleserial-aes.c ****     */
  172:simpleserial-aes.c **** 
  173:simpleserial-aes.c **** 	simpleserial_init();
- 328               		.loc 1 173 0
- 329 003a 0E94 0000 		call simpleserial_init
- 330               	.LVL32:
+ 332               		.loc 1 173 0
+ 333 003a 0E94 0000 		call simpleserial_init
+ 334               	.LVL31:
  174:simpleserial-aes.c ****     #if SS_VER == SS_VER_2_0
  175:simpleserial-aes.c ****     simpleserial_addcmd(0x01, 16, aes);
  176:simpleserial-aes.c ****     #else
  177:simpleserial-aes.c ****     simpleserial_addcmd('k', 16, get_key);
- 331               		.loc 1 177 0
- 332 003e 40E0      		ldi r20,lo8(gs(get_key))
- 333 0040 50E0      		ldi r21,hi8(gs(get_key))
- 334 0042 60E1      		ldi r22,lo8(16)
- 335 0044 70E0      		ldi r23,0
- 336 0046 8BE6      		ldi r24,lo8(107)
- 337 0048 0E94 0000 		call simpleserial_addcmd
- 338               	.LVL33:
+ 335               		.loc 1 177 0
+ 336 003e 40E0      		ldi r20,lo8(gs(get_key))
+ 337 0040 50E0      		ldi r21,hi8(gs(get_key))
+ 338 0042 60E1      		ldi r22,lo8(16)
+ 339 0044 70E0      		ldi r23,0
+ 340 0046 8BE6      		ldi r24,lo8(107)
+ 341 0048 0E94 0000 		call simpleserial_addcmd
+ 342               	.LVL32:
  178:simpleserial-aes.c ****     simpleserial_addcmd('p', 16,  get_pt);
- 339               		.loc 1 178 0
- 340 004c 40E0      		ldi r20,lo8(gs(get_pt))
- 341 004e 50E0      		ldi r21,hi8(gs(get_pt))
- 342 0050 60E1      		ldi r22,lo8(16)
- 343 0052 70E0      		ldi r23,0
- 344 0054 80E7      		ldi r24,lo8(112)
- 345 0056 0E94 0000 		call simpleserial_addcmd
- 346               	.LVL34:
+ 343               		.loc 1 178 0
+ 344 004c 40E0      		ldi r20,lo8(gs(get_pt))
+ 345 004e 50E0      		ldi r21,hi8(gs(get_pt))
+ 346 0050 60E1      		ldi r22,lo8(16)
+ 347 0052 70E0      		ldi r23,0
+ 348 0054 80E7      		ldi r24,lo8(112)
+ 349 0056 0E94 0000 		call simpleserial_addcmd
+ 350               	.LVL33:
  179:simpleserial-aes.c ****     simpleserial_addcmd('x',  0,   reset);
- 347               		.loc 1 179 0
- 348 005a 40E0      		ldi r20,lo8(gs(reset))
- 349 005c 50E0      		ldi r21,hi8(gs(reset))
- 350 005e 60E0      		ldi r22,0
- 351 0060 70E0      		ldi r23,0
- 352 0062 88E7      		ldi r24,lo8(120)
- 353 0064 0E94 0000 		call simpleserial_addcmd
- 354               	.LVL35:
+ 351               		.loc 1 179 0
+ 352 005a 40E0      		ldi r20,lo8(gs(reset))
+ 353 005c 50E0      		ldi r21,hi8(gs(reset))
+ 354 005e 60E0      		ldi r22,0
+ 355 0060 70E0      		ldi r23,0
+ 356 0062 88E7      		ldi r24,lo8(120)
+ 357 0064 0E94 0000 		call simpleserial_addcmd
+ 358               	.LVL34:
  180:simpleserial-aes.c ****     simpleserial_addcmd_flags('m', 18, get_mask, CMD_FLAG_LEN);
- 355               		.loc 1 180 0
- 356 0068 21E0      		ldi r18,lo8(1)
- 357 006a 40E0      		ldi r20,lo8(gs(get_mask))
- 358 006c 50E0      		ldi r21,hi8(gs(get_mask))
- 359 006e 62E1      		ldi r22,lo8(18)
- 360 0070 70E0      		ldi r23,0
- 361 0072 8DE6      		ldi r24,lo8(109)
- 362 0074 0E94 0000 		call simpleserial_addcmd_flags
- 363               	.LVL36:
+ 359               		.loc 1 180 0
+ 360 0068 21E0      		ldi r18,lo8(1)
+ 361 006a 40E0      		ldi r20,lo8(gs(get_mask))
+ 362 006c 50E0      		ldi r21,hi8(gs(get_mask))
+ 363 006e 62E1      		ldi r22,lo8(18)
+ 364 0070 70E0      		ldi r23,0
+ 365 0072 8DE6      		ldi r24,lo8(109)
+ 366 0074 0E94 0000 		call simpleserial_addcmd_flags
+ 367               	.LVL35:
  181:simpleserial-aes.c ****     simpleserial_addcmd('s', 2, enc_multi_setnum);
- 364               		.loc 1 181 0
- 365 0078 40E0      		ldi r20,lo8(gs(enc_multi_setnum))
- 366 007a 50E0      		ldi r21,hi8(gs(enc_multi_setnum))
- 367 007c 62E0      		ldi r22,lo8(2)
- 368 007e 70E0      		ldi r23,0
- 369 0080 83E7      		ldi r24,lo8(115)
- 370 0082 0E94 0000 		call simpleserial_addcmd
- 371               	.LVL37:
- 372               	.L14:
+ 368               		.loc 1 181 0
+ 369 0078 40E0      		ldi r20,lo8(gs(enc_multi_setnum))
+ 370 007a 50E0      		ldi r21,hi8(gs(enc_multi_setnum))
+ 371 007c 62E0      		ldi r22,lo8(2)
+ 372 007e 70E0      		ldi r23,0
+ 373 0080 83E7      		ldi r24,lo8(115)
+ 374 0082 0E94 0000 		call simpleserial_addcmd
+ 375               	.LVL36:
+ 376               	.L14:
  182:simpleserial-aes.c ****     #endif
  183:simpleserial-aes.c ****     while(1)
  184:simpleserial-aes.c ****         simpleserial_get();
- 373               		.loc 1 184 0 discriminator 1
- 374 0086 0E94 0000 		call simpleserial_get
- 375               	.LVL38:
- 376 008a 00C0      		rjmp .L14
- 377               		.cfi_endproc
- 378               	.LFE16:
- 380               		.comm	rmask,2,1
- 381               		.comm	aes_sbox2,256,1
- 382               		.text
- 383               	.Letext0:
- 384               		.file 2 "/usr/lib/avr/include/stdint.h"
- 385               		.file 3 "/usr/lib/avr/include/avr/iox128d3.h"
- 386               		.file 4 "./../crypto/avrcryptolib/aes/aes_sbox.h"
- 387               		.file 5 ".././crypto/aes-independant.h"
- 388               		.file 6 ".././simpleserial/simpleserial.h"
- 389               		.file 7 ".././hal/hal.h"
- 390               		.file 8 ".././hal/xmega/uart.h"
+ 377               		.loc 1 184 0 discriminator 1
+ 378 0086 0E94 0000 		call simpleserial_get
+ 379               	.LVL37:
+ 380 008a 00C0      		rjmp .L14
+ 381               		.cfi_endproc
+ 382               	.LFE16:
+ 384               		.comm	rmask,2,1
+ 385               		.comm	aes_sbox2,256,1
+ 386               		.text
+ 387               	.Letext0:
+ 388               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 389               		.file 3 "/usr/lib/avr/include/avr/iox128d3.h"
+ 390               		.file 4 "./../crypto/avrcryptolib/aes/aes_sbox.h"
+ 391               		.file 5 ".././crypto/aes-independant.h"
+ 392               		.file 6 ".././simpleserial/simpleserial.h"
+ 393               		.file 7 ".././hal/hal.h"
+ 394               		.file 8 ".././hal/xmega/uart.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 simpleserial-aes.c
-     /tmp/ccoCC9Te.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccoCC9Te.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccoCC9Te.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccoCC9Te.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccoCC9Te.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccoCC9Te.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccoCC9Te.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccoCC9Te.s:14     .text:0000000000000000 reset
-     /tmp/ccoCC9Te.s:33     .text:0000000000000004 enc_multi_setnum
-     /tmp/ccoCC9Te.s:51     .text:0000000000000008 get_mask
-     /tmp/ccoCC9Te.s:71     .text:0000000000000010 get_key
-     /tmp/ccoCC9Te.s:91     .text:0000000000000018 get_pt
+     /tmp/cc8x1UZy.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/cc8x1UZy.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/cc8x1UZy.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/cc8x1UZy.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/cc8x1UZy.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/cc8x1UZy.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/cc8x1UZy.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/cc8x1UZy.s:14     .text:0000000000000000 reset
+     /tmp/cc8x1UZy.s:33     .text:0000000000000004 enc_multi_setnum
+     /tmp/cc8x1UZy.s:51     .text:0000000000000008 get_mask
+     /tmp/cc8x1UZy.s:71     .text:0000000000000010 get_key
+     /tmp/cc8x1UZy.s:91     .text:0000000000000018 get_pt
                             *COM*:0000000000000002 rmask
                             *COM*:0000000000000100 aes_sbox2
-     /tmp/ccoCC9Te.s:275    .text.startup:0000000000000000 main
+     /tmp/cc8x1UZy.s:279    .text.startup:0000000000000000 main
 
 UNDEFINED SYMBOLS
 aes_indep_mask

@@ -3,35 +3,35 @@ simpleserial-aes-CWLITEXMEGA.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000eaa  00000000  00000000  00000094  2**1
+  0 .text         00000eb4  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000020  00802000  00000eaa  00000f3e  2**0
+  1 .data         00000020  00802000  00000eb4  00000f48  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000214  00802020  00802020  00000f5e  2**0
+  2 .bss          00000214  00802020  00802020  00000f68  2**0
                   ALLOC
-  3 .stab         000000c0  00000000  00000000  00000f60  2**2
+  3 .stab         000000c0  00000000  00000000  00000f68  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      0000003f  00000000  00000000  00001020  2**0
+  4 .stabstr      0000003f  00000000  00000000  00001028  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .comment      00000011  00000000  00000000  0000105f  2**0
+  5 .comment      00000011  00000000  00000000  00001067  2**0
                   CONTENTS, READONLY
-  6 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001070  2**2
+  6 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001078  2**2
                   CONTENTS, READONLY
-  7 .debug_aranges 00000140  00000000  00000000  000010b0  2**0
+  7 .debug_aranges 00000140  00000000  00000000  000010b8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_info   0000497f  00000000  00000000  000011f0  2**0
+  8 .debug_info   00004991  00000000  00000000  000011f8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_abbrev 00002dd0  00000000  00000000  00005b6f  2**0
+  9 .debug_abbrev 00002dd0  00000000  00000000  00005b89  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_line   00000eb6  00000000  00000000  0000893f  2**0
+ 10 .debug_line   00000eb8  00000000  00000000  00008959  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_frame  00000564  00000000  00000000  000097f8  2**2
+ 11 .debug_frame  00000564  00000000  00000000  00009814  2**2
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_str    00002165  00000000  00000000  00009d5c  2**0
+ 12 .debug_str    00002165  00000000  00000000  00009d78  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_loc    00001830  00000000  00000000  0000bec1  2**0
+ 13 .debug_loc    0000183c  00000000  00000000  0000bedd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_ranges 00000018  00000000  00000000  0000d6f1  2**0
+ 14 .debug_ranges 00000018  00000000  00000000  0000d719  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -155,12 +155,12 @@ Disassembly of section .text:
 000001c8 <__trampolines_start>:
  1c8:	0c 94 a4 01 	jmp	0x348	; 0x348 <get_key>
  1cc:	0c 94 9c 01 	jmp	0x338	; 0x338 <reset>
- 1d0:	0c 94 cd 02 	jmp	0x59a	; 0x59a <ss_num_commands>
+ 1d0:	0c 94 d2 02 	jmp	0x5a4	; 0x5a4 <ss_num_commands>
  1d4:	0c 94 a0 01 	jmp	0x340	; 0x340 <get_mask>
  1d8:	0c 94 a8 01 	jmp	0x350	; 0x350 <get_pt>
  1dc:	0c 94 9e 01 	jmp	0x33c	; 0x33c <enc_multi_setnum>
- 1e0:	0c 94 e1 02 	jmp	0x5c2	; 0x5c2 <ss_get_commands>
- 1e4:	0c 94 02 02 	jmp	0x404	; 0x404 <check_version>
+ 1e0:	0c 94 e6 02 	jmp	0x5cc	; 0x5cc <ss_get_commands>
+ 1e4:	0c 94 07 02 	jmp	0x40e	; 0x40e <check_version>
 
 000001e8 <__trampolines_end>:
  1e8:	01 02       	muls	r16, r17
@@ -201,7 +201,7 @@ Disassembly of section .text:
  302:	10 e2       	ldi	r17, 0x20	; 32
  304:	a0 e0       	ldi	r26, 0x00	; 0
  306:	b0 e2       	ldi	r27, 0x20	; 32
- 308:	ea ea       	ldi	r30, 0xAA	; 170
+ 308:	e4 eb       	ldi	r30, 0xB4	; 180
  30a:	fe e0       	ldi	r31, 0x0E	; 14
  30c:	00 e0       	ldi	r16, 0x00	; 0
  30e:	0b bf       	out	0x3b, r16	; 59
@@ -225,8 +225,8 @@ Disassembly of section .text:
  326:	a4 33       	cpi	r26, 0x34	; 52
  328:	b2 07       	cpc	r27, r18
  32a:	e1 f7       	brne	.-8      	; 0x324 <.do_clear_bss_loop>
- 32c:	0e 94 04 07 	call	0xe08	; 0xe08 <main>
- 330:	0c 94 53 07 	jmp	0xea6	; 0xea6 <_exit>
+ 32c:	0e 94 09 07 	call	0xe12	; 0xe12 <main>
+ 330:	0c 94 58 07 	jmp	0xeb0	; 0xeb0 <_exit>
 
 00000334 <__bad_interrupt>:
  334:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -258,7 +258,7 @@ uint8_t reset(uint8_t* x, uint8_t len)
 uint8_t get_mask(uint8_t* m, uint8_t len)
 {
   aes_indep_mask(m, len);
- 340:	0e 94 d9 04 	call	0x9b2	; 0x9b2 <aes_indep_mask>
+ 340:	0e 94 de 04 	call	0x9bc	; 0x9bc <aes_indep_mask>
   return 0x00;
 }
  344:	80 e0       	ldi	r24, 0x00	; 0
@@ -269,7 +269,7 @@ uint8_t get_mask(uint8_t* m, uint8_t len)
 uint8_t get_key(uint8_t* k, uint8_t len)
 {
 	aes_indep_key(k);
- 348:	0e 94 cd 04 	call	0x99a	; 0x99a <aes_indep_key>
+ 348:	0e 94 d2 04 	call	0x9a4	; 0x9a4 <aes_indep_key>
 	return 0x00;
 }
  34c:	80 e0       	ldi	r24, 0x00	; 0
@@ -289,7 +289,7 @@ uint8_t get_pt(uint8_t* pt, uint8_t len)
  35e:	df 93       	push	r29
  360:	ec 01       	movw	r28, r24
     aes_indep_enc_pretrigger(pt);
- 362:	0e 94 d7 04 	call	0x9ae	; 0x9ae <aes_indep_enc_pretrigger>
+ 362:	0e 94 dc 04 	call	0x9b8	; 0x9b8 <aes_indep_enc_pretrigger>
     //START EDIT
     // generate random mask uint8_t
     *rmask = 0x55;//rand();
@@ -300,19 +300,19 @@ uint8_t get_pt(uint8_t* pt, uint8_t len)
     uint8_t mask = *rmask;
  372:	e0 91 82 21 	lds	r30, 0x2182	; 0x802182 <rmask>
  376:	f0 91 83 21 	lds	r31, 0x2183	; 0x802183 <rmask+0x1>
- 37a:	f0 80       	ld	r15, Z
+ 37a:	d0 80       	ld	r13, Z
  37c:	8e 01       	movw	r16, r28
- 37e:	6e 01       	movw	r12, r28
- 380:	80 e1       	ldi	r24, 0x10	; 16
- 382:	c8 0e       	add	r12, r24
- 384:	d1 1c       	adc	r13, r1
+ 37e:	7e 01       	movw	r14, r28
+ 380:	40 e1       	ldi	r20, 0x10	; 16
+ 382:	e4 0e       	add	r14, r20
+ 384:	f1 1c       	adc	r15, r1
  386:	fe 01       	movw	r30, r28
     // xor every byte from *pt with random
     uint8_t i;
     for(i=0; i<16; ++i){
         pt[i] ^= mask;
  388:	80 81       	ld	r24, Z
- 38a:	8f 25       	eor	r24, r15
+ 38a:	8d 25       	eor	r24, r13
  38c:	81 93       	st	Z+, r24
     // generate random mask uint8_t
     *rmask = 0x55;//rand();
@@ -320,2377 +320,2385 @@ uint8_t get_pt(uint8_t* pt, uint8_t len)
     // xor every byte from *pt with random
     uint8_t i;
     for(i=0; i<16; ++i){
- 38e:	ce 16       	cp	r12, r30
- 390:	df 06       	cpc	r13, r31
+ 38e:	ee 16       	cp	r14, r30
+ 390:	ff 06       	cpc	r15, r31
  392:	d1 f7       	brne	.-12     	; 0x388 <get_pt+0x38>
- 394:	e2 ef       	ldi	r30, 0xF2	; 242
- 396:	f1 e0       	ldi	r31, 0x01	; 1
- 398:	80 e0       	ldi	r24, 0x00	; 0
+ 394:	80 e0       	ldi	r24, 0x00	; 0
+ 396:	90 e0       	ldi	r25, 0x00	; 0
+	}
+    // generate new SBOX using random
+    int l;
+    for(l=0x00; l<=0xFF; l++){
+        uint8_t temporary = pgm_read_byte(aes_sbox+l);
+        aes_sbox2[l^mask] = temporary^mask;
+ 398:	2d 2d       	mov	r18, r13
+ 39a:	30 e0       	ldi	r19, 0x00	; 0
         pt[i] ^= mask;
 	}
     // generate new SBOX using random
-    uint8_t l;
-    for(l=0; l<255; ++l){
+    int l;
+    for(l=0x00; l<=0xFF; l++){
         uint8_t temporary = pgm_read_byte(aes_sbox+l);
- 39a:	94 91       	lpm	r25, Z
+ 39c:	fc 01       	movw	r30, r24
+ 39e:	ee 50       	subi	r30, 0x0E	; 14
+ 3a0:	fe 4f       	sbci	r31, 0xFE	; 254
+ 3a2:	e4 91       	lpm	r30, Z
         aes_sbox2[l^mask] = temporary^mask;
- 39c:	af 2d       	mov	r26, r15
- 39e:	a8 27       	eor	r26, r24
- 3a0:	b0 e0       	ldi	r27, 0x00	; 0
- 3a2:	ae 57       	subi	r26, 0x7E	; 126
- 3a4:	bf 4d       	sbci	r27, 0xDF	; 223
- 3a6:	9f 25       	eor	r25, r15
- 3a8:	9c 93       	st	X, r25
+ 3a4:	d9 01       	movw	r26, r18
+ 3a6:	a8 27       	eor	r26, r24
+ 3a8:	b9 27       	eor	r27, r25
+ 3aa:	ae 57       	subi	r26, 0x7E	; 126
+ 3ac:	bf 4d       	sbci	r27, 0xDF	; 223
+ 3ae:	ed 25       	eor	r30, r13
+ 3b0:	ec 93       	st	X, r30
     for(i=0; i<16; ++i){
         pt[i] ^= mask;
 	}
     // generate new SBOX using random
-    uint8_t l;
-    for(l=0; l<255; ++l){
- 3aa:	8f 5f       	subi	r24, 0xFF	; 255
- 3ac:	31 96       	adiw	r30, 0x01	; 1
- 3ae:	8f 3f       	cpi	r24, 0xFF	; 255
- 3b0:	a1 f7       	brne	.-24     	; 0x39a <get_pt+0x4a>
+    int l;
+    for(l=0x00; l<=0xFF; l++){
+ 3b2:	01 96       	adiw	r24, 0x01	; 1
+ 3b4:	81 15       	cp	r24, r1
+ 3b6:	e1 e0       	ldi	r30, 0x01	; 1
+ 3b8:	9e 07       	cpc	r25, r30
+ 3ba:	81 f7       	brne	.-32     	; 0x39c <get_pt+0x4c>
         uint8_t temporary = pgm_read_byte(aes_sbox+l);
         aes_sbox2[l^mask] = temporary^mask;
 	}   
     //END EDIT
 
 	trigger_high();
- 3b2:	ee 24       	eor	r14, r14
- 3b4:	e3 94       	inc	r14
- 3b6:	e0 92 05 06 	sts	0x0605, r14	; 0x800605 <__TEXT_REGION_LENGTH__+0x700605>
+ 3bc:	cc 24       	eor	r12, r12
+ 3be:	c3 94       	inc	r12
+ 3c0:	c0 92 05 06 	sts	0x0605, r12	; 0x800605 <__TEXT_REGION_LENGTH__+0x700605>
 
   #ifdef ADD_JITTER
   for (volatile uint8_t k = 0; k < (*pt & 0x0F); k++);
   #endif
 
 	aes_indep_enc(pt,aes_sbox2,rmask); /* encrypting the data block */ //ADDED SBOX AND RMASK
- 3ba:	40 91 82 21 	lds	r20, 0x2182	; 0x802182 <rmask>
- 3be:	50 91 83 21 	lds	r21, 0x2183	; 0x802183 <rmask+0x1>
- 3c2:	62 e8       	ldi	r22, 0x82	; 130
- 3c4:	70 e2       	ldi	r23, 0x20	; 32
- 3c6:	ce 01       	movw	r24, r28
- 3c8:	0e 94 d1 04 	call	0x9a2	; 0x9a2 <aes_indep_enc>
+ 3c4:	40 91 82 21 	lds	r20, 0x2182	; 0x802182 <rmask>
+ 3c8:	50 91 83 21 	lds	r21, 0x2183	; 0x802183 <rmask+0x1>
+ 3cc:	62 e8       	ldi	r22, 0x82	; 130
+ 3ce:	70 e2       	ldi	r23, 0x20	; 32
+ 3d0:	ce 01       	movw	r24, r28
+ 3d2:	0e 94 d6 04 	call	0x9ac	; 0x9ac <aes_indep_enc>
 	trigger_low();
- 3cc:	e0 92 06 06 	sts	0x0606, r14	; 0x800606 <__TEXT_REGION_LENGTH__+0x700606>
+ 3d6:	c0 92 06 06 	sts	0x0606, r12	; 0x800606 <__TEXT_REGION_LENGTH__+0x700606>
 
     aes_indep_enc_posttrigger(pt);
- 3d0:	ce 01       	movw	r24, r28
- 3d2:	0e 94 d8 04 	call	0x9b0	; 0x9b0 <aes_indep_enc_posttrigger>
+ 3da:	ce 01       	movw	r24, r28
+ 3dc:	0e 94 dd 04 	call	0x9ba	; 0x9ba <aes_indep_enc_posttrigger>
     //START EDIT
     uint8_t j;
     for(j=0; j<16; ++j){
         pt[j] ^= mask;
- 3d6:	f8 01       	movw	r30, r16
- 3d8:	80 81       	ld	r24, Z
- 3da:	8f 25       	eor	r24, r15
- 3dc:	81 93       	st	Z+, r24
- 3de:	8f 01       	movw	r16, r30
+ 3e0:	f8 01       	movw	r30, r16
+ 3e2:	80 81       	ld	r24, Z
+ 3e4:	8d 25       	eor	r24, r13
+ 3e6:	81 93       	st	Z+, r24
+ 3e8:	8f 01       	movw	r16, r30
 	trigger_low();
 
     aes_indep_enc_posttrigger(pt);
     //START EDIT
     uint8_t j;
     for(j=0; j<16; ++j){
- 3e0:	ec 15       	cp	r30, r12
- 3e2:	fd 05       	cpc	r31, r13
- 3e4:	c1 f7       	brne	.-16     	; 0x3d6 <get_pt+0x86>
+ 3ea:	ee 15       	cp	r30, r14
+ 3ec:	ff 05       	cpc	r31, r15
+ 3ee:	c1 f7       	brne	.-16     	; 0x3e0 <get_pt+0x90>
         pt[j] ^= mask;
 	}
     //END EDIT
 
 	simpleserial_put('r', 16, pt);
- 3e6:	ae 01       	movw	r20, r28
- 3e8:	60 e1       	ldi	r22, 0x10	; 16
- 3ea:	82 e7       	ldi	r24, 0x72	; 114
- 3ec:	0e 94 98 02 	call	0x530	; 0x530 <simpleserial_put>
+ 3f0:	ae 01       	movw	r20, r28
+ 3f2:	60 e1       	ldi	r22, 0x10	; 16
+ 3f4:	82 e7       	ldi	r24, 0x72	; 114
+ 3f6:	0e 94 9d 02 	call	0x53a	; 0x53a <simpleserial_put>
 	return 0x00;
 }
- 3f0:	80 e0       	ldi	r24, 0x00	; 0
- 3f2:	df 91       	pop	r29
- 3f4:	cf 91       	pop	r28
- 3f6:	1f 91       	pop	r17
- 3f8:	0f 91       	pop	r16
- 3fa:	ff 90       	pop	r15
- 3fc:	ef 90       	pop	r14
- 3fe:	df 90       	pop	r13
- 400:	cf 90       	pop	r12
- 402:	08 95       	ret
+ 3fa:	80 e0       	ldi	r24, 0x00	; 0
+ 3fc:	df 91       	pop	r29
+ 3fe:	cf 91       	pop	r28
+ 400:	1f 91       	pop	r17
+ 402:	0f 91       	pop	r16
+ 404:	ff 90       	pop	r15
+ 406:	ef 90       	pop	r14
+ 408:	df 90       	pop	r13
+ 40a:	cf 90       	pop	r12
+ 40c:	08 95       	ret
 
-00000404 <check_version>:
+0000040e <check_version>:
 // Callback function for "v" command.
 // This can exist in v1.0 as long as we don't actually send back an ack ("z")
 uint8_t check_version(uint8_t *v, uint8_t len)
 {
 	return SS_VER;
 }
- 404:	81 e0       	ldi	r24, 0x01	; 1
- 406:	08 95       	ret
+ 40e:	81 e0       	ldi	r24, 0x01	; 1
+ 410:	08 95       	ret
 
-00000408 <ss_crc>:
+00000412 <ss_crc>:
 //#define SS_VER_2_0 2
 
 
 #define CRC 0xA6
 uint8_t ss_crc(uint8_t *buf, uint8_t len)
 {
- 408:	fc 01       	movw	r30, r24
+ 412:	fc 01       	movw	r30, r24
 	unsigned int k = 0;
 	uint8_t crc = 0x00;
- 40a:	80 e0       	ldi	r24, 0x00	; 0
+ 414:	80 e0       	ldi	r24, 0x00	; 0
 	while (len--) {
 		crc ^= *buf++;
 		for (k = 0; k < 8; k++) {
 			crc = crc & 0x80 ? (crc << 1) ^ 0xA6: crc << 1;
- 40c:	96 ea       	ldi	r25, 0xA6	; 166
+ 416:	96 ea       	ldi	r25, 0xA6	; 166
 #define CRC 0xA6
 uint8_t ss_crc(uint8_t *buf, uint8_t len)
 {
 	unsigned int k = 0;
 	uint8_t crc = 0x00;
 	while (len--) {
- 40e:	61 50       	subi	r22, 0x01	; 1
- 410:	70 f0       	brcs	.+28     	; 0x42e <ss_crc+0x26>
+ 418:	61 50       	subi	r22, 0x01	; 1
+ 41a:	70 f0       	brcs	.+28     	; 0x438 <ss_crc+0x26>
 		crc ^= *buf++;
- 412:	21 91       	ld	r18, Z+
- 414:	82 27       	eor	r24, r18
- 416:	28 e0       	ldi	r18, 0x08	; 8
- 418:	30 e0       	ldi	r19, 0x00	; 0
+ 41c:	21 91       	ld	r18, Z+
+ 41e:	82 27       	eor	r24, r18
+ 420:	28 e0       	ldi	r18, 0x08	; 8
+ 422:	30 e0       	ldi	r19, 0x00	; 0
 		for (k = 0; k < 8; k++) {
 			crc = crc & 0x80 ? (crc << 1) ^ 0xA6: crc << 1;
- 41a:	87 ff       	sbrs	r24, 7
- 41c:	03 c0       	rjmp	.+6      	; 0x424 <ss_crc+0x1c>
- 41e:	88 0f       	add	r24, r24
- 420:	89 27       	eor	r24, r25
- 422:	01 c0       	rjmp	.+2      	; 0x426 <ss_crc+0x1e>
- 424:	88 0f       	add	r24, r24
- 426:	21 50       	subi	r18, 0x01	; 1
- 428:	31 09       	sbc	r19, r1
+ 424:	87 ff       	sbrs	r24, 7
+ 426:	03 c0       	rjmp	.+6      	; 0x42e <ss_crc+0x1c>
+ 428:	88 0f       	add	r24, r24
+ 42a:	89 27       	eor	r24, r25
+ 42c:	01 c0       	rjmp	.+2      	; 0x430 <ss_crc+0x1e>
+ 42e:	88 0f       	add	r24, r24
+ 430:	21 50       	subi	r18, 0x01	; 1
+ 432:	31 09       	sbc	r19, r1
 {
 	unsigned int k = 0;
 	uint8_t crc = 0x00;
 	while (len--) {
 		crc ^= *buf++;
 		for (k = 0; k < 8; k++) {
- 42a:	b9 f7       	brne	.-18     	; 0x41a <ss_crc+0x12>
- 42c:	f0 cf       	rjmp	.-32     	; 0x40e <ss_crc+0x6>
+ 434:	b9 f7       	brne	.-18     	; 0x424 <ss_crc+0x12>
+ 436:	f0 cf       	rjmp	.-32     	; 0x418 <ss_crc+0x6>
 			crc = crc & 0x80 ? (crc << 1) ^ 0xA6: crc << 1;
 		}
 	}
 	return crc;
 
 }
- 42e:	08 95       	ret
+ 438:	08 95       	ret
 
-00000430 <hex_decode>:
+0000043a <hex_decode>:
 	'0', '1', '2', '3', '4', '5', '6', '7',
 	'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
 };
 
 int hex_decode(int len, char* ascii_buf, uint8_t* data_buf)
 {
- 430:	db 01       	movw	r26, r22
+ 43a:	db 01       	movw	r26, r22
 	for(int i = 0; i < len; i++)
- 432:	fa 01       	movw	r30, r20
- 434:	9f 01       	movw	r18, r30
- 436:	24 1b       	sub	r18, r20
- 438:	35 0b       	sbc	r19, r21
- 43a:	28 17       	cp	r18, r24
- 43c:	39 07       	cpc	r19, r25
- 43e:	d4 f5       	brge	.+116    	; 0x4b4 <hex_decode+0x84>
+ 43c:	fa 01       	movw	r30, r20
+ 43e:	9f 01       	movw	r18, r30
+ 440:	24 1b       	sub	r18, r20
+ 442:	35 0b       	sbc	r19, r21
+ 444:	28 17       	cp	r18, r24
+ 446:	39 07       	cpc	r19, r25
+ 448:	d4 f5       	brge	.+116    	; 0x4be <hex_decode+0x84>
 	{
 		char n_hi = ascii_buf[2*i];
- 440:	2c 91       	ld	r18, X
+ 44a:	2c 91       	ld	r18, X
 		char n_lo = ascii_buf[2*i+1];
- 442:	11 96       	adiw	r26, 0x01	; 1
- 444:	3c 91       	ld	r19, X
- 446:	11 97       	sbiw	r26, 0x01	; 1
+ 44c:	11 96       	adiw	r26, 0x01	; 1
+ 44e:	3c 91       	ld	r19, X
+ 450:	11 97       	sbiw	r26, 0x01	; 1
 
 		if(n_lo >= '0' && n_lo <= '9')
- 448:	60 ed       	ldi	r22, 0xD0	; 208
- 44a:	63 0f       	add	r22, r19
- 44c:	6a 30       	cpi	r22, 0x0A	; 10
- 44e:	10 f4       	brcc	.+4      	; 0x454 <hex_decode+0x24>
+ 452:	60 ed       	ldi	r22, 0xD0	; 208
+ 454:	63 0f       	add	r22, r19
+ 456:	6a 30       	cpi	r22, 0x0A	; 10
+ 458:	10 f4       	brcc	.+4      	; 0x45e <hex_decode+0x24>
 			data_buf[i] = n_lo - '0';
- 450:	60 83       	st	Z, r22
- 452:	0f c0       	rjmp	.+30     	; 0x472 <hex_decode+0x42>
+ 45a:	60 83       	st	Z, r22
+ 45c:	0f c0       	rjmp	.+30     	; 0x47c <hex_decode+0x42>
 		else if(n_lo >= 'A' && n_lo <= 'F')
- 454:	6f eb       	ldi	r22, 0xBF	; 191
- 456:	63 0f       	add	r22, r19
- 458:	66 30       	cpi	r22, 0x06	; 6
- 45a:	10 f4       	brcc	.+4      	; 0x460 <hex_decode+0x30>
+ 45e:	6f eb       	ldi	r22, 0xBF	; 191
+ 460:	63 0f       	add	r22, r19
+ 462:	66 30       	cpi	r22, 0x06	; 6
+ 464:	10 f4       	brcc	.+4      	; 0x46a <hex_decode+0x30>
 			data_buf[i] = n_lo - 'A' + 10;
- 45c:	37 53       	subi	r19, 0x37	; 55
- 45e:	08 c0       	rjmp	.+16     	; 0x470 <hex_decode+0x40>
+ 466:	37 53       	subi	r19, 0x37	; 55
+ 468:	08 c0       	rjmp	.+16     	; 0x47a <hex_decode+0x40>
 		else if(n_lo >= 'a' && n_lo <= 'f')
- 460:	6f e9       	ldi	r22, 0x9F	; 159
- 462:	63 0f       	add	r22, r19
- 464:	66 30       	cpi	r22, 0x06	; 6
- 466:	18 f0       	brcs	.+6      	; 0x46e <hex_decode+0x3e>
+ 46a:	6f e9       	ldi	r22, 0x9F	; 159
+ 46c:	63 0f       	add	r22, r19
+ 46e:	66 30       	cpi	r22, 0x06	; 6
+ 470:	18 f0       	brcs	.+6      	; 0x478 <hex_decode+0x3e>
 			data_buf[i] = n_lo - 'a' + 10;
 		else
 			return 1;
- 468:	81 e0       	ldi	r24, 0x01	; 1
- 46a:	90 e0       	ldi	r25, 0x00	; 0
- 46c:	08 95       	ret
+ 472:	81 e0       	ldi	r24, 0x01	; 1
+ 474:	90 e0       	ldi	r25, 0x00	; 0
+ 476:	08 95       	ret
 		if(n_lo >= '0' && n_lo <= '9')
 			data_buf[i] = n_lo - '0';
 		else if(n_lo >= 'A' && n_lo <= 'F')
 			data_buf[i] = n_lo - 'A' + 10;
 		else if(n_lo >= 'a' && n_lo <= 'f')
 			data_buf[i] = n_lo - 'a' + 10;
- 46e:	37 55       	subi	r19, 0x57	; 87
- 470:	30 83       	st	Z, r19
+ 478:	37 55       	subi	r19, 0x57	; 87
+ 47a:	30 83       	st	Z, r19
 		else
 			return 1;
 
 		if(n_hi >= '0' && n_hi <= '9')
- 472:	30 ed       	ldi	r19, 0xD0	; 208
- 474:	32 0f       	add	r19, r18
- 476:	3a 30       	cpi	r19, 0x0A	; 10
- 478:	18 f4       	brcc	.+6      	; 0x480 <hex_decode+0x50>
+ 47c:	30 ed       	ldi	r19, 0xD0	; 208
+ 47e:	32 0f       	add	r19, r18
+ 480:	3a 30       	cpi	r19, 0x0A	; 10
+ 482:	18 f4       	brcc	.+6      	; 0x48a <hex_decode+0x50>
 			data_buf[i] |= (n_hi - '0') << 4;
- 47a:	22 95       	swap	r18
- 47c:	20 7f       	andi	r18, 0xF0	; 240
- 47e:	14 c0       	rjmp	.+40     	; 0x4a8 <hex_decode+0x78>
+ 484:	22 95       	swap	r18
+ 486:	20 7f       	andi	r18, 0xF0	; 240
+ 488:	14 c0       	rjmp	.+40     	; 0x4b2 <hex_decode+0x78>
 		else if(n_hi >= 'A' && n_hi <= 'F')
- 480:	3f eb       	ldi	r19, 0xBF	; 191
- 482:	32 0f       	add	r19, r18
- 484:	36 30       	cpi	r19, 0x06	; 6
- 486:	20 f4       	brcc	.+8      	; 0x490 <hex_decode+0x60>
+ 48a:	3f eb       	ldi	r19, 0xBF	; 191
+ 48c:	32 0f       	add	r19, r18
+ 48e:	36 30       	cpi	r19, 0x06	; 6
+ 490:	20 f4       	brcc	.+8      	; 0x49a <hex_decode+0x60>
 			data_buf[i] |= (n_hi - 'A' + 10) << 4;
- 488:	30 e0       	ldi	r19, 0x00	; 0
- 48a:	27 53       	subi	r18, 0x37	; 55
- 48c:	31 09       	sbc	r19, r1
- 48e:	07 c0       	rjmp	.+14     	; 0x49e <hex_decode+0x6e>
+ 492:	30 e0       	ldi	r19, 0x00	; 0
+ 494:	27 53       	subi	r18, 0x37	; 55
+ 496:	31 09       	sbc	r19, r1
+ 498:	07 c0       	rjmp	.+14     	; 0x4a8 <hex_decode+0x6e>
 		else if(n_hi >= 'a' && n_hi <= 'f')
- 490:	3f e9       	ldi	r19, 0x9F	; 159
- 492:	32 0f       	add	r19, r18
- 494:	36 30       	cpi	r19, 0x06	; 6
- 496:	40 f7       	brcc	.-48     	; 0x468 <hex_decode+0x38>
+ 49a:	3f e9       	ldi	r19, 0x9F	; 159
+ 49c:	32 0f       	add	r19, r18
+ 49e:	36 30       	cpi	r19, 0x06	; 6
+ 4a0:	40 f7       	brcc	.-48     	; 0x472 <hex_decode+0x38>
 			data_buf[i] |= (n_hi - 'a' + 10) << 4;
- 498:	30 e0       	ldi	r19, 0x00	; 0
- 49a:	27 55       	subi	r18, 0x57	; 87
- 49c:	31 09       	sbc	r19, r1
- 49e:	64 e0       	ldi	r22, 0x04	; 4
- 4a0:	22 0f       	add	r18, r18
- 4a2:	33 1f       	adc	r19, r19
- 4a4:	6a 95       	dec	r22
- 4a6:	e1 f7       	brne	.-8      	; 0x4a0 <hex_decode+0x70>
- 4a8:	30 81       	ld	r19, Z
- 4aa:	23 2b       	or	r18, r19
- 4ac:	20 83       	st	Z, r18
- 4ae:	31 96       	adiw	r30, 0x01	; 1
- 4b0:	12 96       	adiw	r26, 0x02	; 2
- 4b2:	c0 cf       	rjmp	.-128    	; 0x434 <hex_decode+0x4>
+ 4a2:	30 e0       	ldi	r19, 0x00	; 0
+ 4a4:	27 55       	subi	r18, 0x57	; 87
+ 4a6:	31 09       	sbc	r19, r1
+ 4a8:	64 e0       	ldi	r22, 0x04	; 4
+ 4aa:	22 0f       	add	r18, r18
+ 4ac:	33 1f       	adc	r19, r19
+ 4ae:	6a 95       	dec	r22
+ 4b0:	e1 f7       	brne	.-8      	; 0x4aa <hex_decode+0x70>
+ 4b2:	30 81       	ld	r19, Z
+ 4b4:	23 2b       	or	r18, r19
+ 4b6:	20 83       	st	Z, r18
+ 4b8:	31 96       	adiw	r30, 0x01	; 1
+ 4ba:	12 96       	adiw	r26, 0x02	; 2
+ 4bc:	c0 cf       	rjmp	.-128    	; 0x43e <hex_decode+0x4>
 		else
 			return 1;
 	}
 
 	return 0;
- 4b4:	80 e0       	ldi	r24, 0x00	; 0
- 4b6:	90 e0       	ldi	r25, 0x00	; 0
+ 4be:	80 e0       	ldi	r24, 0x00	; 0
+ 4c0:	90 e0       	ldi	r25, 0x00	; 0
 }
- 4b8:	08 95       	ret
+ 4c2:	08 95       	ret
 
-000004ba <simpleserial_addcmd_flags>:
+000004c4 <simpleserial_addcmd_flags>:
 	return simpleserial_addcmd_flags(c, len, fp, CMD_FLAG_NONE);
 }
 
 int simpleserial_addcmd_flags(char c, unsigned int len, uint8_t (*fp)(uint8_t*, uint8_t), uint8_t fl)
 {
 	if(num_commands >= MAX_SS_CMDS)
- 4ba:	a0 91 80 20 	lds	r26, 0x2080	; 0x802080 <num_commands>
- 4be:	b0 91 81 20 	lds	r27, 0x2081	; 0x802081 <num_commands+0x1>
- 4c2:	a0 31       	cpi	r26, 0x10	; 16
- 4c4:	b1 05       	cpc	r27, r1
- 4c6:	cc f4       	brge	.+50     	; 0x4fa <simpleserial_addcmd_flags+0x40>
+ 4c4:	a0 91 80 20 	lds	r26, 0x2080	; 0x802080 <num_commands>
+ 4c8:	b0 91 81 20 	lds	r27, 0x2081	; 0x802081 <num_commands+0x1>
+ 4cc:	a0 31       	cpi	r26, 0x10	; 16
+ 4ce:	b1 05       	cpc	r27, r1
+ 4d0:	cc f4       	brge	.+50     	; 0x504 <simpleserial_addcmd_flags+0x40>
 		return 1;
 
 	if(len >= MAX_SS_LEN)
- 4c8:	60 3c       	cpi	r22, 0xC0	; 192
- 4ca:	71 05       	cpc	r23, r1
- 4cc:	b0 f4       	brcc	.+44     	; 0x4fa <simpleserial_addcmd_flags+0x40>
+ 4d2:	60 3c       	cpi	r22, 0xC0	; 192
+ 4d4:	71 05       	cpc	r23, r1
+ 4d6:	b0 f4       	brcc	.+44     	; 0x504 <simpleserial_addcmd_flags+0x40>
 		return 1;
 
 	commands[num_commands].c   = c;
- 4ce:	96 e0       	ldi	r25, 0x06	; 6
- 4d0:	9a 9f       	mul	r25, r26
- 4d2:	f0 01       	movw	r30, r0
- 4d4:	9b 9f       	mul	r25, r27
- 4d6:	f0 0d       	add	r31, r0
- 4d8:	11 24       	eor	r1, r1
- 4da:	e0 5e       	subi	r30, 0xE0	; 224
- 4dc:	ff 4d       	sbci	r31, 0xDF	; 223
- 4de:	80 83       	st	Z, r24
+ 4d8:	96 e0       	ldi	r25, 0x06	; 6
+ 4da:	9a 9f       	mul	r25, r26
+ 4dc:	f0 01       	movw	r30, r0
+ 4de:	9b 9f       	mul	r25, r27
+ 4e0:	f0 0d       	add	r31, r0
+ 4e2:	11 24       	eor	r1, r1
+ 4e4:	e0 5e       	subi	r30, 0xE0	; 224
+ 4e6:	ff 4d       	sbci	r31, 0xDF	; 223
+ 4e8:	80 83       	st	Z, r24
 	commands[num_commands].len = len;
- 4e0:	61 83       	std	Z+1, r22	; 0x01
- 4e2:	72 83       	std	Z+2, r23	; 0x02
+ 4ea:	61 83       	std	Z+1, r22	; 0x01
+ 4ec:	72 83       	std	Z+2, r23	; 0x02
 	commands[num_commands].fp  = fp;
- 4e4:	43 83       	std	Z+3, r20	; 0x03
- 4e6:	54 83       	std	Z+4, r21	; 0x04
+ 4ee:	43 83       	std	Z+3, r20	; 0x03
+ 4f0:	54 83       	std	Z+4, r21	; 0x04
 	commands[num_commands].flags = fl;
- 4e8:	25 83       	std	Z+5, r18	; 0x05
+ 4f2:	25 83       	std	Z+5, r18	; 0x05
 	num_commands++;
- 4ea:	11 96       	adiw	r26, 0x01	; 1
- 4ec:	a0 93 80 20 	sts	0x2080, r26	; 0x802080 <num_commands>
- 4f0:	b0 93 81 20 	sts	0x2081, r27	; 0x802081 <num_commands+0x1>
+ 4f4:	11 96       	adiw	r26, 0x01	; 1
+ 4f6:	a0 93 80 20 	sts	0x2080, r26	; 0x802080 <num_commands>
+ 4fa:	b0 93 81 20 	sts	0x2081, r27	; 0x802081 <num_commands+0x1>
 
 	return 0;
- 4f4:	80 e0       	ldi	r24, 0x00	; 0
- 4f6:	90 e0       	ldi	r25, 0x00	; 0
- 4f8:	08 95       	ret
+ 4fe:	80 e0       	ldi	r24, 0x00	; 0
+ 500:	90 e0       	ldi	r25, 0x00	; 0
+ 502:	08 95       	ret
 }
 
 int simpleserial_addcmd_flags(char c, unsigned int len, uint8_t (*fp)(uint8_t*, uint8_t), uint8_t fl)
 {
 	if(num_commands >= MAX_SS_CMDS)
 		return 1;
- 4fa:	81 e0       	ldi	r24, 0x01	; 1
- 4fc:	90 e0       	ldi	r25, 0x00	; 0
+ 504:	81 e0       	ldi	r24, 0x01	; 1
+ 506:	90 e0       	ldi	r25, 0x00	; 0
 	commands[num_commands].fp  = fp;
 	commands[num_commands].flags = fl;
 	num_commands++;
 
 	return 0;
 }
- 4fe:	08 95       	ret
+ 508:	08 95       	ret
 
-00000500 <simpleserial_addcmd>:
+0000050a <simpleserial_addcmd>:
     simpleserial_addcmd('y', 0, ss_num_commands);
 }
 
 int simpleserial_addcmd(char c, unsigned int len, uint8_t (*fp)(uint8_t*, uint8_t))
 {
 	return simpleserial_addcmd_flags(c, len, fp, CMD_FLAG_NONE);
- 500:	20 e0       	ldi	r18, 0x00	; 0
- 502:	0c 94 5d 02 	jmp	0x4ba	; 0x4ba <simpleserial_addcmd_flags>
+ 50a:	20 e0       	ldi	r18, 0x00	; 0
+ 50c:	0c 94 62 02 	jmp	0x4c4	; 0x4c4 <simpleserial_addcmd_flags>
 
-00000506 <simpleserial_init>:
+00000510 <simpleserial_init>:
 
 // Set up the SimpleSerial module by preparing internal commands
 // This just adds the "v" command for now...
 void simpleserial_init()
 {
 	simpleserial_addcmd('v', 0, check_version);
- 506:	42 e0       	ldi	r20, 0x02	; 2
- 508:	52 e0       	ldi	r21, 0x02	; 2
- 50a:	60 e0       	ldi	r22, 0x00	; 0
- 50c:	70 e0       	ldi	r23, 0x00	; 0
- 50e:	86 e7       	ldi	r24, 0x76	; 118
- 510:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ 510:	47 e0       	ldi	r20, 0x07	; 7
+ 512:	52 e0       	ldi	r21, 0x02	; 2
+ 514:	60 e0       	ldi	r22, 0x00	; 0
+ 516:	70 e0       	ldi	r23, 0x00	; 0
+ 518:	86 e7       	ldi	r24, 0x76	; 118
+ 51a:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     simpleserial_addcmd('w', 0, ss_get_commands);
- 514:	41 ee       	ldi	r20, 0xE1	; 225
- 516:	52 e0       	ldi	r21, 0x02	; 2
- 518:	60 e0       	ldi	r22, 0x00	; 0
- 51a:	70 e0       	ldi	r23, 0x00	; 0
- 51c:	87 e7       	ldi	r24, 0x77	; 119
- 51e:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ 51e:	46 ee       	ldi	r20, 0xE6	; 230
+ 520:	52 e0       	ldi	r21, 0x02	; 2
+ 522:	60 e0       	ldi	r22, 0x00	; 0
+ 524:	70 e0       	ldi	r23, 0x00	; 0
+ 526:	87 e7       	ldi	r24, 0x77	; 119
+ 528:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     simpleserial_addcmd('y', 0, ss_num_commands);
- 522:	4d ec       	ldi	r20, 0xCD	; 205
- 524:	52 e0       	ldi	r21, 0x02	; 2
- 526:	60 e0       	ldi	r22, 0x00	; 0
- 528:	70 e0       	ldi	r23, 0x00	; 0
- 52a:	89 e7       	ldi	r24, 0x79	; 121
- 52c:	0c 94 80 02 	jmp	0x500	; 0x500 <simpleserial_addcmd>
+ 52c:	42 ed       	ldi	r20, 0xD2	; 210
+ 52e:	52 e0       	ldi	r21, 0x02	; 2
+ 530:	60 e0       	ldi	r22, 0x00	; 0
+ 532:	70 e0       	ldi	r23, 0x00	; 0
+ 534:	89 e7       	ldi	r24, 0x79	; 121
+ 536:	0c 94 85 02 	jmp	0x50a	; 0x50a <simpleserial_addcmd>
 
-00000530 <simpleserial_put>:
+0000053a <simpleserial_put>:
 	simpleserial_put('z', 1, ret);
 #endif
 }
 
 void simpleserial_put(char c, uint8_t size, uint8_t* output)
 {
- 530:	cf 92       	push	r12
- 532:	df 92       	push	r13
- 534:	ef 92       	push	r14
- 536:	ff 92       	push	r15
- 538:	0f 93       	push	r16
- 53a:	1f 93       	push	r17
- 53c:	cf 93       	push	r28
- 53e:	df 93       	push	r29
- 540:	c6 2f       	mov	r28, r22
- 542:	8a 01       	movw	r16, r20
+ 53a:	cf 92       	push	r12
+ 53c:	df 92       	push	r13
+ 53e:	ef 92       	push	r14
+ 540:	ff 92       	push	r15
+ 542:	0f 93       	push	r16
+ 544:	1f 93       	push	r17
+ 546:	cf 93       	push	r28
+ 548:	df 93       	push	r29
+ 54a:	c6 2f       	mov	r28, r22
+ 54c:	8a 01       	movw	r16, r20
 	// Write first character
 	putch(c);
- 544:	0e 94 22 04 	call	0x844	; 0x844 <output_ch_0>
+ 54e:	0e 94 27 04 	call	0x84e	; 0x84e <output_ch_0>
 
 	// Write each byte as two nibbles
 	for(int i = 0; i < size; i++)
- 548:	78 01       	movw	r14, r16
- 54a:	d0 e0       	ldi	r29, 0x00	; 0
- 54c:	c7 01       	movw	r24, r14
- 54e:	80 1b       	sub	r24, r16
- 550:	91 0b       	sbc	r25, r17
- 552:	8c 17       	cp	r24, r28
- 554:	9d 07       	cpc	r25, r29
- 556:	b4 f4       	brge	.+44     	; 0x584 <simpleserial_put+0x54>
- 558:	67 01       	movw	r12, r14
+ 552:	78 01       	movw	r14, r16
+ 554:	d0 e0       	ldi	r29, 0x00	; 0
+ 556:	c7 01       	movw	r24, r14
+ 558:	80 1b       	sub	r24, r16
+ 55a:	91 0b       	sbc	r25, r17
+ 55c:	8c 17       	cp	r24, r28
+ 55e:	9d 07       	cpc	r25, r29
+ 560:	b4 f4       	brge	.+44     	; 0x58e <simpleserial_put+0x54>
+ 562:	67 01       	movw	r12, r14
 	{
 		putch(hex_lookup[output[i] >> 4 ]);
- 55a:	d7 01       	movw	r26, r14
- 55c:	ed 91       	ld	r30, X+
- 55e:	7d 01       	movw	r14, r26
- 560:	e2 95       	swap	r30
- 562:	ef 70       	andi	r30, 0x0F	; 15
- 564:	f0 e0       	ldi	r31, 0x00	; 0
- 566:	e0 5f       	subi	r30, 0xF0	; 240
- 568:	ff 4d       	sbci	r31, 0xDF	; 223
- 56a:	80 81       	ld	r24, Z
- 56c:	0e 94 22 04 	call	0x844	; 0x844 <output_ch_0>
+ 564:	d7 01       	movw	r26, r14
+ 566:	ed 91       	ld	r30, X+
+ 568:	7d 01       	movw	r14, r26
+ 56a:	e2 95       	swap	r30
+ 56c:	ef 70       	andi	r30, 0x0F	; 15
+ 56e:	f0 e0       	ldi	r31, 0x00	; 0
+ 570:	e0 5f       	subi	r30, 0xF0	; 240
+ 572:	ff 4d       	sbci	r31, 0xDF	; 223
+ 574:	80 81       	ld	r24, Z
+ 576:	0e 94 27 04 	call	0x84e	; 0x84e <output_ch_0>
 		putch(hex_lookup[output[i] & 0xF]);
- 570:	d6 01       	movw	r26, r12
- 572:	ec 91       	ld	r30, X
- 574:	ef 70       	andi	r30, 0x0F	; 15
- 576:	f0 e0       	ldi	r31, 0x00	; 0
- 578:	e0 5f       	subi	r30, 0xF0	; 240
- 57a:	ff 4d       	sbci	r31, 0xDF	; 223
- 57c:	80 81       	ld	r24, Z
- 57e:	0e 94 22 04 	call	0x844	; 0x844 <output_ch_0>
- 582:	e4 cf       	rjmp	.-56     	; 0x54c <simpleserial_put+0x1c>
+ 57a:	d6 01       	movw	r26, r12
+ 57c:	ec 91       	ld	r30, X
+ 57e:	ef 70       	andi	r30, 0x0F	; 15
+ 580:	f0 e0       	ldi	r31, 0x00	; 0
+ 582:	e0 5f       	subi	r30, 0xF0	; 240
+ 584:	ff 4d       	sbci	r31, 0xDF	; 223
+ 586:	80 81       	ld	r24, Z
+ 588:	0e 94 27 04 	call	0x84e	; 0x84e <output_ch_0>
+ 58c:	e4 cf       	rjmp	.-56     	; 0x556 <simpleserial_put+0x1c>
 	}
 
 	// Write trailing '\n'
 	putch('\n');
- 584:	8a e0       	ldi	r24, 0x0A	; 10
+ 58e:	8a e0       	ldi	r24, 0x0A	; 10
 }
- 586:	df 91       	pop	r29
- 588:	cf 91       	pop	r28
- 58a:	1f 91       	pop	r17
- 58c:	0f 91       	pop	r16
- 58e:	ff 90       	pop	r15
- 590:	ef 90       	pop	r14
- 592:	df 90       	pop	r13
- 594:	cf 90       	pop	r12
+ 590:	df 91       	pop	r29
+ 592:	cf 91       	pop	r28
+ 594:	1f 91       	pop	r17
+ 596:	0f 91       	pop	r16
+ 598:	ff 90       	pop	r15
+ 59a:	ef 90       	pop	r14
+ 59c:	df 90       	pop	r13
+ 59e:	cf 90       	pop	r12
 		putch(hex_lookup[output[i] >> 4 ]);
 		putch(hex_lookup[output[i] & 0xF]);
 	}
 
 	// Write trailing '\n'
 	putch('\n');
- 596:	0c 94 22 04 	jmp	0x844	; 0x844 <output_ch_0>
+ 5a0:	0c 94 27 04 	jmp	0x84e	; 0x84e <output_ch_0>
 
-0000059a <ss_num_commands>:
+000005a4 <ss_num_commands>:
 {
 	return SS_VER;
 }
 
 uint8_t ss_num_commands(uint8_t *x, uint8_t len)
 {
- 59a:	cf 93       	push	r28
- 59c:	df 93       	push	r29
- 59e:	1f 92       	push	r1
- 5a0:	cd b7       	in	r28, 0x3d	; 61
- 5a2:	de b7       	in	r29, 0x3e	; 62
+ 5a4:	cf 93       	push	r28
+ 5a6:	df 93       	push	r29
+ 5a8:	1f 92       	push	r1
+ 5aa:	cd b7       	in	r28, 0x3d	; 61
+ 5ac:	de b7       	in	r29, 0x3e	; 62
     uint8_t ncmds = num_commands & 0xFF;
- 5a4:	80 91 80 20 	lds	r24, 0x2080	; 0x802080 <num_commands>
- 5a8:	89 83       	std	Y+1, r24	; 0x01
+ 5ae:	80 91 80 20 	lds	r24, 0x2080	; 0x802080 <num_commands>
+ 5b2:	89 83       	std	Y+1, r24	; 0x01
     simpleserial_put('r', 0x01, &ncmds);
- 5aa:	ae 01       	movw	r20, r28
- 5ac:	4f 5f       	subi	r20, 0xFF	; 255
- 5ae:	5f 4f       	sbci	r21, 0xFF	; 255
- 5b0:	61 e0       	ldi	r22, 0x01	; 1
- 5b2:	82 e7       	ldi	r24, 0x72	; 114
- 5b4:	0e 94 98 02 	call	0x530	; 0x530 <simpleserial_put>
+ 5b4:	ae 01       	movw	r20, r28
+ 5b6:	4f 5f       	subi	r20, 0xFF	; 255
+ 5b8:	5f 4f       	sbci	r21, 0xFF	; 255
+ 5ba:	61 e0       	ldi	r22, 0x01	; 1
+ 5bc:	82 e7       	ldi	r24, 0x72	; 114
+ 5be:	0e 94 9d 02 	call	0x53a	; 0x53a <simpleserial_put>
     return 0x00;
 }
- 5b8:	80 e0       	ldi	r24, 0x00	; 0
- 5ba:	0f 90       	pop	r0
- 5bc:	df 91       	pop	r29
- 5be:	cf 91       	pop	r28
- 5c0:	08 95       	ret
+ 5c2:	80 e0       	ldi	r24, 0x00	; 0
+ 5c4:	0f 90       	pop	r0
+ 5c6:	df 91       	pop	r29
+ 5c8:	cf 91       	pop	r28
+ 5ca:	08 95       	ret
 
-000005c2 <ss_get_commands>:
+000005cc <ss_get_commands>:
     uint8_t len;
     uint8_t flags;
 } ss_cmd_repr;
 
 uint8_t ss_get_commands(uint8_t *x, uint8_t len)
 {
- 5c2:	cf 93       	push	r28
- 5c4:	df 93       	push	r29
- 5c6:	cd b7       	in	r28, 0x3d	; 61
- 5c8:	de b7       	in	r29, 0x3e	; 62
- 5ca:	e0 97       	sbiw	r28, 0x30	; 48
- 5cc:	cd bf       	out	0x3d, r28	; 61
- 5ce:	de bf       	out	0x3e, r29	; 62
+ 5cc:	cf 93       	push	r28
+ 5ce:	df 93       	push	r29
+ 5d0:	cd b7       	in	r28, 0x3d	; 61
+ 5d2:	de b7       	in	r29, 0x3e	; 62
+ 5d4:	e0 97       	sbiw	r28, 0x30	; 48
+ 5d6:	cd bf       	out	0x3d, r28	; 61
+ 5d8:	de bf       	out	0x3e, r29	; 62
     ss_cmd_repr repr_cmd_buf[MAX_SS_CMDS];
     for (uint8_t i = 0; i < (num_commands & 0xFF); i++) {
- 5d0:	60 91 80 20 	lds	r22, 0x2080	; 0x802080 <num_commands>
- 5d4:	70 91 81 20 	lds	r23, 0x2081	; 0x802081 <num_commands+0x1>
- 5d8:	ab 01       	movw	r20, r22
- 5da:	55 27       	eor	r21, r21
- 5dc:	20 e0       	ldi	r18, 0x00	; 0
+ 5da:	60 91 80 20 	lds	r22, 0x2080	; 0x802080 <num_commands>
+ 5de:	70 91 81 20 	lds	r23, 0x2081	; 0x802081 <num_commands+0x1>
+ 5e2:	ab 01       	movw	r20, r22
+ 5e4:	55 27       	eor	r21, r21
+ 5e6:	20 e0       	ldi	r18, 0x00	; 0
         repr_cmd_buf[i].c = commands[i].c;
- 5de:	36 e0       	ldi	r19, 0x06	; 6
+ 5e8:	36 e0       	ldi	r19, 0x06	; 6
 } ss_cmd_repr;
 
 uint8_t ss_get_commands(uint8_t *x, uint8_t len)
 {
     ss_cmd_repr repr_cmd_buf[MAX_SS_CMDS];
     for (uint8_t i = 0; i < (num_commands & 0xFF); i++) {
- 5e0:	82 2f       	mov	r24, r18
- 5e2:	90 e0       	ldi	r25, 0x00	; 0
- 5e4:	84 17       	cp	r24, r20
- 5e6:	95 07       	cpc	r25, r21
- 5e8:	ec f4       	brge	.+58     	; 0x624 <ss_get_commands+0x62>
+ 5ea:	82 2f       	mov	r24, r18
+ 5ec:	90 e0       	ldi	r25, 0x00	; 0
+ 5ee:	84 17       	cp	r24, r20
+ 5f0:	95 07       	cpc	r25, r21
+ 5f2:	ec f4       	brge	.+58     	; 0x62e <ss_get_commands+0x62>
         repr_cmd_buf[i].c = commands[i].c;
- 5ea:	fc 01       	movw	r30, r24
- 5ec:	ee 0f       	add	r30, r30
- 5ee:	ff 1f       	adc	r31, r31
- 5f0:	e8 0f       	add	r30, r24
- 5f2:	f9 1f       	adc	r31, r25
- 5f4:	a1 e0       	ldi	r26, 0x01	; 1
- 5f6:	b0 e0       	ldi	r27, 0x00	; 0
- 5f8:	ac 0f       	add	r26, r28
- 5fa:	bd 1f       	adc	r27, r29
- 5fc:	ea 0f       	add	r30, r26
- 5fe:	fb 1f       	adc	r31, r27
- 600:	38 9f       	mul	r19, r24
- 602:	d0 01       	movw	r26, r0
- 604:	39 9f       	mul	r19, r25
- 606:	b0 0d       	add	r27, r0
- 608:	11 24       	eor	r1, r1
- 60a:	a0 5e       	subi	r26, 0xE0	; 224
- 60c:	bf 4d       	sbci	r27, 0xDF	; 223
- 60e:	8c 91       	ld	r24, X
- 610:	80 83       	st	Z, r24
+ 5f4:	fc 01       	movw	r30, r24
+ 5f6:	ee 0f       	add	r30, r30
+ 5f8:	ff 1f       	adc	r31, r31
+ 5fa:	e8 0f       	add	r30, r24
+ 5fc:	f9 1f       	adc	r31, r25
+ 5fe:	a1 e0       	ldi	r26, 0x01	; 1
+ 600:	b0 e0       	ldi	r27, 0x00	; 0
+ 602:	ac 0f       	add	r26, r28
+ 604:	bd 1f       	adc	r27, r29
+ 606:	ea 0f       	add	r30, r26
+ 608:	fb 1f       	adc	r31, r27
+ 60a:	38 9f       	mul	r19, r24
+ 60c:	d0 01       	movw	r26, r0
+ 60e:	39 9f       	mul	r19, r25
+ 610:	b0 0d       	add	r27, r0
+ 612:	11 24       	eor	r1, r1
+ 614:	a0 5e       	subi	r26, 0xE0	; 224
+ 616:	bf 4d       	sbci	r27, 0xDF	; 223
+ 618:	8c 91       	ld	r24, X
+ 61a:	80 83       	st	Z, r24
         repr_cmd_buf[i].len = commands[i].len;
- 612:	11 96       	adiw	r26, 0x01	; 1
- 614:	8c 91       	ld	r24, X
- 616:	11 97       	sbiw	r26, 0x01	; 1
- 618:	81 83       	std	Z+1, r24	; 0x01
+ 61c:	11 96       	adiw	r26, 0x01	; 1
+ 61e:	8c 91       	ld	r24, X
+ 620:	11 97       	sbiw	r26, 0x01	; 1
+ 622:	81 83       	std	Z+1, r24	; 0x01
         repr_cmd_buf[i].flags = commands[i].flags;
- 61a:	15 96       	adiw	r26, 0x05	; 5
- 61c:	8c 91       	ld	r24, X
- 61e:	82 83       	std	Z+2, r24	; 0x02
+ 624:	15 96       	adiw	r26, 0x05	; 5
+ 626:	8c 91       	ld	r24, X
+ 628:	82 83       	std	Z+2, r24	; 0x02
 } ss_cmd_repr;
 
 uint8_t ss_get_commands(uint8_t *x, uint8_t len)
 {
     ss_cmd_repr repr_cmd_buf[MAX_SS_CMDS];
     for (uint8_t i = 0; i < (num_commands & 0xFF); i++) {
- 620:	2f 5f       	subi	r18, 0xFF	; 255
- 622:	de cf       	rjmp	.-68     	; 0x5e0 <ss_get_commands+0x1e>
+ 62a:	2f 5f       	subi	r18, 0xFF	; 255
+ 62c:	de cf       	rjmp	.-68     	; 0x5ea <ss_get_commands+0x1e>
         repr_cmd_buf[i].c = commands[i].c;
         repr_cmd_buf[i].len = commands[i].len;
         repr_cmd_buf[i].flags = commands[i].flags;
     }
 
     simpleserial_put('r', num_commands * 0x03, (void *) repr_cmd_buf);
- 624:	86 2f       	mov	r24, r22
- 626:	88 0f       	add	r24, r24
- 628:	68 0f       	add	r22, r24
- 62a:	ae 01       	movw	r20, r28
- 62c:	4f 5f       	subi	r20, 0xFF	; 255
- 62e:	5f 4f       	sbci	r21, 0xFF	; 255
- 630:	82 e7       	ldi	r24, 0x72	; 114
- 632:	0e 94 98 02 	call	0x530	; 0x530 <simpleserial_put>
+ 62e:	86 2f       	mov	r24, r22
+ 630:	88 0f       	add	r24, r24
+ 632:	68 0f       	add	r22, r24
+ 634:	ae 01       	movw	r20, r28
+ 636:	4f 5f       	subi	r20, 0xFF	; 255
+ 638:	5f 4f       	sbci	r21, 0xFF	; 255
+ 63a:	82 e7       	ldi	r24, 0x72	; 114
+ 63c:	0e 94 9d 02 	call	0x53a	; 0x53a <simpleserial_put>
     return 0x00;
 }
- 636:	80 e0       	ldi	r24, 0x00	; 0
- 638:	e0 96       	adiw	r28, 0x30	; 48
- 63a:	cd bf       	out	0x3d, r28	; 61
- 63c:	de bf       	out	0x3e, r29	; 62
- 63e:	df 91       	pop	r29
- 640:	cf 91       	pop	r28
- 642:	08 95       	ret
+ 640:	80 e0       	ldi	r24, 0x00	; 0
+ 642:	e0 96       	adiw	r28, 0x30	; 48
+ 644:	cd bf       	out	0x3d, r28	; 61
+ 646:	de bf       	out	0x3e, r29	; 62
+ 648:	df 91       	pop	r29
+ 64a:	cf 91       	pop	r28
+ 64c:	08 95       	ret
 
-00000644 <simpleserial_get>:
+0000064e <simpleserial_get>:
 
 	return 0;
 }
 
 void simpleserial_get(void)
 {
- 644:	af 92       	push	r10
- 646:	bf 92       	push	r11
- 648:	cf 92       	push	r12
- 64a:	df 92       	push	r13
- 64c:	ef 92       	push	r14
- 64e:	ff 92       	push	r15
- 650:	0f 93       	push	r16
- 652:	1f 93       	push	r17
- 654:	cf 93       	push	r28
- 656:	df 93       	push	r29
- 658:	cd b7       	in	r28, 0x3d	; 61
- 65a:	de b7       	in	r29, 0x3e	; 62
- 65c:	c1 54       	subi	r28, 0x41	; 65
- 65e:	d2 40       	sbci	r29, 0x02	; 2
- 660:	cd bf       	out	0x3d, r28	; 61
- 662:	de bf       	out	0x3e, r29	; 62
+ 64e:	af 92       	push	r10
+ 650:	bf 92       	push	r11
+ 652:	cf 92       	push	r12
+ 654:	df 92       	push	r13
+ 656:	ef 92       	push	r14
+ 658:	ff 92       	push	r15
+ 65a:	0f 93       	push	r16
+ 65c:	1f 93       	push	r17
+ 65e:	cf 93       	push	r28
+ 660:	df 93       	push	r29
+ 662:	cd b7       	in	r28, 0x3d	; 61
+ 664:	de b7       	in	r29, 0x3e	; 62
+ 666:	c1 54       	subi	r28, 0x41	; 65
+ 668:	d2 40       	sbci	r29, 0x02	; 2
+ 66a:	cd bf       	out	0x3d, r28	; 61
+ 66c:	de bf       	out	0x3e, r29	; 62
 	char ascii_buf[2*MAX_SS_LEN];
 	uint8_t data_buf[MAX_SS_LEN];
 	char c;
 
 	// Find which command we're receiving
 	c = getch();
- 664:	0e 94 1b 04 	call	0x836	; 0x836 <input_ch_0>
+ 66e:	0e 94 20 04 	call	0x840	; 0x840 <input_ch_0>
 
 	int cmd;
 	for(cmd = 0; cmd < num_commands; cmd++)
- 668:	40 91 80 20 	lds	r20, 0x2080	; 0x802080 <num_commands>
- 66c:	50 91 81 20 	lds	r21, 0x2081	; 0x802081 <num_commands+0x1>
- 670:	20 e2       	ldi	r18, 0x20	; 32
- 672:	30 e2       	ldi	r19, 0x20	; 32
- 674:	00 e0       	ldi	r16, 0x00	; 0
- 676:	10 e0       	ldi	r17, 0x00	; 0
- 678:	04 17       	cp	r16, r20
- 67a:	15 07       	cpc	r17, r21
- 67c:	ec f4       	brge	.+58     	; 0x6b8 <simpleserial_get+0x74>
- 67e:	2a 5f       	subi	r18, 0xFA	; 250
- 680:	3f 4f       	sbci	r19, 0xFF	; 255
+ 672:	40 91 80 20 	lds	r20, 0x2080	; 0x802080 <num_commands>
+ 676:	50 91 81 20 	lds	r21, 0x2081	; 0x802081 <num_commands+0x1>
+ 67a:	20 e2       	ldi	r18, 0x20	; 32
+ 67c:	30 e2       	ldi	r19, 0x20	; 32
+ 67e:	00 e0       	ldi	r16, 0x00	; 0
+ 680:	10 e0       	ldi	r17, 0x00	; 0
+ 682:	04 17       	cp	r16, r20
+ 684:	15 07       	cpc	r17, r21
+ 686:	ec f4       	brge	.+58     	; 0x6c2 <simpleserial_get+0x74>
+ 688:	2a 5f       	subi	r18, 0xFA	; 250
+ 68a:	3f 4f       	sbci	r19, 0xFF	; 255
 	{
 		if(commands[cmd].c == c)
- 682:	f9 01       	movw	r30, r18
- 684:	36 97       	sbiw	r30, 0x06	; 6
- 686:	90 81       	ld	r25, Z
- 688:	89 13       	cpse	r24, r25
- 68a:	13 c0       	rjmp	.+38     	; 0x6b2 <simpleserial_get+0x6e>
+ 68c:	f9 01       	movw	r30, r18
+ 68e:	36 97       	sbiw	r30, 0x06	; 6
+ 690:	90 81       	ld	r25, Z
+ 692:	89 13       	cpse	r24, r25
+ 694:	13 c0       	rjmp	.+38     	; 0x6bc <simpleserial_get+0x6e>
 	// If we didn't find a match, give up right away
 	if(cmd == num_commands)
 		return;
 
 	// If flag CMD_FLAG_LEN is set, the next byte indicates the sent length
 	if ((commands[cmd].flags & CMD_FLAG_LEN) != 0)
- 68c:	26 e0       	ldi	r18, 0x06	; 6
- 68e:	20 9f       	mul	r18, r16
- 690:	c0 01       	movw	r24, r0
- 692:	21 9f       	mul	r18, r17
- 694:	90 0d       	add	r25, r0
- 696:	11 24       	eor	r1, r1
- 698:	9c 01       	movw	r18, r24
- 69a:	20 5e       	subi	r18, 0xE0	; 224
- 69c:	3f 4d       	sbci	r19, 0xDF	; 223
- 69e:	69 01       	movw	r12, r18
- 6a0:	d9 01       	movw	r26, r18
- 6a2:	15 96       	adiw	r26, 0x05	; 5
- 6a4:	8c 91       	ld	r24, X
- 6a6:	fe 01       	movw	r30, r28
- 6a8:	31 96       	adiw	r30, 0x01	; 1
- 6aa:	7f 01       	movw	r14, r30
- 6ac:	80 ff       	sbrs	r24, 0
- 6ae:	2a c0       	rjmp	.+84     	; 0x704 <simpleserial_get+0xc0>
- 6b0:	08 c0       	rjmp	.+16     	; 0x6c2 <simpleserial_get+0x7e>
+ 696:	26 e0       	ldi	r18, 0x06	; 6
+ 698:	20 9f       	mul	r18, r16
+ 69a:	c0 01       	movw	r24, r0
+ 69c:	21 9f       	mul	r18, r17
+ 69e:	90 0d       	add	r25, r0
+ 6a0:	11 24       	eor	r1, r1
+ 6a2:	9c 01       	movw	r18, r24
+ 6a4:	20 5e       	subi	r18, 0xE0	; 224
+ 6a6:	3f 4d       	sbci	r19, 0xDF	; 223
+ 6a8:	69 01       	movw	r12, r18
+ 6aa:	d9 01       	movw	r26, r18
+ 6ac:	15 96       	adiw	r26, 0x05	; 5
+ 6ae:	8c 91       	ld	r24, X
+ 6b0:	fe 01       	movw	r30, r28
+ 6b2:	31 96       	adiw	r30, 0x01	; 1
+ 6b4:	7f 01       	movw	r14, r30
+ 6b6:	80 ff       	sbrs	r24, 0
+ 6b8:	2a c0       	rjmp	.+84     	; 0x70e <simpleserial_get+0xc0>
+ 6ba:	08 c0       	rjmp	.+16     	; 0x6cc <simpleserial_get+0x7e>
 
 	// Find which command we're receiving
 	c = getch();
 
 	int cmd;
 	for(cmd = 0; cmd < num_commands; cmd++)
- 6b2:	0f 5f       	subi	r16, 0xFF	; 255
- 6b4:	1f 4f       	sbci	r17, 0xFF	; 255
- 6b6:	e0 cf       	rjmp	.-64     	; 0x678 <simpleserial_get+0x34>
+ 6bc:	0f 5f       	subi	r16, 0xFF	; 255
+ 6be:	1f 4f       	sbci	r17, 0xFF	; 255
+ 6c0:	e0 cf       	rjmp	.-64     	; 0x682 <simpleserial_get+0x34>
 		if(commands[cmd].c == c)
 			break;
 	}
 
 	// If we didn't find a match, give up right away
 	if(cmd == num_commands)
- 6b8:	04 17       	cp	r16, r20
- 6ba:	15 07       	cpc	r17, r21
- 6bc:	09 f4       	brne	.+2      	; 0x6c0 <simpleserial_get+0x7c>
- 6be:	76 c0       	rjmp	.+236    	; 0x7ac <simpleserial_get+0x168>
- 6c0:	e5 cf       	rjmp	.-54     	; 0x68c <simpleserial_get+0x48>
+ 6c2:	04 17       	cp	r16, r20
+ 6c4:	15 07       	cpc	r17, r21
+ 6c6:	09 f4       	brne	.+2      	; 0x6ca <simpleserial_get+0x7c>
+ 6c8:	76 c0       	rjmp	.+236    	; 0x7b6 <simpleserial_get+0x168>
+ 6ca:	e5 cf       	rjmp	.-54     	; 0x696 <simpleserial_get+0x48>
 		return;
 
 	// If flag CMD_FLAG_LEN is set, the next byte indicates the sent length
 	if ((commands[cmd].flags & CMD_FLAG_LEN) != 0)
 	{
 		uint8_t l = 0;
- 6c2:	cf 57       	subi	r28, 0x7F	; 127
- 6c4:	de 4f       	sbci	r29, 0xFE	; 254
- 6c6:	18 82       	st	Y, r1
- 6c8:	c1 58       	subi	r28, 0x81	; 129
- 6ca:	d1 40       	sbci	r29, 0x01	; 1
+ 6cc:	cf 57       	subi	r28, 0x7F	; 127
+ 6ce:	de 4f       	sbci	r29, 0xFE	; 254
+ 6d0:	18 82       	st	Y, r1
+ 6d2:	c1 58       	subi	r28, 0x81	; 129
+ 6d4:	d1 40       	sbci	r29, 0x01	; 1
 		char buff[2];
 		buff[0] = getch();
- 6cc:	0e 94 1b 04 	call	0x836	; 0x836 <input_ch_0>
- 6d0:	89 83       	std	Y+1, r24	; 0x01
+ 6d6:	0e 94 20 04 	call	0x840	; 0x840 <input_ch_0>
+ 6da:	89 83       	std	Y+1, r24	; 0x01
 		buff[1] = getch();
- 6d2:	0e 94 1b 04 	call	0x836	; 0x836 <input_ch_0>
- 6d6:	8a 83       	std	Y+2, r24	; 0x02
+ 6dc:	0e 94 20 04 	call	0x840	; 0x840 <input_ch_0>
+ 6e0:	8a 83       	std	Y+2, r24	; 0x02
 		if (hex_decode(1, buff, &l))
- 6d8:	ae 01       	movw	r20, r28
- 6da:	4f 57       	subi	r20, 0x7F	; 127
- 6dc:	5e 4f       	sbci	r21, 0xFE	; 254
- 6de:	b7 01       	movw	r22, r14
- 6e0:	81 e0       	ldi	r24, 0x01	; 1
- 6e2:	90 e0       	ldi	r25, 0x00	; 0
- 6e4:	0e 94 18 02 	call	0x430	; 0x430 <hex_decode>
- 6e8:	89 2b       	or	r24, r25
- 6ea:	09 f0       	breq	.+2      	; 0x6ee <simpleserial_get+0xaa>
- 6ec:	5f c0       	rjmp	.+190    	; 0x7ac <simpleserial_get+0x168>
+ 6e2:	ae 01       	movw	r20, r28
+ 6e4:	4f 57       	subi	r20, 0x7F	; 127
+ 6e6:	5e 4f       	sbci	r21, 0xFE	; 254
+ 6e8:	b7 01       	movw	r22, r14
+ 6ea:	81 e0       	ldi	r24, 0x01	; 1
+ 6ec:	90 e0       	ldi	r25, 0x00	; 0
+ 6ee:	0e 94 1d 02 	call	0x43a	; 0x43a <hex_decode>
+ 6f2:	89 2b       	or	r24, r25
+ 6f4:	09 f0       	breq	.+2      	; 0x6f8 <simpleserial_get+0xaa>
+ 6f6:	5f c0       	rjmp	.+190    	; 0x7b6 <simpleserial_get+0x168>
 			return;
 		commands[cmd].len = l;
- 6ee:	cf 57       	subi	r28, 0x7F	; 127
- 6f0:	de 4f       	sbci	r29, 0xFE	; 254
- 6f2:	88 81       	ld	r24, Y
- 6f4:	c1 58       	subi	r28, 0x81	; 129
- 6f6:	d1 40       	sbci	r29, 0x01	; 1
- 6f8:	90 e0       	ldi	r25, 0x00	; 0
- 6fa:	d6 01       	movw	r26, r12
- 6fc:	11 96       	adiw	r26, 0x01	; 1
- 6fe:	8d 93       	st	X+, r24
- 700:	9c 93       	st	X, r25
- 702:	12 97       	sbiw	r26, 0x02	; 2
+ 6f8:	cf 57       	subi	r28, 0x7F	; 127
+ 6fa:	de 4f       	sbci	r29, 0xFE	; 254
+ 6fc:	88 81       	ld	r24, Y
+ 6fe:	c1 58       	subi	r28, 0x81	; 129
+ 700:	d1 40       	sbci	r29, 0x01	; 1
+ 702:	90 e0       	ldi	r25, 0x00	; 0
+ 704:	d6 01       	movw	r26, r12
+ 706:	11 96       	adiw	r26, 0x01	; 1
+ 708:	8d 93       	st	X+, r24
+ 70a:	9c 93       	st	X, r25
+ 70c:	12 97       	sbiw	r26, 0x02	; 2
 
 	// Find which command we're receiving
 	c = getch();
 
 	int cmd;
 	for(cmd = 0; cmd < num_commands; cmd++)
- 704:	67 01       	movw	r12, r14
+ 70e:	67 01       	movw	r12, r14
 			return;
 		commands[cmd].len = l;
 	}
 
 	// Receive characters until we fill the ASCII buffer
 	for(int i = 0; i < 2*commands[cmd].len; i++)
- 706:	26 e0       	ldi	r18, 0x06	; 6
- 708:	20 9f       	mul	r18, r16
- 70a:	c0 01       	movw	r24, r0
- 70c:	21 9f       	mul	r18, r17
- 70e:	90 0d       	add	r25, r0
- 710:	11 24       	eor	r1, r1
- 712:	fc 01       	movw	r30, r24
- 714:	ef 5d       	subi	r30, 0xDF	; 223
- 716:	ff 4d       	sbci	r31, 0xDF	; 223
- 718:	5f 01       	movw	r10, r30
- 71a:	f5 01       	movw	r30, r10
- 71c:	80 81       	ld	r24, Z
- 71e:	91 81       	ldd	r25, Z+1	; 0x01
- 720:	88 0f       	add	r24, r24
- 722:	99 1f       	adc	r25, r25
- 724:	96 01       	movw	r18, r12
- 726:	2e 19       	sub	r18, r14
- 728:	3f 09       	sbc	r19, r15
- 72a:	28 17       	cp	r18, r24
- 72c:	39 07       	cpc	r19, r25
- 72e:	50 f4       	brcc	.+20     	; 0x744 <simpleserial_get+0x100>
+ 710:	26 e0       	ldi	r18, 0x06	; 6
+ 712:	20 9f       	mul	r18, r16
+ 714:	c0 01       	movw	r24, r0
+ 716:	21 9f       	mul	r18, r17
+ 718:	90 0d       	add	r25, r0
+ 71a:	11 24       	eor	r1, r1
+ 71c:	fc 01       	movw	r30, r24
+ 71e:	ef 5d       	subi	r30, 0xDF	; 223
+ 720:	ff 4d       	sbci	r31, 0xDF	; 223
+ 722:	5f 01       	movw	r10, r30
+ 724:	f5 01       	movw	r30, r10
+ 726:	80 81       	ld	r24, Z
+ 728:	91 81       	ldd	r25, Z+1	; 0x01
+ 72a:	88 0f       	add	r24, r24
+ 72c:	99 1f       	adc	r25, r25
+ 72e:	96 01       	movw	r18, r12
+ 730:	2e 19       	sub	r18, r14
+ 732:	3f 09       	sbc	r19, r15
+ 734:	28 17       	cp	r18, r24
+ 736:	39 07       	cpc	r19, r25
+ 738:	50 f4       	brcc	.+20     	; 0x74e <simpleserial_get+0x100>
 	{
 		c = getch();
- 730:	0e 94 1b 04 	call	0x836	; 0x836 <input_ch_0>
+ 73a:	0e 94 20 04 	call	0x840	; 0x840 <input_ch_0>
 
 		// Check for early \n
 		if(c == '\n' || c == '\r')
- 734:	8a 30       	cpi	r24, 0x0A	; 10
- 736:	d1 f1       	breq	.+116    	; 0x7ac <simpleserial_get+0x168>
- 738:	8d 30       	cpi	r24, 0x0D	; 13
- 73a:	c1 f1       	breq	.+112    	; 0x7ac <simpleserial_get+0x168>
+ 73e:	8a 30       	cpi	r24, 0x0A	; 10
+ 740:	d1 f1       	breq	.+116    	; 0x7b6 <simpleserial_get+0x168>
+ 742:	8d 30       	cpi	r24, 0x0D	; 13
+ 744:	c1 f1       	breq	.+112    	; 0x7b6 <simpleserial_get+0x168>
 			return;
 
 		ascii_buf[i] = c;
- 73c:	d6 01       	movw	r26, r12
- 73e:	8d 93       	st	X+, r24
- 740:	6d 01       	movw	r12, r26
- 742:	eb cf       	rjmp	.-42     	; 0x71a <simpleserial_get+0xd6>
+ 746:	d6 01       	movw	r26, r12
+ 748:	8d 93       	st	X+, r24
+ 74a:	6d 01       	movw	r12, r26
+ 74c:	eb cf       	rjmp	.-42     	; 0x724 <simpleserial_get+0xd6>
 	}
 
 	// Assert that last character is \n or \r
 	c = getch();
- 744:	0e 94 1b 04 	call	0x836	; 0x836 <input_ch_0>
+ 74e:	0e 94 20 04 	call	0x840	; 0x840 <input_ch_0>
 	if(c != '\n' && c != '\r')
- 748:	8a 30       	cpi	r24, 0x0A	; 10
- 74a:	11 f0       	breq	.+4      	; 0x750 <simpleserial_get+0x10c>
- 74c:	8d 30       	cpi	r24, 0x0D	; 13
- 74e:	71 f5       	brne	.+92     	; 0x7ac <simpleserial_get+0x168>
+ 752:	8a 30       	cpi	r24, 0x0A	; 10
+ 754:	11 f0       	breq	.+4      	; 0x75a <simpleserial_get+0x10c>
+ 756:	8d 30       	cpi	r24, 0x0D	; 13
+ 758:	71 f5       	brne	.+92     	; 0x7b6 <simpleserial_get+0x168>
 		return;
 
 	// ASCII buffer is full: convert to bytes
 	// Check for illegal characters here
 	if(hex_decode(commands[cmd].len, ascii_buf, data_buf))
- 750:	26 e0       	ldi	r18, 0x06	; 6
- 752:	20 9f       	mul	r18, r16
- 754:	c0 01       	movw	r24, r0
- 756:	21 9f       	mul	r18, r17
- 758:	90 0d       	add	r25, r0
- 75a:	11 24       	eor	r1, r1
- 75c:	8c 01       	movw	r16, r24
- 75e:	00 5e       	subi	r16, 0xE0	; 224
- 760:	1f 4d       	sbci	r17, 0xDF	; 223
- 762:	d8 01       	movw	r26, r16
- 764:	11 96       	adiw	r26, 0x01	; 1
- 766:	dc 90       	ld	r13, X
- 768:	11 97       	sbiw	r26, 0x01	; 1
- 76a:	ae 01       	movw	r20, r28
- 76c:	4f 57       	subi	r20, 0x7F	; 127
- 76e:	5e 4f       	sbci	r21, 0xFE	; 254
- 770:	b7 01       	movw	r22, r14
- 772:	8d 2d       	mov	r24, r13
- 774:	12 96       	adiw	r26, 0x02	; 2
- 776:	9c 91       	ld	r25, X
- 778:	0e 94 18 02 	call	0x430	; 0x430 <hex_decode>
- 77c:	89 2b       	or	r24, r25
- 77e:	b1 f4       	brne	.+44     	; 0x7ac <simpleserial_get+0x168>
+ 75a:	26 e0       	ldi	r18, 0x06	; 6
+ 75c:	20 9f       	mul	r18, r16
+ 75e:	c0 01       	movw	r24, r0
+ 760:	21 9f       	mul	r18, r17
+ 762:	90 0d       	add	r25, r0
+ 764:	11 24       	eor	r1, r1
+ 766:	8c 01       	movw	r16, r24
+ 768:	00 5e       	subi	r16, 0xE0	; 224
+ 76a:	1f 4d       	sbci	r17, 0xDF	; 223
+ 76c:	d8 01       	movw	r26, r16
+ 76e:	11 96       	adiw	r26, 0x01	; 1
+ 770:	dc 90       	ld	r13, X
+ 772:	11 97       	sbiw	r26, 0x01	; 1
+ 774:	ae 01       	movw	r20, r28
+ 776:	4f 57       	subi	r20, 0x7F	; 127
+ 778:	5e 4f       	sbci	r21, 0xFE	; 254
+ 77a:	b7 01       	movw	r22, r14
+ 77c:	8d 2d       	mov	r24, r13
+ 77e:	12 96       	adiw	r26, 0x02	; 2
+ 780:	9c 91       	ld	r25, X
+ 782:	0e 94 1d 02 	call	0x43a	; 0x43a <hex_decode>
+ 786:	89 2b       	or	r24, r25
+ 788:	b1 f4       	brne	.+44     	; 0x7b6 <simpleserial_get+0x168>
 		return;
 
 	// Callback
 	uint8_t ret[1];
 	ret[0] = commands[cmd].fp(data_buf, commands[cmd].len);
- 780:	d8 01       	movw	r26, r16
- 782:	13 96       	adiw	r26, 0x03	; 3
- 784:	ed 91       	ld	r30, X+
- 786:	fc 91       	ld	r31, X
- 788:	14 97       	sbiw	r26, 0x04	; 4
- 78a:	6d 2d       	mov	r22, r13
- 78c:	ce 01       	movw	r24, r28
- 78e:	8f 57       	subi	r24, 0x7F	; 127
- 790:	9e 4f       	sbci	r25, 0xFE	; 254
- 792:	19 95       	eicall
- 794:	cf 5b       	subi	r28, 0xBF	; 191
- 796:	dd 4f       	sbci	r29, 0xFD	; 253
- 798:	88 83       	st	Y, r24
- 79a:	c1 54       	subi	r28, 0x41	; 65
- 79c:	d2 40       	sbci	r29, 0x02	; 2
+ 78a:	d8 01       	movw	r26, r16
+ 78c:	13 96       	adiw	r26, 0x03	; 3
+ 78e:	ed 91       	ld	r30, X+
+ 790:	fc 91       	ld	r31, X
+ 792:	14 97       	sbiw	r26, 0x04	; 4
+ 794:	6d 2d       	mov	r22, r13
+ 796:	ce 01       	movw	r24, r28
+ 798:	8f 57       	subi	r24, 0x7F	; 127
+ 79a:	9e 4f       	sbci	r25, 0xFE	; 254
+ 79c:	19 95       	eicall
+ 79e:	cf 5b       	subi	r28, 0xBF	; 191
+ 7a0:	dd 4f       	sbci	r29, 0xFD	; 253
+ 7a2:	88 83       	st	Y, r24
+ 7a4:	c1 54       	subi	r28, 0x41	; 65
+ 7a6:	d2 40       	sbci	r29, 0x02	; 2
 
 	// Acknowledge (if version is 1.1)
 #if SS_VER == SS_VER_1_1
 	simpleserial_put('z', 1, ret);
- 79e:	ae 01       	movw	r20, r28
- 7a0:	4f 5b       	subi	r20, 0xBF	; 191
- 7a2:	5d 4f       	sbci	r21, 0xFD	; 253
- 7a4:	61 e0       	ldi	r22, 0x01	; 1
- 7a6:	8a e7       	ldi	r24, 0x7A	; 122
- 7a8:	0e 94 98 02 	call	0x530	; 0x530 <simpleserial_put>
+ 7a8:	ae 01       	movw	r20, r28
+ 7aa:	4f 5b       	subi	r20, 0xBF	; 191
+ 7ac:	5d 4f       	sbci	r21, 0xFD	; 253
+ 7ae:	61 e0       	ldi	r22, 0x01	; 1
+ 7b0:	8a e7       	ldi	r24, 0x7A	; 122
+ 7b2:	0e 94 9d 02 	call	0x53a	; 0x53a <simpleserial_put>
 #endif
 }
- 7ac:	cf 5b       	subi	r28, 0xBF	; 191
- 7ae:	dd 4f       	sbci	r29, 0xFD	; 253
- 7b0:	cd bf       	out	0x3d, r28	; 61
- 7b2:	de bf       	out	0x3e, r29	; 62
- 7b4:	df 91       	pop	r29
- 7b6:	cf 91       	pop	r28
- 7b8:	1f 91       	pop	r17
- 7ba:	0f 91       	pop	r16
- 7bc:	ff 90       	pop	r15
- 7be:	ef 90       	pop	r14
- 7c0:	df 90       	pop	r13
- 7c2:	cf 90       	pop	r12
- 7c4:	bf 90       	pop	r11
- 7c6:	af 90       	pop	r10
- 7c8:	08 95       	ret
+ 7b6:	cf 5b       	subi	r28, 0xBF	; 191
+ 7b8:	dd 4f       	sbci	r29, 0xFD	; 253
+ 7ba:	cd bf       	out	0x3d, r28	; 61
+ 7bc:	de bf       	out	0x3e, r29	; 62
+ 7be:	df 91       	pop	r29
+ 7c0:	cf 91       	pop	r28
+ 7c2:	1f 91       	pop	r17
+ 7c4:	0f 91       	pop	r16
+ 7c6:	ff 90       	pop	r15
+ 7c8:	ef 90       	pop	r14
+ 7ca:	df 90       	pop	r13
+ 7cc:	cf 90       	pop	r12
+ 7ce:	bf 90       	pop	r11
+ 7d0:	af 90       	pop	r10
+ 7d2:	08 95       	ret
 
-000007ca <init_uart0>:
+000007d4 <init_uart0>:
    )
    {
 /* This PORT setting is only valid to USARTC0 if other USARTs is used a
 	 * different PORT and/or pins is used. */
 	/* PIN3 (TXD0) as output. */
 	PORTC.DIRSET = PIN3_bm;
- 7ca:	e0 e4       	ldi	r30, 0x40	; 64
- 7cc:	f6 e0       	ldi	r31, 0x06	; 6
- 7ce:	88 e0       	ldi	r24, 0x08	; 8
- 7d0:	81 83       	std	Z+1, r24	; 0x01
+ 7d4:	e0 e4       	ldi	r30, 0x40	; 64
+ 7d6:	f6 e0       	ldi	r31, 0x06	; 6
+ 7d8:	88 e0       	ldi	r24, 0x08	; 8
+ 7da:	81 83       	std	Z+1, r24	; 0x01
 
 	/* PC2 (RXD0) as input. */
 	PORTC.DIRCLR = PIN2_bm;
- 7d2:	84 e0       	ldi	r24, 0x04	; 4
- 7d4:	82 83       	std	Z+2, r24	; 0x02
+ 7dc:	84 e0       	ldi	r24, 0x04	; 4
+ 7de:	82 83       	std	Z+2, r24	; 0x02
 
 	/* USARTC0, 8 Data bits, No Parity, 1 Stop bit. */
 	USART_Format_Set(&USART, USART_CHSIZE_8BIT_gc, USART_PMODE_DISABLED_gc, false);
- 7d6:	e0 ea       	ldi	r30, 0xA0	; 160
- 7d8:	f8 e0       	ldi	r31, 0x08	; 8
- 7da:	83 e0       	ldi	r24, 0x03	; 3
- 7dc:	85 83       	std	Z+5, r24	; 0x05
+ 7e0:	e0 ea       	ldi	r30, 0xA0	; 160
+ 7e2:	f8 e0       	ldi	r31, 0x08	; 8
+ 7e4:	83 e0       	ldi	r24, 0x03	; 3
+ 7e6:	85 83       	std	Z+5, r24	; 0x05
 	 *                 = 12
 	 */
 	#if SS_VER==SS_VER_2_0
 	USART_Baudrate_Set(&USART, 1, 0);
 	#else
 	USART_Baudrate_Set(&USART, 11, 0);
- 7de:	8b e0       	ldi	r24, 0x0B	; 11
- 7e0:	86 83       	std	Z+6, r24	; 0x06
- 7e2:	17 82       	std	Z+7, r1	; 0x07
+ 7e8:	8b e0       	ldi	r24, 0x0B	; 11
+ 7ea:	86 83       	std	Z+6, r24	; 0x06
+ 7ec:	17 82       	std	Z+7, r1	; 0x07
 	#endif
 
 	/* Enable both RX and TX. */
 	USART_Rx_Enable(&USART);
- 7e4:	84 81       	ldd	r24, Z+4	; 0x04
- 7e6:	80 61       	ori	r24, 0x10	; 16
- 7e8:	84 83       	std	Z+4, r24	; 0x04
+ 7ee:	84 81       	ldd	r24, Z+4	; 0x04
+ 7f0:	80 61       	ori	r24, 0x10	; 16
+ 7f2:	84 83       	std	Z+4, r24	; 0x04
 	USART_Tx_Enable(&USART);
- 7ea:	84 81       	ldd	r24, Z+4	; 0x04
- 7ec:	88 60       	ori	r24, 0x08	; 8
- 7ee:	84 83       	std	Z+4, r24	; 0x04
- 7f0:	08 95       	ret
+ 7f4:	84 81       	ldd	r24, Z+4	; 0x04
+ 7f6:	88 60       	ori	r24, 0x08	; 8
+ 7f8:	84 83       	std	Z+4, r24	; 0x04
+ 7fa:	08 95       	ret
 
-000007f2 <input_ch_w_timeout_0>:
+000007fc <input_ch_w_timeout_0>:
 unsigned char									input_ch_w_timeout_0
 	(
    char *					 	data,
    volatile unsigned int				timeout
    )
    {
- 7f2:	cf 93       	push	r28
- 7f4:	df 93       	push	r29
- 7f6:	1f 92       	push	r1
- 7f8:	1f 92       	push	r1
- 7fa:	cd b7       	in	r28, 0x3d	; 61
- 7fc:	de b7       	in	r29, 0x3e	; 62
- 7fe:	69 83       	std	Y+1, r22	; 0x01
- 800:	7a 83       	std	Y+2, r23	; 0x02
+ 7fc:	cf 93       	push	r28
+ 7fe:	df 93       	push	r29
+ 800:	1f 92       	push	r1
+ 802:	1f 92       	push	r1
+ 804:	cd b7       	in	r28, 0x3d	; 61
+ 806:	de b7       	in	r29, 0x3e	; 62
+ 808:	69 83       	std	Y+1, r22	; 0x01
+ 80a:	7a 83       	std	Y+2, r23	; 0x02
    unsigned int				timeout_counter = 0;
- 802:	20 e0       	ldi	r18, 0x00	; 0
- 804:	30 e0       	ldi	r19, 0x00	; 0
+ 80c:	20 e0       	ldi	r18, 0x00	; 0
+ 80e:	30 e0       	ldi	r19, 0x00	; 0
 
    
    //check if a byte has been recieved or if the timeout has been excedded
    while (timeout_counter != timeout)
- 806:	49 81       	ldd	r20, Y+1	; 0x01
- 808:	5a 81       	ldd	r21, Y+2	; 0x02
- 80a:	24 17       	cp	r18, r20
- 80c:	35 07       	cpc	r19, r21
- 80e:	69 f0       	breq	.+26     	; 0x82a <input_ch_w_timeout_0+0x38>
+ 810:	49 81       	ldd	r20, Y+1	; 0x01
+ 812:	5a 81       	ldd	r21, Y+2	; 0x02
+ 814:	24 17       	cp	r18, r20
+ 816:	35 07       	cpc	r19, r21
+ 818:	69 f0       	breq	.+26     	; 0x834 <input_ch_w_timeout_0+0x38>
 		{	
 		if (USART_IsRXComplete(&USART))
- 810:	40 91 a1 08 	lds	r20, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
- 814:	47 ff       	sbrs	r20, 7
- 816:	06 c0       	rjmp	.+12     	; 0x824 <input_ch_w_timeout_0+0x32>
+ 81a:	40 91 a1 08 	lds	r20, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
+ 81e:	47 ff       	sbrs	r20, 7
+ 820:	06 c0       	rjmp	.+12     	; 0x82e <input_ch_w_timeout_0+0x32>
 			{
 			*data = USART_GetChar(&USART);
- 818:	20 91 a0 08 	lds	r18, 0x08A0	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
- 81c:	fc 01       	movw	r30, r24
- 81e:	20 83       	st	Z, r18
+ 822:	20 91 a0 08 	lds	r18, 0x08A0	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
+ 826:	fc 01       	movw	r30, r24
+ 828:	20 83       	st	Z, r18
 			return BYTE_REC;
- 820:	81 e0       	ldi	r24, 0x01	; 1
- 822:	04 c0       	rjmp	.+8      	; 0x82c <input_ch_w_timeout_0+0x3a>
+ 82a:	81 e0       	ldi	r24, 0x01	; 1
+ 82c:	04 c0       	rjmp	.+8      	; 0x836 <input_ch_w_timeout_0+0x3a>
 			}
 		timeout_counter++;
- 824:	2f 5f       	subi	r18, 0xFF	; 255
- 826:	3f 4f       	sbci	r19, 0xFF	; 255
- 828:	ee cf       	rjmp	.-36     	; 0x806 <input_ch_w_timeout_0+0x14>
+ 82e:	2f 5f       	subi	r18, 0xFF	; 255
+ 830:	3f 4f       	sbci	r19, 0xFF	; 255
+ 832:	ee cf       	rjmp	.-36     	; 0x810 <input_ch_w_timeout_0+0x14>
 		}
 		
 	return TIMEOUT;
- 82a:	80 e0       	ldi	r24, 0x00	; 0
+ 834:	80 e0       	ldi	r24, 0x00	; 0
 	}
- 82c:	0f 90       	pop	r0
- 82e:	0f 90       	pop	r0
- 830:	df 91       	pop	r29
- 832:	cf 91       	pop	r28
- 834:	08 95       	ret
+ 836:	0f 90       	pop	r0
+ 838:	0f 90       	pop	r0
+ 83a:	df 91       	pop	r29
+ 83c:	cf 91       	pop	r28
+ 83e:	08 95       	ret
 
-00000836 <input_ch_0>:
+00000840 <input_ch_0>:
 	(
    void
    )
    {
    //check if a byte has been recieved or if the timeout has been excedded
    while (!USART_IsRXComplete(&USART))
- 836:	80 91 a1 08 	lds	r24, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
- 83a:	87 ff       	sbrs	r24, 7
- 83c:	fc cf       	rjmp	.-8      	; 0x836 <input_ch_0>
+ 840:	80 91 a1 08 	lds	r24, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
+ 844:	87 ff       	sbrs	r24, 7
+ 846:	fc cf       	rjmp	.-8      	; 0x840 <input_ch_0>
 		{
 		continue;		
 		}		
 	return USART_GetChar(&USART);;
- 83e:	80 91 a0 08 	lds	r24, 0x08A0	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
+ 848:	80 91 a0 08 	lds	r24, 0x08A0	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
 	}
- 842:	08 95       	ret
+ 84c:	08 95       	ret
 
-00000844 <output_ch_0>:
+0000084e <output_ch_0>:
 void												output_ch_0
 	(
 	char							data
 	)
 	{
 	while(!USART_IsTXDataRegisterEmpty(&USART));
- 844:	90 91 a1 08 	lds	r25, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
- 848:	95 ff       	sbrs	r25, 5
- 84a:	fc cf       	rjmp	.-8      	; 0x844 <output_ch_0>
+ 84e:	90 91 a1 08 	lds	r25, 0x08A1	; 0x8008a1 <__TEXT_REGION_LENGTH__+0x7008a1>
+ 852:	95 ff       	sbrs	r25, 5
+ 854:	fc cf       	rjmp	.-8      	; 0x84e <output_ch_0>
 	USART_PutChar(&USART, data);
- 84c:	80 93 a0 08 	sts	0x08A0, r24	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
- 850:	08 95       	ret
+ 856:	80 93 a0 08 	sts	0x08A0, r24	; 0x8008a0 <__TEXT_REGION_LENGTH__+0x7008a0>
+ 85a:	08 95       	ret
 
-00000852 <USART_InterruptDriver_Initialize>:
+0000085c <USART_InterruptDriver_Initialize>:
  *  \param dreIntLevel          Data register empty interrupt level.
  */
 void USART_InterruptDriver_Initialize(USART_data_t * usart_data,
                                       USART_t * usart,
                                       USART_DREINTLVL_t dreIntLevel)
 {
- 852:	fc 01       	movw	r30, r24
+ 85c:	fc 01       	movw	r30, r24
 	usart_data->usart = usart;
- 854:	60 83       	st	Z, r22
- 856:	71 83       	std	Z+1, r23	; 0x01
+ 85e:	60 83       	st	Z, r22
+ 860:	71 83       	std	Z+1, r23	; 0x01
 	usart_data->dreIntLevel = dreIntLevel;
- 858:	42 83       	std	Z+2, r20	; 0x02
+ 862:	42 83       	std	Z+2, r20	; 0x02
 
 	usart_data->buffer.RX_Tail = 0;
- 85a:	14 86       	std	Z+12, r1	; 0x0c
+ 864:	14 86       	std	Z+12, r1	; 0x0c
 	usart_data->buffer.RX_Head = 0;
- 85c:	13 86       	std	Z+11, r1	; 0x0b
+ 866:	13 86       	std	Z+11, r1	; 0x0b
 	usart_data->buffer.TX_Tail = 0;
- 85e:	16 86       	std	Z+14, r1	; 0x0e
+ 868:	16 86       	std	Z+14, r1	; 0x0e
 	usart_data->buffer.TX_Head = 0;
- 860:	15 86       	std	Z+13, r1	; 0x0d
- 862:	08 95       	ret
+ 86a:	15 86       	std	Z+13, r1	; 0x0d
+ 86c:	08 95       	ret
 
-00000864 <USART_InterruptDriver_DreInterruptLevel_Set>:
+0000086e <USART_InterruptDriver_DreInterruptLevel_Set>:
  *  \param dreIntLevel        Interrupt level of the DRE interrupt.
  */
 void USART_InterruptDriver_DreInterruptLevel_Set(USART_data_t * usart_data,
                                                  USART_DREINTLVL_t dreIntLevel)
 {
 	usart_data->dreIntLevel = dreIntLevel;
- 864:	fc 01       	movw	r30, r24
- 866:	62 83       	std	Z+2, r22	; 0x02
- 868:	08 95       	ret
+ 86e:	fc 01       	movw	r30, r24
+ 870:	62 83       	std	Z+2, r22	; 0x02
+ 872:	08 95       	ret
 
-0000086a <USART_TXBuffer_FreeSpace>:
+00000874 <USART_TXBuffer_FreeSpace>:
  *
  *  \retval true      There is data in the receive buffer.
  *  \retval false     The receive buffer is empty.
  */
 bool USART_TXBuffer_FreeSpace(USART_data_t * usart_data)
 {
- 86a:	fc 01       	movw	r30, r24
+ 874:	fc 01       	movw	r30, r24
 	/* Make copies to make sure that volatile access is specified. */
 	uint8_t tempHead = (usart_data->buffer.TX_Head + 1) & USART_TX_BUFFER_MASK;
- 86c:	95 85       	ldd	r25, Z+13	; 0x0d
+ 876:	95 85       	ldd	r25, Z+13	; 0x0d
 	uint8_t tempTail = usart_data->buffer.TX_Tail;
- 86e:	26 85       	ldd	r18, Z+14	; 0x0e
+ 878:	26 85       	ldd	r18, Z+14	; 0x0e
 
 	/* There are data left in the buffer unless Head and Tail are equal. */
 	return (tempHead != tempTail);
- 870:	9f 5f       	subi	r25, 0xFF	; 255
- 872:	93 70       	andi	r25, 0x03	; 3
- 874:	81 e0       	ldi	r24, 0x01	; 1
- 876:	92 13       	cpse	r25, r18
- 878:	01 c0       	rjmp	.+2      	; 0x87c <USART_TXBuffer_FreeSpace+0x12>
- 87a:	80 e0       	ldi	r24, 0x00	; 0
+ 87a:	9f 5f       	subi	r25, 0xFF	; 255
+ 87c:	93 70       	andi	r25, 0x03	; 3
+ 87e:	81 e0       	ldi	r24, 0x01	; 1
+ 880:	92 13       	cpse	r25, r18
+ 882:	01 c0       	rjmp	.+2      	; 0x886 <USART_TXBuffer_FreeSpace+0x12>
+ 884:	80 e0       	ldi	r24, 0x00	; 0
 }
- 87c:	08 95       	ret
+ 886:	08 95       	ret
 
-0000087e <USART_TXBuffer_PutByte>:
+00000888 <USART_TXBuffer_PutByte>:
  *
  *  \param usart_data The USART_data_t struct instance.
  *  \param data       The data to send.
  */
 bool USART_TXBuffer_PutByte(USART_data_t * usart_data, uint8_t data)
 {
- 87e:	1f 93       	push	r17
- 880:	cf 93       	push	r28
- 882:	df 93       	push	r29
- 884:	ec 01       	movw	r28, r24
- 886:	16 2f       	mov	r17, r22
+ 888:	1f 93       	push	r17
+ 88a:	cf 93       	push	r28
+ 88c:	df 93       	push	r29
+ 88e:	ec 01       	movw	r28, r24
+ 890:	16 2f       	mov	r17, r22
 	uint8_t tempTX_Head;
 	bool TXBuffer_FreeSpace;
 	USART_Buffer_t * TXbufPtr;
 
 	TXbufPtr = &usart_data->buffer;
 	TXBuffer_FreeSpace = USART_TXBuffer_FreeSpace(usart_data);
- 888:	0e 94 35 04 	call	0x86a	; 0x86a <USART_TXBuffer_FreeSpace>
+ 892:	0e 94 3a 04 	call	0x874	; 0x874 <USART_TXBuffer_FreeSpace>
 
 
 	if(TXBuffer_FreeSpace)
- 88c:	88 23       	and	r24, r24
- 88e:	79 f0       	breq	.+30     	; 0x8ae <USART_TXBuffer_PutByte+0x30>
+ 896:	88 23       	and	r24, r24
+ 898:	79 f0       	breq	.+30     	; 0x8b8 <USART_TXBuffer_PutByte+0x30>
 	{
 	  	tempTX_Head = TXbufPtr->TX_Head;
- 890:	9d 85       	ldd	r25, Y+13	; 0x0d
+ 89a:	9d 85       	ldd	r25, Y+13	; 0x0d
 	  	TXbufPtr->TX[tempTX_Head]= data;
- 892:	fe 01       	movw	r30, r28
- 894:	e9 0f       	add	r30, r25
- 896:	f1 1d       	adc	r31, r1
- 898:	17 83       	std	Z+7, r17	; 0x07
+ 89c:	fe 01       	movw	r30, r28
+ 89e:	e9 0f       	add	r30, r25
+ 8a0:	f1 1d       	adc	r31, r1
+ 8a2:	17 83       	std	Z+7, r17	; 0x07
 		/* Advance buffer head. */
 		TXbufPtr->TX_Head = (tempTX_Head + 1) & USART_TX_BUFFER_MASK;
- 89a:	9f 5f       	subi	r25, 0xFF	; 255
- 89c:	93 70       	andi	r25, 0x03	; 3
- 89e:	9d 87       	std	Y+13, r25	; 0x0d
+ 8a4:	9f 5f       	subi	r25, 0xFF	; 255
+ 8a6:	93 70       	andi	r25, 0x03	; 3
+ 8a8:	9d 87       	std	Y+13, r25	; 0x0d
 
 		/* Enable DRE interrupt. */
 		tempCTRLA = usart_data->usart->CTRLA;
- 8a0:	e8 81       	ld	r30, Y
- 8a2:	f9 81       	ldd	r31, Y+1	; 0x01
- 8a4:	93 81       	ldd	r25, Z+3	; 0x03
+ 8aa:	e8 81       	ld	r30, Y
+ 8ac:	f9 81       	ldd	r31, Y+1	; 0x01
+ 8ae:	93 81       	ldd	r25, Z+3	; 0x03
 		tempCTRLA = (tempCTRLA & ~USART_DREINTLVL_gm) | usart_data->dreIntLevel;
- 8a6:	9c 7f       	andi	r25, 0xFC	; 252
- 8a8:	2a 81       	ldd	r18, Y+2	; 0x02
- 8aa:	92 2b       	or	r25, r18
+ 8b0:	9c 7f       	andi	r25, 0xFC	; 252
+ 8b2:	2a 81       	ldd	r18, Y+2	; 0x02
+ 8b4:	92 2b       	or	r25, r18
 		usart_data->usart->CTRLA = tempCTRLA;
- 8ac:	93 83       	std	Z+3, r25	; 0x03
+ 8b6:	93 83       	std	Z+3, r25	; 0x03
 	}
 	return TXBuffer_FreeSpace;
 }
- 8ae:	df 91       	pop	r29
- 8b0:	cf 91       	pop	r28
- 8b2:	1f 91       	pop	r17
- 8b4:	08 95       	ret
+ 8b8:	df 91       	pop	r29
+ 8ba:	cf 91       	pop	r28
+ 8bc:	1f 91       	pop	r17
+ 8be:	08 95       	ret
 
-000008b6 <USART_RXBufferData_Available>:
+000008c0 <USART_RXBufferData_Available>:
  *  \retval false     The receive buffer is empty.
  */
 bool USART_RXBufferData_Available(USART_data_t * usart_data)
 {
 	/* Make copies to make sure that volatile access is specified. */
 	uint8_t tempHead = usart_data->buffer.RX_Head;
- 8b6:	fc 01       	movw	r30, r24
- 8b8:	23 85       	ldd	r18, Z+11	; 0x0b
+ 8c0:	fc 01       	movw	r30, r24
+ 8c2:	23 85       	ldd	r18, Z+11	; 0x0b
 	uint8_t tempTail = usart_data->buffer.RX_Tail;
- 8ba:	94 85       	ldd	r25, Z+12	; 0x0c
+ 8c4:	94 85       	ldd	r25, Z+12	; 0x0c
 
 	/* There are data left in the buffer unless Head and Tail are equal. */
 	return (tempHead != tempTail);
- 8bc:	81 e0       	ldi	r24, 0x01	; 1
- 8be:	29 13       	cpse	r18, r25
- 8c0:	01 c0       	rjmp	.+2      	; 0x8c4 <USART_RXBufferData_Available+0xe>
- 8c2:	80 e0       	ldi	r24, 0x00	; 0
+ 8c6:	81 e0       	ldi	r24, 0x01	; 1
+ 8c8:	29 13       	cpse	r18, r25
+ 8ca:	01 c0       	rjmp	.+2      	; 0x8ce <USART_RXBufferData_Available+0xe>
+ 8cc:	80 e0       	ldi	r24, 0x00	; 0
 }
- 8c4:	08 95       	ret
+ 8ce:	08 95       	ret
 
-000008c6 <USART_RXBuffer_GetByte>:
+000008d0 <USART_RXBuffer_GetByte>:
  *  \param usart_data       The USART_data_t struct instance.
  *
  *  \return         Received data.
  */
 uint8_t USART_RXBuffer_GetByte(USART_data_t * usart_data)
 {
- 8c6:	fc 01       	movw	r30, r24
+ 8d0:	fc 01       	movw	r30, r24
 	USART_Buffer_t * bufPtr;
 	uint8_t ans;
 
 	bufPtr = &usart_data->buffer;
 	ans = (bufPtr->RX[bufPtr->RX_Tail]);
- 8c8:	84 85       	ldd	r24, Z+12	; 0x0c
- 8ca:	df 01       	movw	r26, r30
- 8cc:	a8 0f       	add	r26, r24
- 8ce:	b1 1d       	adc	r27, r1
- 8d0:	13 96       	adiw	r26, 0x03	; 3
- 8d2:	8c 91       	ld	r24, X
+ 8d2:	84 85       	ldd	r24, Z+12	; 0x0c
+ 8d4:	df 01       	movw	r26, r30
+ 8d6:	a8 0f       	add	r26, r24
+ 8d8:	b1 1d       	adc	r27, r1
+ 8da:	13 96       	adiw	r26, 0x03	; 3
+ 8dc:	8c 91       	ld	r24, X
 
 	/* Advance buffer tail. */
 	bufPtr->RX_Tail = (bufPtr->RX_Tail + 1) & USART_RX_BUFFER_MASK;
- 8d4:	94 85       	ldd	r25, Z+12	; 0x0c
- 8d6:	9f 5f       	subi	r25, 0xFF	; 255
- 8d8:	93 70       	andi	r25, 0x03	; 3
- 8da:	94 87       	std	Z+12, r25	; 0x0c
+ 8de:	94 85       	ldd	r25, Z+12	; 0x0c
+ 8e0:	9f 5f       	subi	r25, 0xFF	; 255
+ 8e2:	93 70       	andi	r25, 0x03	; 3
+ 8e4:	94 87       	std	Z+12, r25	; 0x0c
 
 	return ans;
 }
- 8dc:	08 95       	ret
+ 8e6:	08 95       	ret
 
-000008de <USART_RXComplete>:
+000008e8 <USART_RXComplete>:
  *  Stores received data in RX software buffer.
  *
  *  \param usart_data      The USART_data_t struct instance.
  */
 bool USART_RXComplete(USART_data_t * usart_data)
 {
- 8de:	fc 01       	movw	r30, r24
+ 8e8:	fc 01       	movw	r30, r24
 	USART_Buffer_t * bufPtr;
 	bool ans;
 
 	bufPtr = &usart_data->buffer;
 	/* Advance buffer head. */
 	uint8_t tempRX_Head = (bufPtr->RX_Head + 1) & USART_RX_BUFFER_MASK;
- 8e0:	83 85       	ldd	r24, Z+11	; 0x0b
- 8e2:	8f 5f       	subi	r24, 0xFF	; 255
- 8e4:	83 70       	andi	r24, 0x03	; 3
+ 8ea:	83 85       	ldd	r24, Z+11	; 0x0b
+ 8ec:	8f 5f       	subi	r24, 0xFF	; 255
+ 8ee:	83 70       	andi	r24, 0x03	; 3
 
 	/* Check for overflow. */
 	uint8_t tempRX_Tail = bufPtr->RX_Tail;
- 8e6:	24 85       	ldd	r18, Z+12	; 0x0c
+ 8f0:	24 85       	ldd	r18, Z+12	; 0x0c
 	uint8_t data = usart_data->usart->DATA;
- 8e8:	a0 81       	ld	r26, Z
- 8ea:	b1 81       	ldd	r27, Z+1	; 0x01
- 8ec:	9c 91       	ld	r25, X
+ 8f2:	a0 81       	ld	r26, Z
+ 8f4:	b1 81       	ldd	r27, Z+1	; 0x01
+ 8f6:	9c 91       	ld	r25, X
 
 	if (tempRX_Head == tempRX_Tail) {
- 8ee:	82 17       	cp	r24, r18
- 8f0:	49 f0       	breq	.+18     	; 0x904 <USART_RXComplete+0x26>
+ 8f8:	82 17       	cp	r24, r18
+ 8fa:	49 f0       	breq	.+18     	; 0x90e <USART_RXComplete+0x26>
 	  	ans = false;
 	}else{
 		ans = true;
 		usart_data->buffer.RX[usart_data->buffer.RX_Head] = data;
- 8f2:	23 85       	ldd	r18, Z+11	; 0x0b
- 8f4:	df 01       	movw	r26, r30
- 8f6:	a2 0f       	add	r26, r18
- 8f8:	b1 1d       	adc	r27, r1
- 8fa:	13 96       	adiw	r26, 0x03	; 3
- 8fc:	9c 93       	st	X, r25
+ 8fc:	23 85       	ldd	r18, Z+11	; 0x0b
+ 8fe:	df 01       	movw	r26, r30
+ 900:	a2 0f       	add	r26, r18
+ 902:	b1 1d       	adc	r27, r1
+ 904:	13 96       	adiw	r26, 0x03	; 3
+ 906:	9c 93       	st	X, r25
 		usart_data->buffer.RX_Head = tempRX_Head;
- 8fe:	83 87       	std	Z+11, r24	; 0x0b
+ 908:	83 87       	std	Z+11, r24	; 0x0b
 	uint8_t data = usart_data->usart->DATA;
 
 	if (tempRX_Head == tempRX_Tail) {
 	  	ans = false;
 	}else{
 		ans = true;
- 900:	81 e0       	ldi	r24, 0x01	; 1
- 902:	08 95       	ret
+ 90a:	81 e0       	ldi	r24, 0x01	; 1
+ 90c:	08 95       	ret
 	/* Check for overflow. */
 	uint8_t tempRX_Tail = bufPtr->RX_Tail;
 	uint8_t data = usart_data->usart->DATA;
 
 	if (tempRX_Head == tempRX_Tail) {
 	  	ans = false;
- 904:	80 e0       	ldi	r24, 0x00	; 0
+ 90e:	80 e0       	ldi	r24, 0x00	; 0
 		ans = true;
 		usart_data->buffer.RX[usart_data->buffer.RX_Head] = data;
 		usart_data->buffer.RX_Head = tempRX_Head;
 	}
 	return ans;
 }
- 906:	08 95       	ret
+ 910:	08 95       	ret
 
-00000908 <USART_DataRegEmpty>:
+00000912 <USART_DataRegEmpty>:
  *  is empty. Argument is pointer to USART (USART_data_t).
  *
  *  \param usart_data      The USART_data_t struct instance.
  */
 void USART_DataRegEmpty(USART_data_t * usart_data)
 {
- 908:	cf 93       	push	r28
- 90a:	df 93       	push	r29
- 90c:	fc 01       	movw	r30, r24
+ 912:	cf 93       	push	r28
+ 914:	df 93       	push	r29
+ 916:	fc 01       	movw	r30, r24
 	USART_Buffer_t * bufPtr;
 	bufPtr = &usart_data->buffer;
 
 	/* Check if all data is transmitted. */
 	uint8_t tempTX_Tail = usart_data->buffer.TX_Tail;
- 90e:	96 85       	ldd	r25, Z+14	; 0x0e
+ 918:	96 85       	ldd	r25, Z+14	; 0x0e
 	if (bufPtr->TX_Head == tempTX_Tail){
- 910:	85 85       	ldd	r24, Z+13	; 0x0d
- 912:	a0 81       	ld	r26, Z
- 914:	b1 81       	ldd	r27, Z+1	; 0x01
- 916:	98 13       	cpse	r25, r24
- 918:	07 c0       	rjmp	.+14     	; 0x928 <USART_DataRegEmpty+0x20>
+ 91a:	85 85       	ldd	r24, Z+13	; 0x0d
+ 91c:	a0 81       	ld	r26, Z
+ 91e:	b1 81       	ldd	r27, Z+1	; 0x01
+ 920:	98 13       	cpse	r25, r24
+ 922:	07 c0       	rjmp	.+14     	; 0x932 <USART_DataRegEmpty+0x20>
 	    /* Disable DRE interrupts. */
 		uint8_t tempCTRLA = usart_data->usart->CTRLA;
- 91a:	13 96       	adiw	r26, 0x03	; 3
- 91c:	8c 91       	ld	r24, X
- 91e:	13 97       	sbiw	r26, 0x03	; 3
+ 924:	13 96       	adiw	r26, 0x03	; 3
+ 926:	8c 91       	ld	r24, X
+ 928:	13 97       	sbiw	r26, 0x03	; 3
 		tempCTRLA = (tempCTRLA & ~USART_DREINTLVL_gm) | USART_DREINTLVL_OFF_gc;
- 920:	8c 7f       	andi	r24, 0xFC	; 252
+ 92a:	8c 7f       	andi	r24, 0xFC	; 252
 		usart_data->usart->CTRLA = tempCTRLA;
- 922:	13 96       	adiw	r26, 0x03	; 3
- 924:	8c 93       	st	X, r24
- 926:	0a c0       	rjmp	.+20     	; 0x93c <USART_DataRegEmpty+0x34>
+ 92c:	13 96       	adiw	r26, 0x03	; 3
+ 92e:	8c 93       	st	X, r24
+ 930:	0a c0       	rjmp	.+20     	; 0x946 <USART_DataRegEmpty+0x34>
 
 	}else{
 		/* Start transmitting. */
 		uint8_t data = bufPtr->TX[usart_data->buffer.TX_Tail];
- 928:	86 85       	ldd	r24, Z+14	; 0x0e
- 92a:	ef 01       	movw	r28, r30
- 92c:	c8 0f       	add	r28, r24
- 92e:	d1 1d       	adc	r29, r1
- 930:	8f 81       	ldd	r24, Y+7	; 0x07
+ 932:	86 85       	ldd	r24, Z+14	; 0x0e
+ 934:	ef 01       	movw	r28, r30
+ 936:	c8 0f       	add	r28, r24
+ 938:	d1 1d       	adc	r29, r1
+ 93a:	8f 81       	ldd	r24, Y+7	; 0x07
 		usart_data->usart->DATA = data;
- 932:	8c 93       	st	X, r24
+ 93c:	8c 93       	st	X, r24
 
 		/* Advance buffer tail. */
 		bufPtr->TX_Tail = (bufPtr->TX_Tail + 1) & USART_TX_BUFFER_MASK;
- 934:	86 85       	ldd	r24, Z+14	; 0x0e
- 936:	8f 5f       	subi	r24, 0xFF	; 255
- 938:	83 70       	andi	r24, 0x03	; 3
- 93a:	86 87       	std	Z+14, r24	; 0x0e
+ 93e:	86 85       	ldd	r24, Z+14	; 0x0e
+ 940:	8f 5f       	subi	r24, 0xFF	; 255
+ 942:	83 70       	andi	r24, 0x03	; 3
+ 944:	86 87       	std	Z+14, r24	; 0x0e
 	}
 }
- 93c:	df 91       	pop	r29
- 93e:	cf 91       	pop	r28
- 940:	08 95       	ret
+ 946:	df 91       	pop	r29
+ 948:	cf 91       	pop	r28
+ 94a:	08 95       	ret
 
-00000942 <USART_NineBits_PutChar>:
+0000094c <USART_NineBits_PutChar>:
  *
  *  \param usart      The USART module.
  *  \param data       The data to send.
  */
 void USART_NineBits_PutChar(USART_t * usart, uint16_t data)
 {
- 942:	fc 01       	movw	r30, r24
+ 94c:	fc 01       	movw	r30, r24
 	if(data & 0x0100) {
 		usart->CTRLB |= USART_TXB8_bm;
- 944:	84 81       	ldd	r24, Z+4	; 0x04
+ 94e:	84 81       	ldd	r24, Z+4	; 0x04
  *  \param usart      The USART module.
  *  \param data       The data to send.
  */
 void USART_NineBits_PutChar(USART_t * usart, uint16_t data)
 {
 	if(data & 0x0100) {
- 946:	70 ff       	sbrs	r23, 0
- 948:	02 c0       	rjmp	.+4      	; 0x94e <USART_NineBits_PutChar+0xc>
+ 950:	70 ff       	sbrs	r23, 0
+ 952:	02 c0       	rjmp	.+4      	; 0x958 <USART_NineBits_PutChar+0xc>
 		usart->CTRLB |= USART_TXB8_bm;
- 94a:	81 60       	ori	r24, 0x01	; 1
- 94c:	01 c0       	rjmp	.+2      	; 0x950 <USART_NineBits_PutChar+0xe>
+ 954:	81 60       	ori	r24, 0x01	; 1
+ 956:	01 c0       	rjmp	.+2      	; 0x95a <USART_NineBits_PutChar+0xe>
 	}else {
 		usart->CTRLB &= ~USART_TXB8_bm;
- 94e:	8e 7f       	andi	r24, 0xFE	; 254
- 950:	84 83       	std	Z+4, r24	; 0x04
+ 958:	8e 7f       	andi	r24, 0xFE	; 254
+ 95a:	84 83       	std	Z+4, r24	; 0x04
 	}
 
 	usart->DATA = (data & 0x00FF);
- 952:	60 83       	st	Z, r22
- 954:	08 95       	ret
+ 95c:	60 83       	st	Z, r22
+ 95e:	08 95       	ret
 
-00000956 <USART_NineBits_GetChar>:
+00000960 <USART_NineBits_GetChar>:
  *  \param usart      The USART module.
  *
  *  \retval           Received data.
  */
 uint16_t USART_NineBits_GetChar(USART_t * usart)
 {
- 956:	fc 01       	movw	r30, r24
+ 960:	fc 01       	movw	r30, r24
 	if(usart->CTRLB & USART_RXB8_bm) {
- 958:	84 81       	ldd	r24, Z+4	; 0x04
- 95a:	80 ff       	sbrs	r24, 0
- 95c:	04 c0       	rjmp	.+8      	; 0x966 <USART_NineBits_GetChar+0x10>
+ 962:	84 81       	ldd	r24, Z+4	; 0x04
+ 964:	80 ff       	sbrs	r24, 0
+ 966:	04 c0       	rjmp	.+8      	; 0x970 <USART_NineBits_GetChar+0x10>
 		return(0x0100 | usart->DATA);
- 95e:	80 81       	ld	r24, Z
- 960:	90 e0       	ldi	r25, 0x00	; 0
- 962:	91 60       	ori	r25, 0x01	; 1
- 964:	08 95       	ret
+ 968:	80 81       	ld	r24, Z
+ 96a:	90 e0       	ldi	r25, 0x00	; 0
+ 96c:	91 60       	ori	r25, 0x01	; 1
+ 96e:	08 95       	ret
 	}else {
 		return(usart->DATA);
- 966:	80 81       	ld	r24, Z
- 968:	90 e0       	ldi	r25, 0x00	; 0
+ 970:	80 81       	ld	r24, Z
+ 972:	90 e0       	ldi	r25, 0x00	; 0
 	}
 }
- 96a:	08 95       	ret
+ 974:	08 95       	ret
 
-0000096c <platform_init>:
+00000976 <platform_init>:
 #include "hal.h"
 #include "xmega_hal.h"
 
 void platform_init(void)
 {  
     OSC.XOSCCTRL = 0x00;
- 96c:	10 92 52 00 	sts	0x0052, r1	; 0x800052 <__TEXT_REGION_LENGTH__+0x700052>
+ 976:	10 92 52 00 	sts	0x0052, r1	; 0x800052 <__TEXT_REGION_LENGTH__+0x700052>
     OSC.PLLCTRL = 0x00;
- 970:	10 92 55 00 	sts	0x0055, r1	; 0x800055 <__TEXT_REGION_LENGTH__+0x700055>
+ 97a:	10 92 55 00 	sts	0x0055, r1	; 0x800055 <__TEXT_REGION_LENGTH__+0x700055>
     OSC.CTRL |= OSC_XOSCEN_bm;
- 974:	80 91 50 00 	lds	r24, 0x0050	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
- 978:	88 60       	ori	r24, 0x08	; 8
- 97a:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
+ 97e:	80 91 50 00 	lds	r24, 0x0050	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
+ 982:	88 60       	ori	r24, 0x08	; 8
+ 984:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
     
     //wait for clock
     while((OSC.STATUS & OSC_XOSCRDY_bm) == 0);
- 97e:	80 91 51 00 	lds	r24, 0x0051	; 0x800051 <__TEXT_REGION_LENGTH__+0x700051>
- 982:	83 ff       	sbrs	r24, 3
- 984:	fc cf       	rjmp	.-8      	; 0x97e <platform_init+0x12>
+ 988:	80 91 51 00 	lds	r24, 0x0051	; 0x800051 <__TEXT_REGION_LENGTH__+0x700051>
+ 98c:	83 ff       	sbrs	r24, 3
+ 98e:	fc cf       	rjmp	.-8      	; 0x988 <platform_init+0x12>
     
     //Switch clock source
     CCP = CCP_IOREG_gc;
- 986:	88 ed       	ldi	r24, 0xD8	; 216
- 988:	84 bf       	out	0x34, r24	; 52
+ 990:	88 ed       	ldi	r24, 0xD8	; 216
+ 992:	84 bf       	out	0x34, r24	; 52
     CLK.CTRL = CLK_SCLKSEL_XOSC_gc;    
- 98a:	83 e0       	ldi	r24, 0x03	; 3
- 98c:	80 93 40 00 	sts	0x0040, r24	; 0x800040 <__TEXT_REGION_LENGTH__+0x700040>
+ 994:	83 e0       	ldi	r24, 0x03	; 3
+ 996:	80 93 40 00 	sts	0x0040, r24	; 0x800040 <__TEXT_REGION_LENGTH__+0x700040>
     
     //Turn off other sources besides external    
     OSC.CTRL = OSC_XOSCEN_bm;
- 990:	88 e0       	ldi	r24, 0x08	; 8
- 992:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
- 996:	08 95       	ret
+ 99a:	88 e0       	ldi	r24, 0x08	; 8
+ 99c:	80 93 50 00 	sts	0x0050, r24	; 0x800050 <__TEXT_REGION_LENGTH__+0x700050>
+ 9a0:	08 95       	ret
 
-00000998 <aes_indep_init>:
+000009a2 <aes_indep_init>:
 #include "aes_keyschedule.h"
 
 aes128_ctx_t ctx;
 
 void aes_indep_init(void)
 {
- 998:	08 95       	ret
+ 9a2:	08 95       	ret
 
-0000099a <aes_indep_key>:
+000009a4 <aes_indep_key>:
 	;
 }
 
 void aes_indep_key(uint8_t * key)
 {
 	aes128_init(key, &ctx);
- 99a:	64 e8       	ldi	r22, 0x84	; 132
- 99c:	71 e2       	ldi	r23, 0x21	; 33
- 99e:	0c 94 de 06 	jmp	0xdbc	; 0xdbc <aes128_init>
+ 9a4:	64 e8       	ldi	r22, 0x84	; 132
+ 9a6:	71 e2       	ldi	r23, 0x21	; 33
+ 9a8:	0c 94 e3 06 	jmp	0xdc6	; 0xdc6 <aes128_init>
 
-000009a2 <aes_indep_enc>:
+000009ac <aes_indep_enc>:
 }
 
 void aes_indep_enc(uint8_t * pt,uint8_t * aes_sbox2,uint8_t * rmask)
 {
- 9a2:	9a 01       	movw	r18, r20
+ 9ac:	9a 01       	movw	r18, r20
 	aes128_enc(pt, &ctx,aes_sbox2,rmask); /* encrypting the data block */
- 9a4:	ab 01       	movw	r20, r22
- 9a6:	64 e8       	ldi	r22, 0x84	; 132
- 9a8:	71 e2       	ldi	r23, 0x21	; 33
- 9aa:	0c 94 ed 06 	jmp	0xdda	; 0xdda <aes128_enc>
+ 9ae:	ab 01       	movw	r20, r22
+ 9b0:	64 e8       	ldi	r22, 0x84	; 132
+ 9b2:	71 e2       	ldi	r23, 0x21	; 33
+ 9b4:	0c 94 f2 06 	jmp	0xde4	; 0xde4 <aes128_enc>
 
-000009ae <aes_indep_enc_pretrigger>:
- 9ae:	08 95       	ret
+000009b8 <aes_indep_enc_pretrigger>:
+ 9b8:	08 95       	ret
 
-000009b0 <aes_indep_enc_posttrigger>:
+000009ba <aes_indep_enc_posttrigger>:
 {
     ;
 }
 
 void aes_indep_enc_posttrigger(uint8_t * pt)
 {
- 9b0:	08 95       	ret
+ 9ba:	08 95       	ret
 
-000009b2 <aes_indep_mask>:
+000009bc <aes_indep_mask>:
     ;
 }
 
 void aes_indep_mask(uint8_t * m, uint8_t len)
 {
- 9b2:	08 95       	ret
+ 9bc:	08 95       	ret
 
-000009b4 <aes_shiftcol>:
+000009be <aes_shiftcol>:
 #include "aes_sbox.h"
 #include "aes_enc.h"
 #include <avr/pgmspace.h>
 #include "../../../simpleserial/simpleserial.h"
 
 void aes_shiftcol(void* data, uint8_t shift){
- 9b4:	cf 93       	push	r28
- 9b6:	df 93       	push	r29
- 9b8:	00 d0       	rcall	.+0      	; 0x9ba <aes_shiftcol+0x6>
- 9ba:	1f 92       	push	r1
- 9bc:	cd b7       	in	r28, 0x3d	; 61
- 9be:	de b7       	in	r29, 0x3e	; 62
- 9c0:	dc 01       	movw	r26, r24
+ 9be:	cf 93       	push	r28
+ 9c0:	df 93       	push	r29
+ 9c2:	00 d0       	rcall	.+0      	; 0x9c4 <aes_shiftcol+0x6>
+ 9c4:	1f 92       	push	r1
+ 9c6:	cd b7       	in	r28, 0x3d	; 61
+ 9c8:	de b7       	in	r29, 0x3e	; 62
+ 9ca:	dc 01       	movw	r26, r24
 	uint8_t tmp[4];
 	tmp[0] = ((uint8_t*)data)[ 0];
- 9c2:	8c 91       	ld	r24, X
- 9c4:	89 83       	std	Y+1, r24	; 0x01
+ 9cc:	8c 91       	ld	r24, X
+ 9ce:	89 83       	std	Y+1, r24	; 0x01
 	tmp[1] = ((uint8_t*)data)[ 4];
- 9c6:	14 96       	adiw	r26, 0x04	; 4
- 9c8:	8c 91       	ld	r24, X
- 9ca:	14 97       	sbiw	r26, 0x04	; 4
- 9cc:	8a 83       	std	Y+2, r24	; 0x02
+ 9d0:	14 96       	adiw	r26, 0x04	; 4
+ 9d2:	8c 91       	ld	r24, X
+ 9d4:	14 97       	sbiw	r26, 0x04	; 4
+ 9d6:	8a 83       	std	Y+2, r24	; 0x02
 	tmp[2] = ((uint8_t*)data)[ 8];
- 9ce:	18 96       	adiw	r26, 0x08	; 8
- 9d0:	8c 91       	ld	r24, X
- 9d2:	18 97       	sbiw	r26, 0x08	; 8
- 9d4:	8b 83       	std	Y+3, r24	; 0x03
+ 9d8:	18 96       	adiw	r26, 0x08	; 8
+ 9da:	8c 91       	ld	r24, X
+ 9dc:	18 97       	sbiw	r26, 0x08	; 8
+ 9de:	8b 83       	std	Y+3, r24	; 0x03
 	tmp[3] = ((uint8_t*)data)[12];
- 9d6:	1c 96       	adiw	r26, 0x0c	; 12
- 9d8:	8c 91       	ld	r24, X
- 9da:	1c 97       	sbiw	r26, 0x0c	; 12
- 9dc:	8c 83       	std	Y+4, r24	; 0x04
+ 9e0:	1c 96       	adiw	r26, 0x0c	; 12
+ 9e2:	8c 91       	ld	r24, X
+ 9e4:	1c 97       	sbiw	r26, 0x0c	; 12
+ 9e6:	8c 83       	std	Y+4, r24	; 0x04
 
 	((uint8_t*)data)[ 0] = tmp[(shift+0)&3];
- 9de:	86 2f       	mov	r24, r22
- 9e0:	83 70       	andi	r24, 0x03	; 3
- 9e2:	e1 e0       	ldi	r30, 0x01	; 1
- 9e4:	f0 e0       	ldi	r31, 0x00	; 0
- 9e6:	ec 0f       	add	r30, r28
- 9e8:	fd 1f       	adc	r31, r29
- 9ea:	e8 0f       	add	r30, r24
- 9ec:	f1 1d       	adc	r31, r1
- 9ee:	80 81       	ld	r24, Z
- 9f0:	8c 93       	st	X, r24
+ 9e8:	86 2f       	mov	r24, r22
+ 9ea:	83 70       	andi	r24, 0x03	; 3
+ 9ec:	e1 e0       	ldi	r30, 0x01	; 1
+ 9ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 9f0:	ec 0f       	add	r30, r28
+ 9f2:	fd 1f       	adc	r31, r29
+ 9f4:	e8 0f       	add	r30, r24
+ 9f6:	f1 1d       	adc	r31, r1
+ 9f8:	80 81       	ld	r24, Z
+ 9fa:	8c 93       	st	X, r24
 	((uint8_t*)data)[ 4] = tmp[(shift+1)&3];
- 9f2:	70 e0       	ldi	r23, 0x00	; 0
- 9f4:	fb 01       	movw	r30, r22
- 9f6:	31 96       	adiw	r30, 0x01	; 1
- 9f8:	e3 70       	andi	r30, 0x03	; 3
- 9fa:	ff 27       	eor	r31, r31
- 9fc:	81 e0       	ldi	r24, 0x01	; 1
- 9fe:	90 e0       	ldi	r25, 0x00	; 0
- a00:	8c 0f       	add	r24, r28
- a02:	9d 1f       	adc	r25, r29
- a04:	e8 0f       	add	r30, r24
- a06:	f9 1f       	adc	r31, r25
- a08:	80 81       	ld	r24, Z
- a0a:	14 96       	adiw	r26, 0x04	; 4
- a0c:	8c 93       	st	X, r24
- a0e:	14 97       	sbiw	r26, 0x04	; 4
+ 9fc:	70 e0       	ldi	r23, 0x00	; 0
+ 9fe:	fb 01       	movw	r30, r22
+ a00:	31 96       	adiw	r30, 0x01	; 1
+ a02:	e3 70       	andi	r30, 0x03	; 3
+ a04:	ff 27       	eor	r31, r31
+ a06:	81 e0       	ldi	r24, 0x01	; 1
+ a08:	90 e0       	ldi	r25, 0x00	; 0
+ a0a:	8c 0f       	add	r24, r28
+ a0c:	9d 1f       	adc	r25, r29
+ a0e:	e8 0f       	add	r30, r24
+ a10:	f9 1f       	adc	r31, r25
+ a12:	80 81       	ld	r24, Z
+ a14:	14 96       	adiw	r26, 0x04	; 4
+ a16:	8c 93       	st	X, r24
+ a18:	14 97       	sbiw	r26, 0x04	; 4
 	((uint8_t*)data)[ 8] = tmp[(shift+2)&3];
- a10:	fb 01       	movw	r30, r22
- a12:	32 96       	adiw	r30, 0x02	; 2
- a14:	e3 70       	andi	r30, 0x03	; 3
- a16:	ff 27       	eor	r31, r31
- a18:	81 e0       	ldi	r24, 0x01	; 1
- a1a:	90 e0       	ldi	r25, 0x00	; 0
- a1c:	8c 0f       	add	r24, r28
- a1e:	9d 1f       	adc	r25, r29
- a20:	e8 0f       	add	r30, r24
- a22:	f9 1f       	adc	r31, r25
- a24:	80 81       	ld	r24, Z
- a26:	18 96       	adiw	r26, 0x08	; 8
- a28:	8c 93       	st	X, r24
- a2a:	18 97       	sbiw	r26, 0x08	; 8
+ a1a:	fb 01       	movw	r30, r22
+ a1c:	32 96       	adiw	r30, 0x02	; 2
+ a1e:	e3 70       	andi	r30, 0x03	; 3
+ a20:	ff 27       	eor	r31, r31
+ a22:	81 e0       	ldi	r24, 0x01	; 1
+ a24:	90 e0       	ldi	r25, 0x00	; 0
+ a26:	8c 0f       	add	r24, r28
+ a28:	9d 1f       	adc	r25, r29
+ a2a:	e8 0f       	add	r30, r24
+ a2c:	f9 1f       	adc	r31, r25
+ a2e:	80 81       	ld	r24, Z
+ a30:	18 96       	adiw	r26, 0x08	; 8
+ a32:	8c 93       	st	X, r24
+ a34:	18 97       	sbiw	r26, 0x08	; 8
 	((uint8_t*)data)[12] = tmp[(shift+3)&3];
- a2c:	fb 01       	movw	r30, r22
- a2e:	33 96       	adiw	r30, 0x03	; 3
- a30:	e3 70       	andi	r30, 0x03	; 3
- a32:	ff 27       	eor	r31, r31
- a34:	81 e0       	ldi	r24, 0x01	; 1
- a36:	90 e0       	ldi	r25, 0x00	; 0
- a38:	8c 0f       	add	r24, r28
- a3a:	9d 1f       	adc	r25, r29
- a3c:	e8 0f       	add	r30, r24
- a3e:	f9 1f       	adc	r31, r25
- a40:	80 81       	ld	r24, Z
- a42:	1c 96       	adiw	r26, 0x0c	; 12
- a44:	8c 93       	st	X, r24
-
+ a36:	fb 01       	movw	r30, r22
+ a38:	33 96       	adiw	r30, 0x03	; 3
+ a3a:	e3 70       	andi	r30, 0x03	; 3
+ a3c:	ff 27       	eor	r31, r31
+ a3e:	81 e0       	ldi	r24, 0x01	; 1
+ a40:	90 e0       	ldi	r25, 0x00	; 0
+ a42:	8c 0f       	add	r24, r28
+ a44:	9d 1f       	adc	r25, r29
+ a46:	e8 0f       	add	r30, r24
+ a48:	f9 1f       	adc	r31, r25
+ a4a:	80 81       	ld	r24, Z
+ a4c:	1c 96       	adiw	r26, 0x0c	; 12
+ a4e:	8c 93       	st	X, r24
 }
- a46:	24 96       	adiw	r28, 0x04	; 4
- a48:	cd bf       	out	0x3d, r28	; 61
- a4a:	de bf       	out	0x3e, r29	; 62
- a4c:	df 91       	pop	r29
- a4e:	cf 91       	pop	r28
- a50:	08 95       	ret
+ a50:	24 96       	adiw	r28, 0x04	; 4
+ a52:	cd bf       	out	0x3d, r28	; 61
+ a54:	de bf       	out	0x3e, r29	; 62
+ a56:	df 91       	pop	r29
+ a58:	cf 91       	pop	r28
+ a5a:	08 95       	ret
 
-00000a52 <aes_encrypt_core>:
+00000a5c <aes_encrypt_core>:
 	for(i=0; i<16; ++i){
 		state->s[i] ^= k->ks[i];
 	}
 }
 
 void aes_encrypt_core(aes_cipher_state_t* state, const aes_genctx_t* ks, uint8_t rounds,uint8_t * aes_sbox2,uint8_t * rmask){
- a52:	2f 92       	push	r2
- a54:	3f 92       	push	r3
- a56:	4f 92       	push	r4
- a58:	5f 92       	push	r5
- a5a:	6f 92       	push	r6
- a5c:	7f 92       	push	r7
- a5e:	8f 92       	push	r8
- a60:	9f 92       	push	r9
- a62:	af 92       	push	r10
- a64:	bf 92       	push	r11
- a66:	cf 92       	push	r12
- a68:	df 92       	push	r13
- a6a:	ef 92       	push	r14
- a6c:	ff 92       	push	r15
- a6e:	0f 93       	push	r16
- a70:	1f 93       	push	r17
- a72:	cf 93       	push	r28
- a74:	df 93       	push	r29
- a76:	cd b7       	in	r28, 0x3d	; 61
- a78:	de b7       	in	r29, 0x3e	; 62
- a7a:	66 97       	sbiw	r28, 0x16	; 22
- a7c:	cd bf       	out	0x3d, r28	; 61
- a7e:	de bf       	out	0x3e, r29	; 62
- a80:	7c 01       	movw	r14, r24
- a82:	5b 01       	movw	r10, r22
- a84:	34 2e       	mov	r3, r20
- a86:	29 01       	movw	r4, r18
- a88:	db 01       	movw	r26, r22
- a8a:	8a 8b       	std	Y+18, r24	; 0x12
- a8c:	9b 8b       	std	Y+19, r25	; 0x13
- a8e:	9c 01       	movw	r18, r24
- a90:	20 5f       	subi	r18, 0xF0	; 240
- a92:	3f 4f       	sbci	r19, 0xFF	; 255
- a94:	2d 8b       	std	Y+21, r18	; 0x15
- a96:	3e 8b       	std	Y+22, r19	; 0x16
- a98:	fc 01       	movw	r30, r24
+ a5c:	2f 92       	push	r2
+ a5e:	3f 92       	push	r3
+ a60:	4f 92       	push	r4
+ a62:	5f 92       	push	r5
+ a64:	6f 92       	push	r6
+ a66:	7f 92       	push	r7
+ a68:	8f 92       	push	r8
+ a6a:	9f 92       	push	r9
+ a6c:	af 92       	push	r10
+ a6e:	bf 92       	push	r11
+ a70:	cf 92       	push	r12
+ a72:	df 92       	push	r13
+ a74:	ef 92       	push	r14
+ a76:	ff 92       	push	r15
+ a78:	0f 93       	push	r16
+ a7a:	1f 93       	push	r17
+ a7c:	cf 93       	push	r28
+ a7e:	df 93       	push	r29
+ a80:	cd b7       	in	r28, 0x3d	; 61
+ a82:	de b7       	in	r29, 0x3e	; 62
+ a84:	66 97       	sbiw	r28, 0x16	; 22
+ a86:	cd bf       	out	0x3d, r28	; 61
+ a88:	de bf       	out	0x3e, r29	; 62
+ a8a:	7c 01       	movw	r14, r24
+ a8c:	5b 01       	movw	r10, r22
+ a8e:	34 2e       	mov	r3, r20
+ a90:	29 01       	movw	r4, r18
+ a92:	db 01       	movw	r26, r22
+ a94:	8a 8b       	std	Y+18, r24	; 0x12
+ a96:	9b 8b       	std	Y+19, r25	; 0x13
+ a98:	9c 01       	movw	r18, r24
+ a9a:	20 5f       	subi	r18, 0xF0	; 240
+ a9c:	3f 4f       	sbci	r19, 0xFF	; 255
+ a9e:	2d 8b       	std	Y+21, r18	; 0x15
+ aa0:	3e 8b       	std	Y+22, r19	; 0x16
+ aa2:	fc 01       	movw	r30, r24
     uint8_t i;
 	for(i=0; i<16; ++i){
 		state->s[i] ^= ks->key[0].ks[i];
- a9a:	8d 91       	ld	r24, X+
- a9c:	90 81       	ld	r25, Z
- a9e:	89 27       	eor	r24, r25
- aa0:	81 93       	st	Z+, r24
+ aa4:	8d 91       	ld	r24, X+
+ aa6:	90 81       	ld	r25, Z
+ aa8:	89 27       	eor	r24, r25
+ aaa:	81 93       	st	Z+, r24
 	}
 }
 
 void aes_encrypt_core(aes_cipher_state_t* state, const aes_genctx_t* ks, uint8_t rounds,uint8_t * aes_sbox2,uint8_t * rmask){
     uint8_t i;
 	for(i=0; i<16; ++i){
- aa2:	8d 89       	ldd	r24, Y+21	; 0x15
- aa4:	9e 89       	ldd	r25, Y+22	; 0x16
- aa6:	e8 17       	cp	r30, r24
- aa8:	f9 07       	cpc	r31, r25
- aaa:	b9 f7       	brne	.-18     	; 0xa9a <aes_encrypt_core+0x48>
- aac:	45 01       	movw	r8, r10
- aae:	90 e1       	ldi	r25, 0x10	; 16
- ab0:	89 0e       	add	r8, r25
- ab2:	91 1c       	adc	r9, r1
- ab4:	a1 e0       	ldi	r26, 0x01	; 1
- ab6:	a9 8b       	std	Y+17, r26	; 0x11
- ab8:	3e 01       	movw	r6, r28
- aba:	b1 e1       	ldi	r27, 0x11	; 17
- abc:	6b 0e       	add	r6, r27
- abe:	71 1c       	adc	r7, r1
+ aac:	8d 89       	ldd	r24, Y+21	; 0x15
+ aae:	9e 89       	ldd	r25, Y+22	; 0x16
+ ab0:	e8 17       	cp	r30, r24
+ ab2:	f9 07       	cpc	r31, r25
+ ab4:	b9 f7       	brne	.-18     	; 0xaa4 <aes_encrypt_core+0x48>
+ ab6:	45 01       	movw	r8, r10
+ ab8:	90 e1       	ldi	r25, 0x10	; 16
+ aba:	89 0e       	add	r8, r25
+ abc:	91 1c       	adc	r9, r1
+ abe:	a1 e0       	ldi	r26, 0x01	; 1
+ ac0:	a9 8b       	std	Y+17, r26	; 0x11
+ ac2:	3e 01       	movw	r6, r28
+ ac4:	b1 e1       	ldi	r27, 0x11	; 17
+ ac6:	6b 0e       	add	r6, r27
+ ac8:	71 1c       	adc	r7, r1
 		state->s[i] ^= ks->key[0].ks[i];
 	}
-	
 	i=1;
 	for(;rounds>1;--rounds){//1
- ac0:	81 e0       	ldi	r24, 0x01	; 1
- ac2:	83 15       	cp	r24, r3
- ac4:	08 f0       	brcs	.+2      	; 0xac8 <aes_encrypt_core+0x76>
- ac6:	89 c0       	rjmp	.+274    	; 0xbda <aes_encrypt_core+0x188>
- ac8:	8e 01       	movw	r16, r28
- aca:	0f 5f       	subi	r16, 0xFF	; 255
- acc:	1f 4f       	sbci	r17, 0xFF	; 255
- ace:	f8 01       	movw	r30, r16
- ad0:	a7 01       	movw	r20, r14
+ aca:	81 e0       	ldi	r24, 0x01	; 1
+ acc:	83 15       	cp	r24, r3
+ ace:	08 f0       	brcs	.+2      	; 0xad2 <aes_encrypt_core+0x76>
+ ad0:	89 c0       	rjmp	.+274    	; 0xbe4 <aes_encrypt_core+0x188>
+ ad2:	8e 01       	movw	r16, r28
+ ad4:	0f 5f       	subi	r16, 0xFF	; 255
+ ad6:	1f 4f       	sbci	r17, 0xFF	; 255
+ ad8:	f8 01       	movw	r30, r16
+ ada:	a7 01       	movw	r20, r14
 	uint8_t mask = *rmask;
     uint8_t tmp[16], t;
 	uint8_t i;
 	/* subBytes */
 	for(i=0; i<16; ++i){
         uint8_t help = state->s[i];
- ad2:	da 01       	movw	r26, r20
- ad4:	8d 91       	ld	r24, X+
- ad6:	ad 01       	movw	r20, r26
+ adc:	da 01       	movw	r26, r20
+ ade:	8d 91       	ld	r24, X+
+ ae0:	ad 01       	movw	r20, r26
 		tmp[i] = aes_sbox2[help];
- ad8:	92 01       	movw	r18, r4
- ada:	28 0f       	add	r18, r24
- adc:	31 1d       	adc	r19, r1
- ade:	d9 01       	movw	r26, r18
- ae0:	8c 91       	ld	r24, X
- ae2:	81 93       	st	Z+, r24
-void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t * rmask){
+ ae2:	92 01       	movw	r18, r4
+ ae4:	28 0f       	add	r18, r24
+ ae6:	31 1d       	adc	r19, r1
+ ae8:	d9 01       	movw	r26, r18
+ aea:	8c 91       	ld	r24, X
+ aec:	81 93       	st	Z+, r24
+void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t * rmask,uint8_t n){
 	uint8_t mask = *rmask;
     uint8_t tmp[16], t;
 	uint8_t i;
 	/* subBytes */
 	for(i=0; i<16; ++i){
- ae4:	e6 15       	cp	r30, r6
- ae6:	f7 05       	cpc	r31, r7
- ae8:	a1 f7       	brne	.-24     	; 0xad2 <aes_encrypt_core+0x80>
+ aee:	e6 15       	cp	r30, r6
+ af0:	f7 05       	cpc	r31, r7
+ af2:	a1 f7       	brne	.-24     	; 0xadc <aes_encrypt_core+0x80>
+        uint8_t help = state->s[i];
 		tmp[i] = aes_sbox2[help];
 	}
 	
-	
 	/* shiftRows */
 	aes_shiftcol(tmp+1, 1);
- aea:	61 e0       	ldi	r22, 0x01	; 1
- aec:	ce 01       	movw	r24, r28
- aee:	02 96       	adiw	r24, 0x02	; 2
- af0:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
-	aes_shiftcol(tmp+2, 2);
- af4:	62 e0       	ldi	r22, 0x02	; 2
+ af4:	61 e0       	ldi	r22, 0x01	; 1
  af6:	ce 01       	movw	r24, r28
- af8:	03 96       	adiw	r24, 0x03	; 3
- afa:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
-	aes_shiftcol(tmp+3, 3);
- afe:	63 e0       	ldi	r22, 0x03	; 3
+ af8:	02 96       	adiw	r24, 0x02	; 2
+ afa:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+	aes_shiftcol(tmp+2, 2);
+ afe:	62 e0       	ldi	r22, 0x02	; 2
  b00:	ce 01       	movw	r24, r28
- b02:	04 96       	adiw	r24, 0x04	; 4
- b04:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
- b08:	67 01       	movw	r12, r14
-	
+ b02:	03 96       	adiw	r24, 0x03	; 3
+ b04:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+	aes_shiftcol(tmp+3, 3);
+ b08:	63 e0       	ldi	r22, 0x03	; 3
+ b0a:	ce 01       	movw	r24, r28
+ b0c:	04 96       	adiw	r24, 0x04	; 4
+ b0e:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+ b12:	67 01       	movw	r12, r14
 	
 	/* mixColums */
 	for(i=0; i<4; ++i){ 
 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
- b0a:	f8 01       	movw	r30, r16
- b0c:	20 80       	ld	r2, Z
- b0e:	81 81       	ldd	r24, Z+1	; 0x01
- b10:	28 26       	eor	r2, r24
- b12:	2c 8a       	std	Y+20, r2	; 0x14
- b14:	22 80       	ldd	r2, Z+2	; 0x02
- b16:	83 81       	ldd	r24, Z+3	; 0x03
- b18:	28 26       	eor	r2, r24
+ b14:	f8 01       	movw	r30, r16
+ b16:	20 80       	ld	r2, Z
+ b18:	81 81       	ldd	r24, Z+1	; 0x01
+ b1a:	28 26       	eor	r2, r24
+ b1c:	2c 8a       	std	Y+20, r2	; 0x14
+ b1e:	22 80       	ldd	r2, Z+2	; 0x02
+ b20:	83 81       	ldd	r24, Z+3	; 0x03
+ b22:	28 26       	eor	r2, r24
 		
 		state->s[4*i+0] = 
 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
- b1a:	4b e1       	ldi	r20, 0x1B	; 27
- b1c:	6c 89       	ldd	r22, Y+20	; 0x14
- b1e:	82 e0       	ldi	r24, 0x02	; 2
- b20:	0e 94 f7 06 	call	0xdee	; 0xdee <gf256mul>
+ b24:	4b e1       	ldi	r20, 0x1B	; 27
+ b26:	6c 89       	ldd	r22, Y+20	; 0x14
+ b28:	82 e0       	ldi	r24, 0x02	; 2
+ b2a:	0e 94 fc 06 	call	0xdf8	; 0xdf8 <gf256mul>
 	
 	/* mixColums */
 	for(i=0; i<4; ++i){ 
 		t = ((tmp[4*i+0]^mask)^ (tmp[4*i+1]^mask) ^ (tmp[4*i+2]^mask) ^ (tmp[4*i+3]^mask))^mask;
 		
 		state->s[4*i+0] = 
- b24:	fc 89       	ldd	r31, Y+20	; 0x14
- b26:	2f 26       	eor	r2, r31
- b28:	d8 01       	movw	r26, r16
- b2a:	9c 91       	ld	r25, X
- b2c:	89 27       	eor	r24, r25
- b2e:	82 25       	eor	r24, r2
- b30:	f6 01       	movw	r30, r12
- b32:	80 83       	st	Z, r24
+ b2e:	fc 89       	ldd	r31, Y+20	; 0x14
+ b30:	2f 26       	eor	r2, r31
+ b32:	d8 01       	movw	r26, r16
+ b34:	9c 91       	ld	r25, X
+ b36:	89 27       	eor	r24, r25
+ b38:	82 25       	eor	r24, r2
+ b3a:	f6 01       	movw	r30, r12
+ b3c:	80 83       	st	Z, r24
 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
 			^ (tmp[4*i+0]^mask)
 			^ (t^mask)
 			^ mask;//010
 		state->s[4*i+1] = 
 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
- b34:	11 96       	adiw	r26, 0x01	; 1
- b36:	6c 91       	ld	r22, X
- b38:	11 97       	sbiw	r26, 0x01	; 1
- b3a:	12 96       	adiw	r26, 0x02	; 2
- b3c:	8c 91       	ld	r24, X
- b3e:	68 27       	eor	r22, r24
- b40:	4b e1       	ldi	r20, 0x1B	; 27
- b42:	82 e0       	ldi	r24, 0x02	; 2
- b44:	0e 94 f7 06 	call	0xdee	; 0xdee <gf256mul>
+ b3e:	11 96       	adiw	r26, 0x01	; 1
+ b40:	6c 91       	ld	r22, X
+ b42:	11 97       	sbiw	r26, 0x01	; 1
+ b44:	12 96       	adiw	r26, 0x02	; 2
+ b46:	8c 91       	ld	r24, X
+ b48:	68 27       	eor	r22, r24
+ b4a:	4b e1       	ldi	r20, 0x1B	; 27
+ b4c:	82 e0       	ldi	r24, 0x02	; 2
+ b4e:	0e 94 fc 06 	call	0xdf8	; 0xdf8 <gf256mul>
 		state->s[4*i+0] = 
 			  GF256MUL_2((tmp[4*i+0]^mask)^(tmp[4*i+1]^mask))
 			^ (tmp[4*i+0]^mask)
 			^ (t^mask)
 			^ mask;//010
 		state->s[4*i+1] = 
- b48:	d8 01       	movw	r26, r16
- b4a:	11 96       	adiw	r26, 0x01	; 1
- b4c:	9c 91       	ld	r25, X
- b4e:	11 97       	sbiw	r26, 0x01	; 1
- b50:	89 27       	eor	r24, r25
- b52:	82 25       	eor	r24, r2
- b54:	f6 01       	movw	r30, r12
- b56:	81 83       	std	Z+1, r24	; 0x01
+ b52:	d8 01       	movw	r26, r16
+ b54:	11 96       	adiw	r26, 0x01	; 1
+ b56:	9c 91       	ld	r25, X
+ b58:	11 97       	sbiw	r26, 0x01	; 1
+ b5a:	89 27       	eor	r24, r25
+ b5c:	82 25       	eor	r24, r2
+ b5e:	f6 01       	movw	r30, r12
+ b60:	81 83       	std	Z+1, r24	; 0x01
 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
 			^ (tmp[4*i+1]^mask)
 			^ (t^mask)
 			^ mask;//121
 		state->s[4*i+2] = 
 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
- b58:	12 96       	adiw	r26, 0x02	; 2
- b5a:	6c 91       	ld	r22, X
- b5c:	12 97       	sbiw	r26, 0x02	; 2
- b5e:	13 96       	adiw	r26, 0x03	; 3
- b60:	8c 91       	ld	r24, X
- b62:	68 27       	eor	r22, r24
- b64:	4b e1       	ldi	r20, 0x1B	; 27
- b66:	82 e0       	ldi	r24, 0x02	; 2
- b68:	0e 94 f7 06 	call	0xdee	; 0xdee <gf256mul>
+ b62:	12 96       	adiw	r26, 0x02	; 2
+ b64:	6c 91       	ld	r22, X
+ b66:	12 97       	sbiw	r26, 0x02	; 2
+ b68:	13 96       	adiw	r26, 0x03	; 3
+ b6a:	8c 91       	ld	r24, X
+ b6c:	68 27       	eor	r22, r24
+ b6e:	4b e1       	ldi	r20, 0x1B	; 27
+ b70:	82 e0       	ldi	r24, 0x02	; 2
+ b72:	0e 94 fc 06 	call	0xdf8	; 0xdf8 <gf256mul>
 		state->s[4*i+1] = 
 			  GF256MUL_2((tmp[4*i+1]^mask)^(tmp[4*i+2]^mask))
 			^ (tmp[4*i+1]^mask)
 			^ (t^mask)
 			^ mask;//121
 		state->s[4*i+2] = 
- b6c:	d8 01       	movw	r26, r16
- b6e:	12 96       	adiw	r26, 0x02	; 2
- b70:	9c 91       	ld	r25, X
- b72:	12 97       	sbiw	r26, 0x02	; 2
- b74:	89 27       	eor	r24, r25
- b76:	82 25       	eor	r24, r2
- b78:	f6 01       	movw	r30, r12
- b7a:	82 83       	std	Z+2, r24	; 0x02
+ b76:	d8 01       	movw	r26, r16
+ b78:	12 96       	adiw	r26, 0x02	; 2
+ b7a:	9c 91       	ld	r25, X
+ b7c:	12 97       	sbiw	r26, 0x02	; 2
+ b7e:	89 27       	eor	r24, r25
+ b80:	82 25       	eor	r24, r2
+ b82:	f6 01       	movw	r30, r12
+ b84:	82 83       	std	Z+2, r24	; 0x02
 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
 			^ (tmp[4*i+2]^mask)
 			^ (t^mask)
 			^ mask;//232
 		state->s[4*i+3] = 
 			  GF256MUL_2((tmp[4*i+3]^mask)^(tmp[4*i+0]^mask))
- b7c:	13 96       	adiw	r26, 0x03	; 3
- b7e:	6c 91       	ld	r22, X
- b80:	13 97       	sbiw	r26, 0x03	; 3
- b82:	8c 91       	ld	r24, X
- b84:	68 27       	eor	r22, r24
- b86:	4b e1       	ldi	r20, 0x1B	; 27
- b88:	82 e0       	ldi	r24, 0x02	; 2
- b8a:	0e 94 f7 06 	call	0xdee	; 0xdee <gf256mul>
+ b86:	13 96       	adiw	r26, 0x03	; 3
+ b88:	6c 91       	ld	r22, X
+ b8a:	13 97       	sbiw	r26, 0x03	; 3
+ b8c:	8c 91       	ld	r24, X
+ b8e:	68 27       	eor	r22, r24
+ b90:	4b e1       	ldi	r20, 0x1B	; 27
+ b92:	82 e0       	ldi	r24, 0x02	; 2
+ b94:	0e 94 fc 06 	call	0xdf8	; 0xdf8 <gf256mul>
 		state->s[4*i+2] = 
 			  GF256MUL_2((tmp[4*i+2]^mask)^(tmp[4*i+3]^mask))
 			^ (tmp[4*i+2]^mask)
 			^ (t^mask)
 			^ mask;//232
 		state->s[4*i+3] = 
- b8e:	d8 01       	movw	r26, r16
- b90:	13 96       	adiw	r26, 0x03	; 3
- b92:	9c 91       	ld	r25, X
- b94:	89 27       	eor	r24, r25
- b96:	28 26       	eor	r2, r24
- b98:	f6 01       	movw	r30, r12
- b9a:	23 82       	std	Z+3, r2	; 0x03
- b9c:	0c 5f       	subi	r16, 0xFC	; 252
- b9e:	1f 4f       	sbci	r17, 0xFF	; 255
- ba0:	f4 e0       	ldi	r31, 0x04	; 4
- ba2:	cf 0e       	add	r12, r31
- ba4:	d1 1c       	adc	r13, r1
+ b98:	d8 01       	movw	r26, r16
+ b9a:	13 96       	adiw	r26, 0x03	; 3
+ b9c:	9c 91       	ld	r25, X
+ b9e:	89 27       	eor	r24, r25
+ ba0:	28 26       	eor	r2, r24
+ ba2:	f6 01       	movw	r30, r12
+ ba4:	23 82       	std	Z+3, r2	; 0x03
+ ba6:	0c 5f       	subi	r16, 0xFC	; 252
+ ba8:	1f 4f       	sbci	r17, 0xFF	; 255
+ baa:	f4 e0       	ldi	r31, 0x04	; 4
+ bac:	cf 0e       	add	r12, r31
+ bae:	d1 1c       	adc	r13, r1
+	aes_shiftcol(tmp+1, 1);
 	aes_shiftcol(tmp+2, 2);
 	aes_shiftcol(tmp+3, 3);
 	
-	
 	/* mixColums */
 	for(i=0; i<4; ++i){ 
- ba6:	06 15       	cp	r16, r6
- ba8:	17 05       	cpc	r17, r7
- baa:	09 f0       	breq	.+2      	; 0xbae <aes_encrypt_core+0x15c>
- bac:	ae cf       	rjmp	.-164    	; 0xb0a <aes_encrypt_core+0xb8>
- bae:	f7 01       	movw	r30, r14
- bb0:	80 e0       	ldi	r24, 0x00	; 0
- bb2:	90 e0       	ldi	r25, 0x00	; 0
+ bb0:	06 15       	cp	r16, r6
+ bb2:	17 05       	cpc	r17, r7
+ bb4:	09 f0       	breq	.+2      	; 0xbb8 <aes_encrypt_core+0x15c>
+ bb6:	ae cf       	rjmp	.-164    	; 0xb14 <aes_encrypt_core+0xb8>
+ bb8:	f7 01       	movw	r30, r14
+ bba:	80 e0       	ldi	r24, 0x00	; 0
+ bbc:	90 e0       	ldi	r25, 0x00	; 0
 			^ mask;//303
 	}
 	
 	/* addKey */
 	for(i=0; i<16; ++i){
 		state->s[i] ^= k->ks[i];
- bb4:	d4 01       	movw	r26, r8
- bb6:	a8 0f       	add	r26, r24
- bb8:	b9 1f       	adc	r27, r25
- bba:	30 81       	ld	r19, Z
- bbc:	2c 91       	ld	r18, X
- bbe:	23 27       	eor	r18, r19
- bc0:	21 93       	st	Z+, r18
- bc2:	01 96       	adiw	r24, 0x01	; 1
+ bbe:	d4 01       	movw	r26, r8
+ bc0:	a8 0f       	add	r26, r24
+ bc2:	b9 1f       	adc	r27, r25
+ bc4:	30 81       	ld	r19, Z
+ bc6:	2c 91       	ld	r18, X
+ bc8:	23 27       	eor	r18, r19
+ bca:	21 93       	st	Z+, r18
+ bcc:	01 96       	adiw	r24, 0x01	; 1
 			^ (t^mask)
 			^ mask;//303
 	}
 	
 	/* addKey */
 	for(i=0; i<16; ++i){
- bc4:	80 31       	cpi	r24, 0x10	; 16
- bc6:	91 05       	cpc	r25, r1
- bc8:	a9 f7       	brne	.-22     	; 0xbb4 <aes_encrypt_core+0x162>
+ bce:	80 31       	cpi	r24, 0x10	; 16
+ bd0:	91 05       	cpc	r25, r1
+ bd2:	a9 f7       	brne	.-22     	; 0xbbe <aes_encrypt_core+0x162>
+		state->s[i] ^= ks->key[0].ks[i];
 	}
-	
 	i=1;
 	for(;rounds>1;--rounds){//1
-		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
+		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask,i);
 		++i;
- bca:	29 89       	ldd	r18, Y+17	; 0x11
- bcc:	2f 5f       	subi	r18, 0xFF	; 255
- bce:	29 8b       	std	Y+17, r18	; 0x11
+ bd4:	29 89       	ldd	r18, Y+17	; 0x11
+ bd6:	2f 5f       	subi	r18, 0xFF	; 255
+ bd8:	29 8b       	std	Y+17, r18	; 0x11
+    uint8_t i;
 	for(i=0; i<16; ++i){
 		state->s[i] ^= ks->key[0].ks[i];
 	}
-	
 	i=1;
 	for(;rounds>1;--rounds){//1
- bd0:	3a 94       	dec	r3
- bd2:	30 e1       	ldi	r19, 0x10	; 16
- bd4:	83 0e       	add	r8, r19
- bd6:	91 1c       	adc	r9, r1
- bd8:	73 cf       	rjmp	.-282    	; 0xac0 <aes_encrypt_core+0x6e>
-		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
+ bda:	3a 94       	dec	r3
+ bdc:	30 e1       	ldi	r19, 0x10	; 16
+ bde:	83 0e       	add	r8, r19
+ be0:	91 1c       	adc	r9, r1
+ be2:	73 cf       	rjmp	.-282    	; 0xaca <aes_encrypt_core+0x6e>
+		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask,i);
 		++i;
 	}
 	
 	
 	aes_enc_lastround(state, &(ks->key[i]),aes_sbox2);
- bda:	f7 01       	movw	r30, r14
+ be4:	f7 01       	movw	r30, r14
 void aes_enc_lastround(aes_cipher_state_t* state,const aes_roundkey_t* k,uint8_t * aes_sbox2){
 	uint8_t i;
 	/* subBytes */
 	for(i=0; i<16; ++i){
 		uint8_t help = state->s[i];
 		state->s[i] = aes_sbox2[help];
- bdc:	80 81       	ld	r24, Z
- bde:	d2 01       	movw	r26, r4
- be0:	a8 0f       	add	r26, r24
- be2:	b1 1d       	adc	r27, r1
- be4:	8c 91       	ld	r24, X
- be6:	81 93       	st	Z+, r24
+ be6:	80 81       	ld	r24, Z
+ be8:	d2 01       	movw	r26, r4
+ bea:	a8 0f       	add	r26, r24
+ bec:	b1 1d       	adc	r27, r1
+ bee:	8c 91       	ld	r24, X
+ bf0:	81 93       	st	Z+, r24
 
 static
 void aes_enc_lastround(aes_cipher_state_t* state,const aes_roundkey_t* k,uint8_t * aes_sbox2){
 	uint8_t i;
 	/* subBytes */
 	for(i=0; i<16; ++i){
- be8:	ad 89       	ldd	r26, Y+21	; 0x15
- bea:	be 89       	ldd	r27, Y+22	; 0x16
- bec:	ea 17       	cp	r30, r26
- bee:	fb 07       	cpc	r31, r27
- bf0:	a9 f7       	brne	.-22     	; 0xbdc <aes_encrypt_core+0x18a>
+ bf2:	ad 89       	ldd	r26, Y+21	; 0x15
+ bf4:	be 89       	ldd	r27, Y+22	; 0x16
+ bf6:	ea 17       	cp	r30, r26
+ bf8:	fb 07       	cpc	r31, r27
+ bfa:	a9 f7       	brne	.-22     	; 0xbe6 <aes_encrypt_core+0x18a>
 		uint8_t help = state->s[i];
 		state->s[i] = aes_sbox2[help];
 	}
 	/* shiftRows */
 	aes_shiftcol(state->s+1, 1);
- bf2:	61 e0       	ldi	r22, 0x01	; 1
- bf4:	c7 01       	movw	r24, r14
- bf6:	01 96       	adiw	r24, 0x01	; 1
- bf8:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
-	aes_shiftcol(state->s+2, 2);
- bfc:	62 e0       	ldi	r22, 0x02	; 2
+ bfc:	61 e0       	ldi	r22, 0x01	; 1
  bfe:	c7 01       	movw	r24, r14
- c00:	02 96       	adiw	r24, 0x02	; 2
- c02:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
-	aes_shiftcol(state->s+3, 3);
- c06:	63 e0       	ldi	r22, 0x03	; 3
+ c00:	01 96       	adiw	r24, 0x01	; 1
+ c02:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+	aes_shiftcol(state->s+2, 2);
+ c06:	62 e0       	ldi	r22, 0x02	; 2
  c08:	c7 01       	movw	r24, r14
- c0a:	03 96       	adiw	r24, 0x03	; 3
- c0c:	0e 94 da 04 	call	0x9b4	; 0x9b4 <aes_shiftcol>
- c10:	e9 89       	ldd	r30, Y+17	; 0x11
- c12:	b0 e1       	ldi	r27, 0x10	; 16
- c14:	eb 9f       	mul	r30, r27
- c16:	c0 01       	movw	r24, r0
- c18:	11 24       	eor	r1, r1
- c1a:	20 e0       	ldi	r18, 0x00	; 0
- c1c:	30 e0       	ldi	r19, 0x00	; 0
+ c0a:	02 96       	adiw	r24, 0x02	; 2
+ c0c:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+	aes_shiftcol(state->s+3, 3);
+ c10:	63 e0       	ldi	r22, 0x03	; 3
+ c12:	c7 01       	movw	r24, r14
+ c14:	03 96       	adiw	r24, 0x03	; 3
+ c16:	0e 94 df 04 	call	0x9be	; 0x9be <aes_shiftcol>
+ c1a:	e9 89       	ldd	r30, Y+17	; 0x11
+ c1c:	b0 e1       	ldi	r27, 0x10	; 16
+ c1e:	eb 9f       	mul	r30, r27
+ c20:	c0 01       	movw	r24, r0
+ c22:	11 24       	eor	r1, r1
+ c24:	20 e0       	ldi	r18, 0x00	; 0
+ c26:	30 e0       	ldi	r19, 0x00	; 0
 	/* keyAdd */
 	for(i=0; i<16; ++i){
 		state->s[i] ^= k->ks[i];
- c1e:	fc 01       	movw	r30, r24
- c20:	e2 0f       	add	r30, r18
- c22:	f3 1f       	adc	r31, r19
- c24:	ea 0d       	add	r30, r10
- c26:	fb 1d       	adc	r31, r11
- c28:	aa 89       	ldd	r26, Y+18	; 0x12
- c2a:	bb 89       	ldd	r27, Y+19	; 0x13
- c2c:	5c 91       	ld	r21, X
- c2e:	40 81       	ld	r20, Z
- c30:	45 27       	eor	r20, r21
- c32:	4d 93       	st	X+, r20
- c34:	aa 8b       	std	Y+18, r26	; 0x12
- c36:	bb 8b       	std	Y+19, r27	; 0x13
- c38:	2f 5f       	subi	r18, 0xFF	; 255
- c3a:	3f 4f       	sbci	r19, 0xFF	; 255
+ c28:	fc 01       	movw	r30, r24
+ c2a:	e2 0f       	add	r30, r18
+ c2c:	f3 1f       	adc	r31, r19
+ c2e:	ea 0d       	add	r30, r10
+ c30:	fb 1d       	adc	r31, r11
+ c32:	aa 89       	ldd	r26, Y+18	; 0x12
+ c34:	bb 89       	ldd	r27, Y+19	; 0x13
+ c36:	5c 91       	ld	r21, X
+ c38:	40 81       	ld	r20, Z
+ c3a:	45 27       	eor	r20, r21
+ c3c:	4d 93       	st	X+, r20
+ c3e:	aa 8b       	std	Y+18, r26	; 0x12
+ c40:	bb 8b       	std	Y+19, r27	; 0x13
+ c42:	2f 5f       	subi	r18, 0xFF	; 255
+ c44:	3f 4f       	sbci	r19, 0xFF	; 255
 	/* shiftRows */
 	aes_shiftcol(state->s+1, 1);
 	aes_shiftcol(state->s+2, 2);
 	aes_shiftcol(state->s+3, 3);
 	/* keyAdd */
 	for(i=0; i<16; ++i){
- c3c:	20 31       	cpi	r18, 0x10	; 16
- c3e:	31 05       	cpc	r19, r1
- c40:	71 f7       	brne	.-36     	; 0xc1e <aes_encrypt_core+0x1cc>
+ c46:	20 31       	cpi	r18, 0x10	; 16
+ c48:	31 05       	cpc	r19, r1
+ c4a:	71 f7       	brne	.-36     	; 0xc28 <aes_encrypt_core+0x1cc>
 		++i;
 	}
 	
 	
 	aes_enc_lastround(state, &(ks->key[i]),aes_sbox2);
 }
- c42:	66 96       	adiw	r28, 0x16	; 22
- c44:	cd bf       	out	0x3d, r28	; 61
- c46:	de bf       	out	0x3e, r29	; 62
- c48:	df 91       	pop	r29
- c4a:	cf 91       	pop	r28
- c4c:	1f 91       	pop	r17
- c4e:	0f 91       	pop	r16
- c50:	ff 90       	pop	r15
- c52:	ef 90       	pop	r14
- c54:	df 90       	pop	r13
- c56:	cf 90       	pop	r12
- c58:	bf 90       	pop	r11
- c5a:	af 90       	pop	r10
- c5c:	9f 90       	pop	r9
- c5e:	8f 90       	pop	r8
- c60:	7f 90       	pop	r7
- c62:	6f 90       	pop	r6
- c64:	5f 90       	pop	r5
- c66:	4f 90       	pop	r4
- c68:	3f 90       	pop	r3
- c6a:	2f 90       	pop	r2
- c6c:	08 95       	ret
+ c4c:	66 96       	adiw	r28, 0x16	; 22
+ c4e:	cd bf       	out	0x3d, r28	; 61
+ c50:	de bf       	out	0x3e, r29	; 62
+ c52:	df 91       	pop	r29
+ c54:	cf 91       	pop	r28
+ c56:	1f 91       	pop	r17
+ c58:	0f 91       	pop	r16
+ c5a:	ff 90       	pop	r15
+ c5c:	ef 90       	pop	r14
+ c5e:	df 90       	pop	r13
+ c60:	cf 90       	pop	r12
+ c62:	bf 90       	pop	r11
+ c64:	af 90       	pop	r10
+ c66:	9f 90       	pop	r9
+ c68:	8f 90       	pop	r8
+ c6a:	7f 90       	pop	r7
+ c6c:	6f 90       	pop	r6
+ c6e:	5f 90       	pop	r5
+ c70:	4f 90       	pop	r4
+ c72:	3f 90       	pop	r3
+ c74:	2f 90       	pop	r2
+ c76:	08 95       	ret
 
-00000c6e <aes_init>:
+00000c78 <aes_init>:
 
 const uint8_t rc_tab[] PROGMEM = { 0x01, 0x02, 0x04, 0x08,
                              0x10, 0x20, 0x40, 0x80,
                              0x1b, 0x36 };
 
 void aes_init(const void* key, uint16_t keysize_b, aes_genctx_t* ctx){
- c6e:	8f 92       	push	r8
- c70:	9f 92       	push	r9
- c72:	af 92       	push	r10
- c74:	bf 92       	push	r11
- c76:	cf 92       	push	r12
- c78:	df 92       	push	r13
- c7a:	ef 92       	push	r14
- c7c:	ff 92       	push	r15
- c7e:	0f 93       	push	r16
- c80:	1f 93       	push	r17
- c82:	cf 93       	push	r28
- c84:	df 93       	push	r29
- c86:	ea 01       	movw	r28, r20
+ c78:	8f 92       	push	r8
+ c7a:	9f 92       	push	r9
+ c7c:	af 92       	push	r10
+ c7e:	bf 92       	push	r11
+ c80:	cf 92       	push	r12
+ c82:	df 92       	push	r13
+ c84:	ef 92       	push	r14
+ c86:	ff 92       	push	r15
+ c88:	0f 93       	push	r16
+ c8a:	1f 93       	push	r17
+ c8c:	cf 93       	push	r28
+ c8e:	df 93       	push	r29
+ c90:	ea 01       	movw	r28, r20
 	uint8_t rc=0;
 	union {
 		uint32_t v32;
 		uint8_t  v8[4];
 	} tmp;
 	nk=keysize_b>>5; /* 4, 6, 8 */
- c88:	6b 01       	movw	r12, r22
- c8a:	f5 e0       	ldi	r31, 0x05	; 5
- c8c:	d6 94       	lsr	r13
- c8e:	c7 94       	ror	r12
- c90:	fa 95       	dec	r31
- c92:	e1 f7       	brne	.-8      	; 0xc8c <aes_init+0x1e>
- c94:	ec 2c       	mov	r14, r12
+ c92:	6b 01       	movw	r12, r22
+ c94:	f5 e0       	ldi	r31, 0x05	; 5
+ c96:	d6 94       	lsr	r13
+ c98:	c7 94       	ror	r12
+ c9a:	fa 95       	dec	r31
+ c9c:	e1 f7       	brne	.-8      	; 0xc96 <aes_init+0x1e>
+ c9e:	ec 2c       	mov	r14, r12
 	hi=4*(nk+6+1);
- c96:	86 01       	movw	r16, r12
- c98:	11 27       	eor	r17, r17
- c9a:	98 01       	movw	r18, r16
- c9c:	29 5f       	subi	r18, 0xF9	; 249
- c9e:	3f 4f       	sbci	r19, 0xFF	; 255
- ca0:	f2 2e       	mov	r15, r18
- ca2:	ff 0c       	add	r15, r15
- ca4:	ff 0c       	add	r15, r15
+ ca0:	86 01       	movw	r16, r12
+ ca2:	11 27       	eor	r17, r17
+ ca4:	98 01       	movw	r18, r16
+ ca6:	29 5f       	subi	r18, 0xF9	; 249
+ ca8:	3f 4f       	sbci	r19, 0xFF	; 255
+ caa:	f2 2e       	mov	r15, r18
+ cac:	ff 0c       	add	r15, r15
+ cae:	ff 0c       	add	r15, r15
 	memcpy(ctx, key, keysize_b/8);
- ca6:	ab 01       	movw	r20, r22
- ca8:	a3 e0       	ldi	r26, 0x03	; 3
- caa:	56 95       	lsr	r21
- cac:	47 95       	ror	r20
- cae:	aa 95       	dec	r26
- cb0:	e1 f7       	brne	.-8      	; 0xcaa <aes_init+0x3c>
- cb2:	bc 01       	movw	r22, r24
- cb4:	ce 01       	movw	r24, r28
- cb6:	0e 94 4a 07 	call	0xe94	; 0xe94 <memcpy>
+ cb0:	ab 01       	movw	r20, r22
+ cb2:	a3 e0       	ldi	r26, 0x03	; 3
+ cb4:	56 95       	lsr	r21
+ cb6:	47 95       	ror	r20
+ cb8:	aa 95       	dec	r26
+ cba:	e1 f7       	brne	.-8      	; 0xcb4 <aes_init+0x3c>
+ cbc:	bc 01       	movw	r22, r24
+ cbe:	ce 01       	movw	r24, r28
+ cc0:	0e 94 4f 07 	call	0xe9e	; 0xe9e <memcpy>
 	next_nk = nk;
- cba:	dc 2c       	mov	r13, r12
+ cc4:	dc 2c       	mov	r13, r12
 	for(i=nk;i<hi;++i){
- cbc:	2c 2d       	mov	r18, r12
+ cc6:	2c 2d       	mov	r18, r12
                              0x10, 0x20, 0x40, 0x80,
                              0x1b, 0x36 };
 
 void aes_init(const void* key, uint16_t keysize_b, aes_genctx_t* ctx){
 	uint8_t hi,i,nk, next_nk;
 	uint8_t rc=0;
- cbe:	30 e0       	ldi	r19, 0x00	; 0
+ cc8:	30 e0       	ldi	r19, 0x00	; 0
 	} tmp;
 	nk=keysize_b>>5; /* 4, 6, 8 */
 	hi=4*(nk+6+1);
 	memcpy(ctx, key, keysize_b/8);
 	next_nk = nk;
 	for(i=nk;i<hi;++i){
- cc0:	2f 15       	cp	r18, r15
- cc2:	08 f0       	brcs	.+2      	; 0xcc6 <aes_init+0x58>
- cc4:	6e c0       	rjmp	.+220    	; 0xda2 <aes_init+0x134>
+ cca:	2f 15       	cp	r18, r15
+ ccc:	08 f0       	brcs	.+2      	; 0xcd0 <aes_init+0x58>
+ cce:	6e c0       	rjmp	.+220    	; 0xdac <aes_init+0x134>
 		tmp.v32 = ((uint32_t*)(ctx->key[0].ks))[i-1];
- cc6:	62 2f       	mov	r22, r18
- cc8:	70 e0       	ldi	r23, 0x00	; 0
- cca:	ab 01       	movw	r20, r22
- ccc:	41 50       	subi	r20, 0x01	; 1
- cce:	50 4c       	sbci	r21, 0xC0	; 192
- cd0:	44 0f       	add	r20, r20
- cd2:	55 1f       	adc	r21, r21
- cd4:	44 0f       	add	r20, r20
- cd6:	55 1f       	adc	r21, r21
- cd8:	4c 0f       	add	r20, r28
- cda:	5d 1f       	adc	r21, r29
- cdc:	fa 01       	movw	r30, r20
- cde:	80 81       	ld	r24, Z
- ce0:	91 81       	ldd	r25, Z+1	; 0x01
- ce2:	a2 81       	ldd	r26, Z+2	; 0x02
- ce4:	b3 81       	ldd	r27, Z+3	; 0x03
+ cd0:	62 2f       	mov	r22, r18
+ cd2:	70 e0       	ldi	r23, 0x00	; 0
+ cd4:	ab 01       	movw	r20, r22
+ cd6:	41 50       	subi	r20, 0x01	; 1
+ cd8:	50 4c       	sbci	r21, 0xC0	; 192
+ cda:	44 0f       	add	r20, r20
+ cdc:	55 1f       	adc	r21, r21
+ cde:	44 0f       	add	r20, r20
+ ce0:	55 1f       	adc	r21, r21
+ ce2:	4c 0f       	add	r20, r28
+ ce4:	5d 1f       	adc	r21, r29
+ ce6:	fa 01       	movw	r30, r20
+ ce8:	80 81       	ld	r24, Z
+ cea:	91 81       	ldd	r25, Z+1	; 0x01
+ cec:	a2 81       	ldd	r26, Z+2	; 0x02
+ cee:	b3 81       	ldd	r27, Z+3	; 0x03
 		if(i!=next_nk){
- ce6:	2d 15       	cp	r18, r13
- ce8:	09 f1       	breq	.+66     	; 0xd2c <aes_init+0xbe>
+ cf0:	2d 15       	cp	r18, r13
+ cf2:	09 f1       	breq	.+66     	; 0xd36 <aes_init+0xbe>
 			if(nk==8 && i%8==4){
- cea:	f8 e0       	ldi	r31, 0x08	; 8
- cec:	ef 12       	cpse	r14, r31
- cee:	41 c0       	rjmp	.+130    	; 0xd72 <aes_init+0x104>
- cf0:	e2 2f       	mov	r30, r18
- cf2:	e7 70       	andi	r30, 0x07	; 7
- cf4:	e4 30       	cpi	r30, 0x04	; 4
- cf6:	09 f0       	breq	.+2      	; 0xcfa <aes_init+0x8c>
- cf8:	3c c0       	rjmp	.+120    	; 0xd72 <aes_init+0x104>
+ cf4:	f8 e0       	ldi	r31, 0x08	; 8
+ cf6:	ef 12       	cpse	r14, r31
+ cf8:	41 c0       	rjmp	.+130    	; 0xd7c <aes_init+0x104>
+ cfa:	e2 2f       	mov	r30, r18
+ cfc:	e7 70       	andi	r30, 0x07	; 7
+ cfe:	e4 30       	cpi	r30, 0x04	; 4
+ d00:	09 f0       	breq	.+2      	; 0xd04 <aes_init+0x8c>
+ d02:	3c c0       	rjmp	.+120    	; 0xd7c <aes_init+0x104>
 				tmp.v8[0] = pgm_read_byte(aes_sbox+tmp.v8[0]);
- cfa:	e8 2f       	mov	r30, r24
- cfc:	f0 e0       	ldi	r31, 0x00	; 0
- cfe:	ee 50       	subi	r30, 0x0E	; 14
- d00:	fe 4f       	sbci	r31, 0xFE	; 254
- d02:	e4 91       	lpm	r30, Z
- d04:	8e 2f       	mov	r24, r30
+ d04:	e8 2f       	mov	r30, r24
+ d06:	f0 e0       	ldi	r31, 0x00	; 0
+ d08:	ee 50       	subi	r30, 0x0E	; 14
+ d0a:	fe 4f       	sbci	r31, 0xFE	; 254
+ d0c:	e4 91       	lpm	r30, Z
+ d0e:	8e 2f       	mov	r24, r30
 				tmp.v8[1] = pgm_read_byte(aes_sbox+tmp.v8[1]);
- d06:	e9 2f       	mov	r30, r25
- d08:	f0 e0       	ldi	r31, 0x00	; 0
- d0a:	ee 50       	subi	r30, 0x0E	; 14
- d0c:	fe 4f       	sbci	r31, 0xFE	; 254
- d0e:	e4 91       	lpm	r30, Z
- d10:	9e 2f       	mov	r25, r30
+ d10:	e9 2f       	mov	r30, r25
+ d12:	f0 e0       	ldi	r31, 0x00	; 0
+ d14:	ee 50       	subi	r30, 0x0E	; 14
+ d16:	fe 4f       	sbci	r31, 0xFE	; 254
+ d18:	e4 91       	lpm	r30, Z
+ d1a:	9e 2f       	mov	r25, r30
 				tmp.v8[2] = pgm_read_byte(aes_sbox+tmp.v8[2]);
- d12:	ea 2f       	mov	r30, r26
- d14:	f0 e0       	ldi	r31, 0x00	; 0
- d16:	ee 50       	subi	r30, 0x0E	; 14
- d18:	fe 4f       	sbci	r31, 0xFE	; 254
- d1a:	e4 91       	lpm	r30, Z
- d1c:	ae 2f       	mov	r26, r30
+ d1c:	ea 2f       	mov	r30, r26
+ d1e:	f0 e0       	ldi	r31, 0x00	; 0
+ d20:	ee 50       	subi	r30, 0x0E	; 14
+ d22:	fe 4f       	sbci	r31, 0xFE	; 254
+ d24:	e4 91       	lpm	r30, Z
+ d26:	ae 2f       	mov	r26, r30
 				tmp.v8[3] = pgm_read_byte(aes_sbox+tmp.v8[3]);
- d1e:	eb 2f       	mov	r30, r27
- d20:	f0 e0       	ldi	r31, 0x00	; 0
- d22:	ee 50       	subi	r30, 0x0E	; 14
- d24:	fe 4f       	sbci	r31, 0xFE	; 254
- d26:	e4 91       	lpm	r30, Z
- d28:	be 2f       	mov	r27, r30
- d2a:	23 c0       	rjmp	.+70     	; 0xd72 <aes_init+0x104>
+ d28:	eb 2f       	mov	r30, r27
+ d2a:	f0 e0       	ldi	r31, 0x00	; 0
+ d2c:	ee 50       	subi	r30, 0x0E	; 14
+ d2e:	fe 4f       	sbci	r31, 0xFE	; 254
+ d30:	e4 91       	lpm	r30, Z
+ d32:	be 2f       	mov	r27, r30
+ d34:	23 c0       	rjmp	.+70     	; 0xd7c <aes_init+0x104>
 			}
 		} else {
 			next_nk += nk;
- d2c:	d2 2e       	mov	r13, r18
- d2e:	de 0c       	add	r13, r14
+ d36:	d2 2e       	mov	r13, r18
+ d38:	de 0c       	add	r13, r14
 #include <avr/pgmspace.h>
 
 static
 void aes_rotword(void* a){
 	uint8_t t;
 	t=((uint8_t*)a)[0];
- d30:	c8 2e       	mov	r12, r24
+ d3a:	c8 2e       	mov	r12, r24
 	((uint8_t*)a)[0] = ((uint8_t*)a)[1];
 	((uint8_t*)a)[1] = ((uint8_t*)a)[2];
 	((uint8_t*)a)[2] = ((uint8_t*)a)[3];
- d32:	ab 2e       	mov	r10, r27
+ d3c:	ab 2e       	mov	r10, r27
 				tmp.v8[3] = pgm_read_byte(aes_sbox+tmp.v8[3]);
 			}
 		} else {
 			next_nk += nk;
 			aes_rotword(&(tmp.v32));
 			tmp.v8[0] = pgm_read_byte(aes_sbox+tmp.v8[0]);
- d34:	e9 2f       	mov	r30, r25
- d36:	f0 e0       	ldi	r31, 0x00	; 0
- d38:	ee 50       	subi	r30, 0x0E	; 14
- d3a:	fe 4f       	sbci	r31, 0xFE	; 254
- d3c:	b4 90       	lpm	r11, Z
-			tmp.v8[1] = pgm_read_byte(aes_sbox+tmp.v8[1]);
- d3e:	ea 2f       	mov	r30, r26
+ d3e:	e9 2f       	mov	r30, r25
  d40:	f0 e0       	ldi	r31, 0x00	; 0
  d42:	ee 50       	subi	r30, 0x0E	; 14
  d44:	fe 4f       	sbci	r31, 0xFE	; 254
- d46:	e4 91       	lpm	r30, Z
- d48:	9e 2f       	mov	r25, r30
+ d46:	b4 90       	lpm	r11, Z
+			tmp.v8[1] = pgm_read_byte(aes_sbox+tmp.v8[1]);
+ d48:	ea 2f       	mov	r30, r26
+ d4a:	f0 e0       	ldi	r31, 0x00	; 0
+ d4c:	ee 50       	subi	r30, 0x0E	; 14
+ d4e:	fe 4f       	sbci	r31, 0xFE	; 254
+ d50:	e4 91       	lpm	r30, Z
+ d52:	9e 2f       	mov	r25, r30
 			tmp.v8[2] = pgm_read_byte(aes_sbox+tmp.v8[2]);
- d4a:	ea 2d       	mov	r30, r10
- d4c:	f0 e0       	ldi	r31, 0x00	; 0
- d4e:	ee 50       	subi	r30, 0x0E	; 14
- d50:	fe 4f       	sbci	r31, 0xFE	; 254
- d52:	e4 91       	lpm	r30, Z
- d54:	ae 2f       	mov	r26, r30
+ d54:	ea 2d       	mov	r30, r10
+ d56:	f0 e0       	ldi	r31, 0x00	; 0
+ d58:	ee 50       	subi	r30, 0x0E	; 14
+ d5a:	fe 4f       	sbci	r31, 0xFE	; 254
+ d5c:	e4 91       	lpm	r30, Z
+ d5e:	ae 2f       	mov	r26, r30
 			tmp.v8[3] = pgm_read_byte(aes_sbox+tmp.v8[3]);
- d56:	ec 2d       	mov	r30, r12
- d58:	f0 e0       	ldi	r31, 0x00	; 0
- d5a:	ee 50       	subi	r30, 0x0E	; 14
- d5c:	fe 4f       	sbci	r31, 0xFE	; 254
- d5e:	e4 91       	lpm	r30, Z
- d60:	be 2f       	mov	r27, r30
+ d60:	ec 2d       	mov	r30, r12
+ d62:	f0 e0       	ldi	r31, 0x00	; 0
+ d64:	ee 50       	subi	r30, 0x0E	; 14
+ d66:	fe 4f       	sbci	r31, 0xFE	; 254
+ d68:	e4 91       	lpm	r30, Z
+ d6a:	be 2f       	mov	r27, r30
 			tmp.v8[0] ^= pgm_read_byte(rc_tab+rc);
- d62:	e3 2f       	mov	r30, r19
- d64:	f0 e0       	ldi	r31, 0x00	; 0
- d66:	e8 51       	subi	r30, 0x18	; 24
- d68:	fe 4f       	sbci	r31, 0xFE	; 254
- d6a:	e4 91       	lpm	r30, Z
- d6c:	8b 2d       	mov	r24, r11
- d6e:	8e 27       	eor	r24, r30
+ d6c:	e3 2f       	mov	r30, r19
+ d6e:	f0 e0       	ldi	r31, 0x00	; 0
+ d70:	e8 51       	subi	r30, 0x18	; 24
+ d72:	fe 4f       	sbci	r31, 0xFE	; 254
+ d74:	e4 91       	lpm	r30, Z
+ d76:	8b 2d       	mov	r24, r11
+ d78:	8e 27       	eor	r24, r30
 			rc++;
- d70:	3f 5f       	subi	r19, 0xFF	; 255
+ d7a:	3f 5f       	subi	r19, 0xFF	; 255
 		}
 		((uint32_t*)(ctx->key[0].ks))[i] = ((uint32_t*)(ctx->key[0].ks))[i-nk]
- d72:	fb 01       	movw	r30, r22
- d74:	e0 1b       	sub	r30, r16
- d76:	f1 0b       	sbc	r31, r17
- d78:	ee 0f       	add	r30, r30
- d7a:	ff 1f       	adc	r31, r31
- d7c:	ee 0f       	add	r30, r30
- d7e:	ff 1f       	adc	r31, r31
- d80:	ec 0f       	add	r30, r28
- d82:	fd 1f       	adc	r31, r29
- d84:	80 80       	ld	r8, Z
- d86:	91 80       	ldd	r9, Z+1	; 0x01
- d88:	a2 80       	ldd	r10, Z+2	; 0x02
- d8a:	b3 80       	ldd	r11, Z+3	; 0x03
- d8c:	88 25       	eor	r24, r8
- d8e:	99 25       	eor	r25, r9
- d90:	aa 25       	eor	r26, r10
- d92:	bb 25       	eor	r27, r11
- d94:	fa 01       	movw	r30, r20
- d96:	84 83       	std	Z+4, r24	; 0x04
- d98:	95 83       	std	Z+5, r25	; 0x05
- d9a:	a6 83       	std	Z+6, r26	; 0x06
- d9c:	b7 83       	std	Z+7, r27	; 0x07
+ d7c:	fb 01       	movw	r30, r22
+ d7e:	e0 1b       	sub	r30, r16
+ d80:	f1 0b       	sbc	r31, r17
+ d82:	ee 0f       	add	r30, r30
+ d84:	ff 1f       	adc	r31, r31
+ d86:	ee 0f       	add	r30, r30
+ d88:	ff 1f       	adc	r31, r31
+ d8a:	ec 0f       	add	r30, r28
+ d8c:	fd 1f       	adc	r31, r29
+ d8e:	80 80       	ld	r8, Z
+ d90:	91 80       	ldd	r9, Z+1	; 0x01
+ d92:	a2 80       	ldd	r10, Z+2	; 0x02
+ d94:	b3 80       	ldd	r11, Z+3	; 0x03
+ d96:	88 25       	eor	r24, r8
+ d98:	99 25       	eor	r25, r9
+ d9a:	aa 25       	eor	r26, r10
+ d9c:	bb 25       	eor	r27, r11
+ d9e:	fa 01       	movw	r30, r20
+ da0:	84 83       	std	Z+4, r24	; 0x04
+ da2:	95 83       	std	Z+5, r25	; 0x05
+ da4:	a6 83       	std	Z+6, r26	; 0x06
+ da6:	b7 83       	std	Z+7, r27	; 0x07
 	} tmp;
 	nk=keysize_b>>5; /* 4, 6, 8 */
 	hi=4*(nk+6+1);
 	memcpy(ctx, key, keysize_b/8);
 	next_nk = nk;
 	for(i=nk;i<hi;++i){
- d9e:	2f 5f       	subi	r18, 0xFF	; 255
- da0:	8f cf       	rjmp	.-226    	; 0xcc0 <aes_init+0x52>
+ da8:	2f 5f       	subi	r18, 0xFF	; 255
+ daa:	8f cf       	rjmp	.-226    	; 0xcca <aes_init+0x52>
 			rc++;
 		}
 		((uint32_t*)(ctx->key[0].ks))[i] = ((uint32_t*)(ctx->key[0].ks))[i-nk]
 		                                   ^ tmp.v32;
 	}
 }
- da2:	df 91       	pop	r29
- da4:	cf 91       	pop	r28
- da6:	1f 91       	pop	r17
- da8:	0f 91       	pop	r16
- daa:	ff 90       	pop	r15
- dac:	ef 90       	pop	r14
- dae:	df 90       	pop	r13
- db0:	cf 90       	pop	r12
- db2:	bf 90       	pop	r11
- db4:	af 90       	pop	r10
- db6:	9f 90       	pop	r9
- db8:	8f 90       	pop	r8
- dba:	08 95       	ret
+ dac:	df 91       	pop	r29
+ dae:	cf 91       	pop	r28
+ db0:	1f 91       	pop	r17
+ db2:	0f 91       	pop	r16
+ db4:	ff 90       	pop	r15
+ db6:	ef 90       	pop	r14
+ db8:	df 90       	pop	r13
+ dba:	cf 90       	pop	r12
+ dbc:	bf 90       	pop	r11
+ dbe:	af 90       	pop	r10
+ dc0:	9f 90       	pop	r9
+ dc2:	8f 90       	pop	r8
+ dc4:	08 95       	ret
 
-00000dbc <aes128_init>:
+00000dc6 <aes128_init>:
 
 void aes128_init(const void* key, aes128_ctx_t* ctx){
- dbc:	ab 01       	movw	r20, r22
+ dc6:	ab 01       	movw	r20, r22
 	aes_init(key, 128, (aes_genctx_t*)ctx);
- dbe:	60 e8       	ldi	r22, 0x80	; 128
- dc0:	70 e0       	ldi	r23, 0x00	; 0
- dc2:	0c 94 37 06 	jmp	0xc6e	; 0xc6e <aes_init>
+ dc8:	60 e8       	ldi	r22, 0x80	; 128
+ dca:	70 e0       	ldi	r23, 0x00	; 0
+ dcc:	0c 94 3c 06 	jmp	0xc78	; 0xc78 <aes_init>
 
-00000dc6 <aes192_init>:
+00000dd0 <aes192_init>:
 }
 
 void aes192_init(const void* key, aes192_ctx_t* ctx){
- dc6:	ab 01       	movw	r20, r22
+ dd0:	ab 01       	movw	r20, r22
 	aes_init(key, 192, (aes_genctx_t*)ctx);
- dc8:	60 ec       	ldi	r22, 0xC0	; 192
- dca:	70 e0       	ldi	r23, 0x00	; 0
- dcc:	0c 94 37 06 	jmp	0xc6e	; 0xc6e <aes_init>
+ dd2:	60 ec       	ldi	r22, 0xC0	; 192
+ dd4:	70 e0       	ldi	r23, 0x00	; 0
+ dd6:	0c 94 3c 06 	jmp	0xc78	; 0xc78 <aes_init>
 
-00000dd0 <aes256_init>:
+00000dda <aes256_init>:
 }
 
 void aes256_init(const void* key, aes256_ctx_t* ctx){
- dd0:	ab 01       	movw	r20, r22
+ dda:	ab 01       	movw	r20, r22
 	aes_init(key, 256, (aes_genctx_t*)ctx);
- dd2:	60 e0       	ldi	r22, 0x00	; 0
- dd4:	71 e0       	ldi	r23, 0x01	; 1
- dd6:	0c 94 37 06 	jmp	0xc6e	; 0xc6e <aes_init>
+ ddc:	60 e0       	ldi	r22, 0x00	; 0
+ dde:	71 e0       	ldi	r23, 0x01	; 1
+ de0:	0c 94 3c 06 	jmp	0xc78	; 0xc78 <aes_init>
 
-00000dda <aes128_enc>:
+00000de4 <aes128_enc>:
  */
 
 #include "aes.h"
 #include "aes_enc.h"
 
 void aes128_enc(void* buffer, aes128_ctx_t* ctx,uint8_t * aes_sbox2,uint8_t * rmask){
- dda:	0f 93       	push	r16
- ddc:	1f 93       	push	r17
+ de4:	0f 93       	push	r16
+ de6:	1f 93       	push	r17
 	aes_encrypt_core(buffer, (aes_genctx_t*)ctx, 10,aes_sbox2,rmask);
- dde:	89 01       	movw	r16, r18
- de0:	9a 01       	movw	r18, r20
- de2:	4a e0       	ldi	r20, 0x0A	; 10
- de4:	0e 94 29 05 	call	0xa52	; 0xa52 <aes_encrypt_core>
+ de8:	89 01       	movw	r16, r18
+ dea:	9a 01       	movw	r18, r20
+ dec:	4a e0       	ldi	r20, 0x0A	; 10
+ dee:	0e 94 2e 05 	call	0xa5c	; 0xa5c <aes_encrypt_core>
 }
- de8:	1f 91       	pop	r17
- dea:	0f 91       	pop	r16
- dec:	08 95       	ret
+ df2:	1f 91       	pop	r17
+ df4:	0f 91       	pop	r16
+ df6:	08 95       	ret
 
-00000dee <gf256mul>:
+00000df8 <gf256mul>:
 P = 24
 .global gf256mul
 
 #ifdef OPTIMIZE_SMALL_A
 gf256mul:
 	mov A, r24
- dee:	78 2f       	mov	r23, r24
+ df8:	78 2f       	mov	r23, r24
 	clr r24
- df0:	88 27       	eor	r24, r24
+ dfa:	88 27       	eor	r24, r24
 1:	
 	lsr A
- df2:	76 95       	lsr	r23
+ dfc:	76 95       	lsr	r23
 	breq 4f
- df4:	31 f0       	breq	.+12     	; 0xe02 <gf256mul+0x14>
+ dfe:	31 f0       	breq	.+12     	; 0xe0c <gf256mul+0x14>
 	brcc 2f
- df6:	08 f4       	brcc	.+2      	; 0xdfa <gf256mul+0xc>
+ e00:	08 f4       	brcc	.+2      	; 0xe04 <gf256mul+0xc>
 	eor P, B
- df8:	86 27       	eor	r24, r22
+ e02:	86 27       	eor	r24, r22
 2:
 	lsl B
- dfa:	66 0f       	add	r22, r22
+ e04:	66 0f       	add	r22, r22
 	brcc 3f
- dfc:	08 f4       	brcc	.+2      	; 0xe00 <gf256mul+0x12>
+ e06:	08 f4       	brcc	.+2      	; 0xe0a <gf256mul+0x12>
 	eor B, r20	
- dfe:	64 27       	eor	r22, r20
+ e08:	64 27       	eor	r22, r20
 3:
 	rjmp 1b
- e00:	f8 cf       	rjmp	.-16     	; 0xdf2 <gf256mul+0x4>
+ e0a:	f8 cf       	rjmp	.-16     	; 0xdfc <gf256mul+0x4>
 4:
 	brcc 2f
- e02:	08 f4       	brcc	.+2      	; 0xe06 <gf256mul+0x18>
+ e0c:	08 f4       	brcc	.+2      	; 0xe10 <gf256mul+0x18>
 	eor P, B
- e04:	86 27       	eor	r24, r22
+ e0e:	86 27       	eor	r24, r22
 2:
 	ret
- e06:	08 95       	ret
+ e10:	08 95       	ret
 
-00000e08 <main>:
+00000e12 <main>:
 
 }
 #endif
 
 int main(void)
 {
- e08:	cf 93       	push	r28
- e0a:	df 93       	push	r29
- e0c:	cd b7       	in	r28, 0x3d	; 61
- e0e:	de b7       	in	r29, 0x3e	; 62
- e10:	60 97       	sbiw	r28, 0x10	; 16
- e12:	cd bf       	out	0x3d, r28	; 61
- e14:	de bf       	out	0x3e, r29	; 62
+ e12:	cf 93       	push	r28
+ e14:	df 93       	push	r29
+ e16:	cd b7       	in	r28, 0x3d	; 61
+ e18:	de b7       	in	r29, 0x3e	; 62
+ e1a:	60 97       	sbiw	r28, 0x10	; 16
+ e1c:	cd bf       	out	0x3d, r28	; 61
+ e1e:	de bf       	out	0x3e, r29	; 62
 	uint8_t tmp[KEY_LENGTH] = {DEFAULT_KEY};
- e16:	80 e1       	ldi	r24, 0x10	; 16
- e18:	e0 e0       	ldi	r30, 0x00	; 0
- e1a:	f0 e2       	ldi	r31, 0x20	; 32
- e1c:	de 01       	movw	r26, r28
- e1e:	11 96       	adiw	r26, 0x01	; 1
- e20:	01 90       	ld	r0, Z+
- e22:	0d 92       	st	X+, r0
- e24:	8a 95       	dec	r24
- e26:	e1 f7       	brne	.-8      	; 0xe20 <main+0x18>
+ e20:	80 e1       	ldi	r24, 0x10	; 16
+ e22:	e0 e0       	ldi	r30, 0x00	; 0
+ e24:	f0 e2       	ldi	r31, 0x20	; 32
+ e26:	de 01       	movw	r26, r28
+ e28:	11 96       	adiw	r26, 0x01	; 1
+ e2a:	01 90       	ld	r0, Z+
+ e2c:	0d 92       	st	X+, r0
+ e2e:	8a 95       	dec	r24
+ e30:	e1 f7       	brne	.-8      	; 0xe2a <main+0x18>
 
     platform_init();
- e28:	0e 94 b6 04 	call	0x96c	; 0x96c <platform_init>
+ e32:	0e 94 bb 04 	call	0x976	; 0x976 <platform_init>
     init_uart();
- e2c:	0e 94 e5 03 	call	0x7ca	; 0x7ca <init_uart0>
+ e36:	0e 94 ea 03 	call	0x7d4	; 0x7d4 <init_uart0>
     trigger_setup();
- e30:	81 e0       	ldi	r24, 0x01	; 1
- e32:	80 93 01 06 	sts	0x0601, r24	; 0x800601 <__TEXT_REGION_LENGTH__+0x700601>
+ e3a:	81 e0       	ldi	r24, 0x01	; 1
+ e3c:	80 93 01 06 	sts	0x0601, r24	; 0x800601 <__TEXT_REGION_LENGTH__+0x700601>
 
 	aes_indep_init();
- e36:	0e 94 cc 04 	call	0x998	; 0x998 <aes_indep_init>
+ e40:	0e 94 d1 04 	call	0x9a2	; 0x9a2 <aes_indep_init>
 	aes_indep_key(tmp);
- e3a:	ce 01       	movw	r24, r28
- e3c:	01 96       	adiw	r24, 0x01	; 1
- e3e:	0e 94 cd 04 	call	0x99a	; 0x99a <aes_indep_key>
+ e44:	ce 01       	movw	r24, r28
+ e46:	01 96       	adiw	r24, 0x01	; 1
+ e48:	0e 94 d2 04 	call	0x9a4	; 0x9a4 <aes_indep_key>
     putch('l');
     putch('o');
     putch('\n');
     */
 
 	simpleserial_init();
- e42:	0e 94 83 02 	call	0x506	; 0x506 <simpleserial_init>
+ e4c:	0e 94 88 02 	call	0x510	; 0x510 <simpleserial_init>
     #if SS_VER == SS_VER_2_0
     simpleserial_addcmd(0x01, 16, aes);
     #else
     simpleserial_addcmd('k', 16, get_key);
- e46:	44 ea       	ldi	r20, 0xA4	; 164
- e48:	51 e0       	ldi	r21, 0x01	; 1
- e4a:	60 e1       	ldi	r22, 0x10	; 16
- e4c:	70 e0       	ldi	r23, 0x00	; 0
- e4e:	8b e6       	ldi	r24, 0x6B	; 107
- e50:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ e50:	44 ea       	ldi	r20, 0xA4	; 164
+ e52:	51 e0       	ldi	r21, 0x01	; 1
+ e54:	60 e1       	ldi	r22, 0x10	; 16
+ e56:	70 e0       	ldi	r23, 0x00	; 0
+ e58:	8b e6       	ldi	r24, 0x6B	; 107
+ e5a:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     simpleserial_addcmd('p', 16,  get_pt);
- e54:	48 ea       	ldi	r20, 0xA8	; 168
- e56:	51 e0       	ldi	r21, 0x01	; 1
- e58:	60 e1       	ldi	r22, 0x10	; 16
- e5a:	70 e0       	ldi	r23, 0x00	; 0
- e5c:	80 e7       	ldi	r24, 0x70	; 112
- e5e:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ e5e:	48 ea       	ldi	r20, 0xA8	; 168
+ e60:	51 e0       	ldi	r21, 0x01	; 1
+ e62:	60 e1       	ldi	r22, 0x10	; 16
+ e64:	70 e0       	ldi	r23, 0x00	; 0
+ e66:	80 e7       	ldi	r24, 0x70	; 112
+ e68:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     simpleserial_addcmd('x',  0,   reset);
- e62:	4c e9       	ldi	r20, 0x9C	; 156
- e64:	51 e0       	ldi	r21, 0x01	; 1
- e66:	60 e0       	ldi	r22, 0x00	; 0
- e68:	70 e0       	ldi	r23, 0x00	; 0
- e6a:	88 e7       	ldi	r24, 0x78	; 120
- e6c:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ e6c:	4c e9       	ldi	r20, 0x9C	; 156
+ e6e:	51 e0       	ldi	r21, 0x01	; 1
+ e70:	60 e0       	ldi	r22, 0x00	; 0
+ e72:	70 e0       	ldi	r23, 0x00	; 0
+ e74:	88 e7       	ldi	r24, 0x78	; 120
+ e76:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     simpleserial_addcmd_flags('m', 18, get_mask, CMD_FLAG_LEN);
- e70:	21 e0       	ldi	r18, 0x01	; 1
- e72:	40 ea       	ldi	r20, 0xA0	; 160
- e74:	51 e0       	ldi	r21, 0x01	; 1
- e76:	62 e1       	ldi	r22, 0x12	; 18
- e78:	70 e0       	ldi	r23, 0x00	; 0
- e7a:	8d e6       	ldi	r24, 0x6D	; 109
- e7c:	0e 94 5d 02 	call	0x4ba	; 0x4ba <simpleserial_addcmd_flags>
+ e7a:	21 e0       	ldi	r18, 0x01	; 1
+ e7c:	40 ea       	ldi	r20, 0xA0	; 160
+ e7e:	51 e0       	ldi	r21, 0x01	; 1
+ e80:	62 e1       	ldi	r22, 0x12	; 18
+ e82:	70 e0       	ldi	r23, 0x00	; 0
+ e84:	8d e6       	ldi	r24, 0x6D	; 109
+ e86:	0e 94 62 02 	call	0x4c4	; 0x4c4 <simpleserial_addcmd_flags>
     simpleserial_addcmd('s', 2, enc_multi_setnum);
- e80:	4e e9       	ldi	r20, 0x9E	; 158
- e82:	51 e0       	ldi	r21, 0x01	; 1
- e84:	62 e0       	ldi	r22, 0x02	; 2
- e86:	70 e0       	ldi	r23, 0x00	; 0
- e88:	83 e7       	ldi	r24, 0x73	; 115
- e8a:	0e 94 80 02 	call	0x500	; 0x500 <simpleserial_addcmd>
+ e8a:	4e e9       	ldi	r20, 0x9E	; 158
+ e8c:	51 e0       	ldi	r21, 0x01	; 1
+ e8e:	62 e0       	ldi	r22, 0x02	; 2
+ e90:	70 e0       	ldi	r23, 0x00	; 0
+ e92:	83 e7       	ldi	r24, 0x73	; 115
+ e94:	0e 94 85 02 	call	0x50a	; 0x50a <simpleserial_addcmd>
     #endif
     while(1)
         simpleserial_get();
- e8e:	0e 94 22 03 	call	0x644	; 0x644 <simpleserial_get>
- e92:	fd cf       	rjmp	.-6      	; 0xe8e <main+0x86>
+ e98:	0e 94 27 03 	call	0x64e	; 0x64e <simpleserial_get>
+ e9c:	fd cf       	rjmp	.-6      	; 0xe98 <main+0x86>
 
-00000e94 <memcpy>:
- e94:	fb 01       	movw	r30, r22
- e96:	dc 01       	movw	r26, r24
- e98:	02 c0       	rjmp	.+4      	; 0xe9e <memcpy+0xa>
- e9a:	01 90       	ld	r0, Z+
- e9c:	0d 92       	st	X+, r0
- e9e:	41 50       	subi	r20, 0x01	; 1
- ea0:	50 40       	sbci	r21, 0x00	; 0
- ea2:	d8 f7       	brcc	.-10     	; 0xe9a <memcpy+0x6>
- ea4:	08 95       	ret
+00000e9e <memcpy>:
+ e9e:	fb 01       	movw	r30, r22
+ ea0:	dc 01       	movw	r26, r24
+ ea2:	02 c0       	rjmp	.+4      	; 0xea8 <memcpy+0xa>
+ ea4:	01 90       	ld	r0, Z+
+ ea6:	0d 92       	st	X+, r0
+ ea8:	41 50       	subi	r20, 0x01	; 1
+ eaa:	50 40       	sbci	r21, 0x00	; 0
+ eac:	d8 f7       	brcc	.-10     	; 0xea4 <memcpy+0x6>
+ eae:	08 95       	ret
 
-00000ea6 <_exit>:
- ea6:	f8 94       	cli
+00000eb0 <_exit>:
+ eb0:	f8 94       	cli
 
-00000ea8 <__stop_program>:
- ea8:	ff cf       	rjmp	.-2      	; 0xea8 <__stop_program>
+00000eb2 <__stop_program>:
+ eb2:	ff cf       	rjmp	.-2      	; 0xeb2 <__stop_program>

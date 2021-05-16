@@ -45,7 +45,6 @@ void aes_shiftcol(void* data, uint8_t shift){
 	((uint8_t*)data)[ 4] = tmp[(shift+1)&3];
 	((uint8_t*)data)[ 8] = tmp[(shift+2)&3];
 	((uint8_t*)data)[12] = tmp[(shift+3)&3];
-
 }
 
 #define GF256MUL_1(a) (a)
@@ -53,7 +52,7 @@ void aes_shiftcol(void* data, uint8_t shift){
 #define GF256MUL_3(a) (gf256mul(3, (a), 0x1b))
 
 static
-void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t * rmask){
+void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * aes_sbox2,uint8_t * rmask,uint8_t n){
 	uint8_t mask = *rmask;
     uint8_t tmp[16], t;
 	uint8_t i;
@@ -63,12 +62,10 @@ void aes_enc_round(aes_cipher_state_t* state, const aes_roundkey_t* k,uint8_t * 
 		tmp[i] = aes_sbox2[help];
 	}
 	
-	
 	/* shiftRows */
 	aes_shiftcol(tmp+1, 1);
 	aes_shiftcol(tmp+2, 2);
 	aes_shiftcol(tmp+3, 3);
-	
 	
 	/* mixColums */
 	for(i=0; i<4; ++i){ 
@@ -126,10 +123,9 @@ void aes_encrypt_core(aes_cipher_state_t* state, const aes_genctx_t* ks, uint8_t
 	for(i=0; i<16; ++i){
 		state->s[i] ^= ks->key[0].ks[i];
 	}
-	
 	i=1;
 	for(;rounds>1;--rounds){//1
-		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask);
+		aes_enc_round(state, &(ks->key[i]),aes_sbox2,rmask,i);
 		++i;
 	}
 	

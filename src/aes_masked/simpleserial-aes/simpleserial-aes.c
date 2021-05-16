@@ -56,8 +56,8 @@ uint8_t get_pt(uint8_t* pt, uint8_t len)
         pt[i] ^= mask;
 	}
     // generate new SBOX using random
-    uint8_t l;
-    for(l=0; l<255; ++l){
+    int l;
+    for(l=0x00; l<=0xFF; l++){
         uint8_t temporary = pgm_read_byte(aes_sbox+l);
         aes_sbox2[l^mask] = temporary^mask;
 	}   

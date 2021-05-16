@@ -274,13 +274,13 @@
  276               		.file 2 ".././crypto/avrcryptolib//aes/aes_sbox.c"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 aes_sbox.c
-     /tmp/ccpja83j.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccpja83j.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccpja83j.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccpja83j.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccpja83j.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccpja83j.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccpja83j.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccpja83j.s:16     .progmem.data:0000000000000000 aes_sbox
+     /tmp/ccMU2lYE.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccMU2lYE.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccMU2lYE.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccMU2lYE.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccMU2lYE.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccMU2lYE.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccMU2lYE.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccMU2lYE.s:16     .progmem.data:0000000000000000 aes_sbox
 
 NO UNDEFINED SYMBOLS
