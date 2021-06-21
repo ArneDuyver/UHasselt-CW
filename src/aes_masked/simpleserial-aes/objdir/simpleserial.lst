@@ -1366,26 +1366,26 @@
  921               		.file 3 ".././hal/xmega/uart.h"
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 simpleserial.c
-     /tmp/ccAuvl70.s:2      *ABS*:000000000000003e __SP_H__
-     /tmp/ccAuvl70.s:3      *ABS*:000000000000003d __SP_L__
-     /tmp/ccAuvl70.s:4      *ABS*:000000000000003f __SREG__
-     /tmp/ccAuvl70.s:5      *ABS*:000000000000003b __RAMPZ__
-     /tmp/ccAuvl70.s:6      *ABS*:0000000000000034 __CCP__
-     /tmp/ccAuvl70.s:7      *ABS*:0000000000000000 __tmp_reg__
-     /tmp/ccAuvl70.s:8      *ABS*:0000000000000001 __zero_reg__
-     /tmp/ccAuvl70.s:14     .text:0000000000000000 check_version
-     /tmp/ccAuvl70.s:33     .text:0000000000000004 ss_crc
-     /tmp/ccAuvl70.s:93     .text:000000000000002c hex_decode
-     /tmp/ccAuvl70.s:230    .text:00000000000000b6 simpleserial_addcmd_flags
-     /tmp/ccAuvl70.s:915    .bss:0000000000000060 num_commands
+     /tmp/ccczynrH.s:2      *ABS*:000000000000003e __SP_H__
+     /tmp/ccczynrH.s:3      *ABS*:000000000000003d __SP_L__
+     /tmp/ccczynrH.s:4      *ABS*:000000000000003f __SREG__
+     /tmp/ccczynrH.s:5      *ABS*:000000000000003b __RAMPZ__
+     /tmp/ccczynrH.s:6      *ABS*:0000000000000034 __CCP__
+     /tmp/ccczynrH.s:7      *ABS*:0000000000000000 __tmp_reg__
+     /tmp/ccczynrH.s:8      *ABS*:0000000000000001 __zero_reg__
+     /tmp/ccczynrH.s:14     .text:0000000000000000 check_version
+     /tmp/ccczynrH.s:33     .text:0000000000000004 ss_crc
+     /tmp/ccczynrH.s:93     .text:000000000000002c hex_decode
+     /tmp/ccczynrH.s:230    .text:00000000000000b6 simpleserial_addcmd_flags
+     /tmp/ccczynrH.s:915    .bss:0000000000000060 num_commands
                              .bss:0000000000000000 commands
-     /tmp/ccAuvl70.s:289    .text:00000000000000fc simpleserial_addcmd
-     /tmp/ccAuvl70.s:307    .text:0000000000000102 simpleserial_init
-     /tmp/ccAuvl70.s:502    .text:00000000000001be ss_get_commands
-     /tmp/ccAuvl70.s:453    .text:0000000000000196 ss_num_commands
-     /tmp/ccAuvl70.s:344    .text:000000000000012c simpleserial_put
-     /tmp/ccAuvl70.s:897    .rodata:0000000000000000 hex_lookup
-     /tmp/ccAuvl70.s:607    .text:0000000000000240 simpleserial_get
+     /tmp/ccczynrH.s:289    .text:00000000000000fc simpleserial_addcmd
+     /tmp/ccczynrH.s:307    .text:0000000000000102 simpleserial_init
+     /tmp/ccczynrH.s:502    .text:00000000000001be ss_get_commands
+     /tmp/ccczynrH.s:453    .text:0000000000000196 ss_num_commands
+     /tmp/ccczynrH.s:344    .text:000000000000012c simpleserial_put
+     /tmp/ccczynrH.s:897    .rodata:0000000000000000 hex_lookup
+     /tmp/ccczynrH.s:607    .text:0000000000000240 simpleserial_get
 
 UNDEFINED SYMBOLS
 output_ch_0

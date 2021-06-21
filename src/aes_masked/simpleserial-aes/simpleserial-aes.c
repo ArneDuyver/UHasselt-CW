@@ -48,7 +48,7 @@ uint8_t get_pt(uint8_t* pt, uint8_t len)
     aes_indep_enc_pretrigger(pt);
     //START EDIT
     // generate random mask uint8_t
-    *rmask = 0x55;//rand();
+    *rmask = 0x55; //rand();
     uint8_t mask = *rmask;
     // xor every byte from *pt with random
     uint8_t i;

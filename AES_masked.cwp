@@ -1,0 +1,10 @@
+[Trace Management]
+tracefile0 = AES_masked_data\traces\config_2021.06.21-16.07.49_0.cfg
+enabled0 = True
+[ChipWhisperer]
+[[General Settings]]
+Project Name = Untitled
+Project File Version = 1.00
+Project Author = Unknown
+Program Name = ChipWhisperer
+Program Version = ""
